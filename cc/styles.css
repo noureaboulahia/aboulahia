@@ -64,54 +64,67 @@ select:focus {
 /* تحسين عرض التفاصيل */
 .details {
     margin-top: 20px;
-    padding: 20px;
-    border-radius: 10px;
-    background: #fffaf0;
-    border: 2px solid #d4a373;
-    box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.1);
+    padding: 25px;
+    border-radius: 12px;
+    background: #faf8f5; /* Softer background */
+    border: 2px solid #b28d60; /* Warmer border */
+    box-shadow: 3px 3px 12px rgba(0, 0, 0, 0.15);
 }
 
 /* تحسين العناوين داخل التفاصيل */
 .details h3 {
     margin: 10px 0;
-    font-size: 24px;
+    font-size: 26px;
     font-weight: bold;
-    color: #8b4513;
-    border-bottom: 2px solid #d4a373;
-    padding-bottom: 5px;
+    color: #6d4c1b; /* Richer brown */
+    border-bottom: 3px solid #b28d60;
+    padding-bottom: 6px;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
 }
 
 .details h4 {
-    margin: 8px 0;
-    font-size: 20px;
+    margin: 10px 0;
+    font-size: 22px;
     font-weight: bold;
-    color: #5a3e1b;
+    color: #4a3210; /* Deeper shade for better contrast */
 }
 
 /* تحسين تنسيق الفقرات */
 .details p {
-    margin-top: 12px;
-    padding: 15px;
-    font-size: 18px;
+    margin-top: 15px;
+    padding: 18px;
+    font-size: 19px;
     font-weight: 500;
     line-height: 2;
-    background: #f3eacb;
-    border-radius: 8px;
+    background: #f9f3e6; /* Softer beige */
+    color: #3d2a0d; /* Darker text for contrast */
+    border-radius: 10px;
     white-space: pre-line;
 }
 
 /* تنسيق الحواشي */
 .footnote {
     display: block;
-    margin-top: 10px;
-    font-size: 18px;
+    margin-top: 12px;
+    font-size: 17px;
     font-weight: bold;
-    color: #c46561;
-    background: #fce4e4;
-    padding: 10px 15px;
-    border-right: 5px solid #d9534f;
-    border-radius: 5px;
+    color: #a94442;
+    background: #f8e4e4;
+    padding: 12px 18px;
+    border-right: 6px solid #d9534f;
+    border-radius: 6px;
 }
+
+.colored-number {
+    font-weight: bold;
+    color: #c46561; /* Dark red */
+}
+
+
+
+
+
+
 /* جعل معلومات الكتاب داخل إطار مماثل للحاوية الأساسية */
 .book-container {
     width: 80%;
