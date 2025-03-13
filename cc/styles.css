@@ -1,0 +1,191 @@
+@import url("https://fonts.googleapis.com/earlyaccess/droidarabicnaskh.css");
+
+body {
+    font-family: 'Droid Arabic Naskh', serif;
+    direction: rtl;
+    text-align: right;
+    background-color: #f8f9fa;
+    margin: 0;
+    padding: 20px;
+}
+
+/* تحسين شكل الحاوية الرئيسية */
+.container {
+    width: 80%;
+    margin: auto;
+    padding: 25px;
+    background: #fff;
+    border-radius: 15px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+/* تحسين العنوان الرئيسي */
+h2 {
+    text-align: center;
+    color: #333;
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 20px;
+}
+
+/* تحسين التسميات */
+label {
+    font-size: 18px;
+    font-weight: bold;
+    color: #555;
+    display: block;
+    margin-bottom: 5px;
+}
+
+/* تحسين القوائم المنسدلة */
+select {
+    width: 100%;
+    padding: 12px;
+    font-size: 16px;
+    border: 2px solid #ccc;
+    border-radius: 8px;
+    background: #fff;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+/* تحسين مظهر القوائم عند التمرير */
+select:hover {
+    border-color: #8b4513;
+}
+
+/* تحسين مظهر القوائم عند تحديدها */
+select:focus {
+    outline: none;
+    border-color: #d4a373;
+    box-shadow: 0px 0px 8px rgba(212, 163, 115, 0.5);
+}
+
+/* تحسين عرض التفاصيل */
+.details {
+    margin-top: 20px;
+    padding: 20px;
+    border-radius: 10px;
+    background: #fffaf0;
+    border: 2px solid #d4a373;
+    box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+/* تحسين العناوين داخل التفاصيل */
+.details h3 {
+    margin: 10px 0;
+    font-size: 24px;
+    font-weight: bold;
+    color: #8b4513;
+    border-bottom: 2px solid #d4a373;
+    padding-bottom: 5px;
+}
+
+.details h4 {
+    margin: 8px 0;
+    font-size: 20px;
+    font-weight: bold;
+    color: #5a3e1b;
+}
+
+/* تحسين تنسيق الفقرات */
+.details p {
+    margin-top: 12px;
+    padding: 15px;
+    font-size: 18px;
+    font-weight: 500;
+    line-height: 2;
+    background: #f3eacb;
+    border-radius: 8px;
+    white-space: pre-line;
+}
+
+/* تنسيق الحواشي */
+.footnote {
+    display: block;
+    margin-top: 10px;
+    font-size: 18px;
+    font-weight: bold;
+    color: #c46561;
+    background: #fce4e4;
+    padding: 10px 15px;
+    border-right: 5px solid #d9534f;
+    border-radius: 5px;
+}
+/* جعل معلومات الكتاب داخل إطار مماثل للحاوية الأساسية */
+.book-container {
+    width: 80%;
+    margin: auto;
+    padding: 25px;
+    border-radius: 15px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+    margin-bottom: 20px;
+}
+
+/* تنسيق الرأس (صورة الغلاف + المعلومات) */
+.book-header {
+    display: flex;
+    align-items: center;
+    justify-content: right;
+}
+
+/* تنسيق صورة الغلاف */
+.book-cover {
+    width: 150px;
+    height: auto;
+    border-radius: 10px;
+    margin-left: 20px;
+}
+
+/* تحسين تنسيق النص */
+.book-details {
+    font-size: 18px;
+    color: #333;
+}
+
+/* جعل العناوين الجانبية بلون مميز */
+.label {
+    color: #ff0000;
+    font-weight: bold;
+}
+
+/* تنسيق رابط التحميل */
+.download-link {
+    color: #d9534f;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.download-link:hover {
+    text-decoration: underline;
+}
+
+/* تحسين تنسيق فقرة التعريف بالكتاب */
+.book-description {
+    background: #fffaf0;
+    padding: 20px;
+    border-radius: 10px;
+    border: 2px solid #d4a373;
+    box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.1);
+    font-size: 18px;
+    line-height: 1.8;
+    margin-top: 20px;
+}
+
+/* تحسين تنسيق العنوان داخل التعريف */
+.book-description h3 {
+    color: #8b4513;
+    font-size: 22px;
+    border-bottom: 2px solid #d4a373;
+    padding-bottom: 5px;
+}
+
+/* تحسين القوائم */
+.book-description ul {
+    padding-right: 20px;
+    list-style-type: square;
+}
+
+.book-description li {
+    margin-bottom: 10px;
+}
