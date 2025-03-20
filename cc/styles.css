@@ -19,48 +19,39 @@ body {
     box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
 }
 
-/* تحسين العنوان الرئيسي */
+.search-container {
+    background: #ffffff; /* لون الخلفية */
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.15);
+    max-width: 80%;
+    margin: 30px auto;
+    border: 3px solid #6d4c1b; /* إضافة إطار حول المحتوى */
+}
+
 h2 {
     text-align: center;
-    color: #333;
-    font-size: 24px;
+    color: #0056b3; /* لون العنوان */
     font-weight: bold;
     margin-bottom: 20px;
 }
 
-/* تحسين التسميات */
-label {
-    font-size: 18px;
+.form-label {
+    color: #333; /* لون النص */
     font-weight: bold;
-    color: #555;
-    display: block;
-    margin-bottom: 5px;
+    margin-top: 15px; /* إضافة هامش قبل كل قائمة */
 }
 
-/* تحسين القوائم المنسدلة */
-select {
-    width: 100%;
-    padding: 12px;
-    font-size: 16px;
-    border: 2px solid #ccc;
+.form-select {
+    border: 2px solid #e98527 !important; /* تغيير لون الإطار */
+    color: #ec8632 !important; /* تغيير لون النص */
+    padding: 10px;
     border-radius: 8px;
-    background: #fff;
-    cursor: pointer;
-    transition: all 0.3s ease;
 }
 
-/* تحسين مظهر القوائم عند التمرير */
-select:hover {
-    border-color: #8b4513;
+.form-select:focus {
+    box-shadow: 0 0 5px rgba(204, 102, 19, 0.5);
 }
-
-/* تحسين مظهر القوائم عند تحديدها */
-select:focus {
-    outline: none;
-    border-color: #d4a373;
-    box-shadow: 0px 0px 8px rgba(212, 163, 115, 0.5);
-}
-
 /* تحسين عرض التفاصيل */
 .details {
     margin-top: 20px;
@@ -207,7 +198,7 @@ select:focus {
     display: flex;
     gap: 20px;
     justify-content: center;
-    width: 80%;
+    width: 100%;
     margin: auto;
     padding: 25px;
     background: #fff;
