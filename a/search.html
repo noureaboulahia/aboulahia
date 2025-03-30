@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>بحث في الكتب 📖</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="stylesSearch.css">
+    
+</head>
+<body>
+
+    <div class="search-container" style="background: #ffffff; padding: 20px; border-radius: 10px; box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15); max-width: 80%; margin: 30px auto; border: 3px solid #6d4c1b;">
+        <h2>🔍 بحث في الكتب</h2>
+    
+        <div style="display: flex; align-items: center; gap: 12px; justify-content: center; flex-wrap: wrap;">
+            <input type="text" id="searchBox" 
+                style="flex: 1; min-width: 200px; padding: 12px; border: 1px solid #9c7c50; border-radius: 8px; box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1); outline: none;"
+                placeholder="أدخل كلمة البحث هنا..."
+                onkeypress="if(event.key === 'Enter') window.searchBooks()">
+            <button onclick="window.searchBooks()" 
+                style="background-color: #2563eb; color: white; font-weight: bold; padding: 12px 24px; border-radius: 8px; box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2); cursor: pointer; transition: background 0.3s;"
+                onmouseover="this.style.backgroundColor='#1e40af'"
+                onmouseout="this.style.backgroundColor='#2563eb'">
+                بحث
+            </button>
+        </div>
+    
+        <div id="results" class="mt-6 space-y-3" style="margin-top: 24px;"></div>
+    </div>
+
+
+    <script>
+    let booksList = [];
+
+    fetch("books/books_index.json")
+        .then(res => res.json())
+        .then(data => { booksList = data; });
+
+        window.searchBooks = function() {
+        let query = document.getElementById("searchBox").value.trim();
+        let resultsContainer = document.getElementById("results");
+        resultsContainer.innerHTML = "";
+
+        if (!query) {
+            resultsContainer.innerHTML = "<p class='text-gray-500'>⏳ أدخل كلمة للبحث...</p>";
+            return;
+        }
+
+        let foundResults = false;
+
+        booksList.forEach(book => {
+            fetch("books/" + book.data)
+                .then(res => res.json())
+                .then(data => searchInBook(query, data, book.book, book.data));
+        });
+
+        function searchInBook(query, bookData, bookTitle, bookFile) {
+            bookData.chapters.forEach(chapter => {
+                let chapterName = chapter.chapter;
+                
+                chapter.hadiths.forEach(hadith => {
+                    let hadithNumber = hadith.hadith_number;
+                    let hadithText = hadith.hadith_text;
+
+                    if (
+                        hadithText.includes(query) || 
+                        hadithNumber.includes(query) || 
+                        chapterName.includes(query)
+                    ) {
+                        foundResults = true;
+
+                        let excerpt = extractExcerpt(hadithText, query, 500);
+                        let highlightedText = highlightText(excerpt, query);
+
+                let encodedChapter = encodeURIComponent(chapterName);
+                let encodedHadith = encodeURIComponent(hadithNumber);
+                let encodedHighlight = encodeURIComponent(query);
+
+                // Use current page's base URL
+                let baseUrl = window.location.origin + window.location.pathname;
+                let link = `${baseUrl}?page=tab1&book=${bookFile}&chapter=${encodedChapter}&hadith=${encodedHadith}&highlight=${encodedHighlight}`;
+
+                        let resultHTML = `
+                            <a href="${link}" target="_blank" class="result-card">
+                                <h3>📖 ${bookTitle}</h3>
+                                <p><strong>📂 الفصل:</strong> ${chapterName}</p>
+                                <p><strong>🔢 الحديث:</strong> ${hadithNumber}</p>
+                                <p>${highlightedText}...</p>
+                            </a>
+                        `;
+                        resultsContainer.insertAdjacentHTML("beforeend", resultHTML);
+                    }
+                });
+            });
+
+            setTimeout(() => {
+                if (!foundResults) {
+                    resultsContainer.innerHTML = "<p class='text-red-500 font-semibold'>❌ لم يتم العثور على نتائج.</p>";
+                }
+            }, 500);
+        }
+    }
+
+    function extractExcerpt(text, query, length = 200) {
+        let index = text.indexOf(query);
+        if (index === -1) return text.slice(0, length);
+
+        let start = Math.max(0, index - length / 2);
+        let end = Math.min(text.length, index + length / 2);
+
+        return (start > 0 ? "..." : "") + text.slice(start, end) + (end < text.length ? "..." : "");
+    }
+
+    function highlightText(text, query) {
+        let regex = new RegExp(query, "gi");
+        return text.replace(regex, match => `<span class="highlight">${match}</span>`);
+    }
+    </script>
+
+</body>
+</html>

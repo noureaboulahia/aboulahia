@@ -1,0 +1,721 @@
+@import url("https://fonts.googleapis.com/earlyaccess/droidarabicnaskh.css");
+
+body {
+    font-family: 'Droid Arabic Naskh', serif;
+    direction: rtl;
+    text-align: right;
+    background-color: #f8f9fa;
+    margin: 0;
+    padding-top: 20px;
+}
+
+/* تحسين شكل الحاوية الرئيسية */
+.container {
+    width: 100%;
+    margin: auto;
+    padding: 25px;
+    background: #fff;
+    border-radius: 15px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.search-container {
+    background: #ffffff;
+    /* لون الخلفية */
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.15);
+    max-width: 100%;
+    margin: 30px auto;
+    border: 3px solid #6d4c1b;
+    /* إضافة إطار حول المحتوى */
+}
+
+h2 {
+    text-align: center;
+    color: #0056b3;
+    /* لون العنوان */
+    font-weight: bold;
+    margin-bottom: 20px;
+}
+
+.form-label {
+    color: #333;
+    /* لون النص */
+    font-weight: bold;
+    margin-top: 15px;
+    /* إضافة هامش قبل كل قائمة */
+}
+
+.form-select {
+    border: 2px solid #e98527 !important;
+    /* تغيير لون الإطار */
+    color: #ec8632 !important;
+    /* تغيير لون النص */
+    padding: 1px;
+    border-radius: 8px;
+}
+
+.form-select:focus {
+    box-shadow: 0 0 5px rgba(204, 102, 19, 0.5);
+}
+
+/* تحسين عرض التفاصيل */
+.details {
+    margin-top: 20px;
+    padding: 25px;
+    border-radius: 12px;
+    background: #f3f1eb;
+    /* لون بيج فاتح يناسب الأخضر */
+    border: 2px solid #9c7c50;
+    /* لون بني داكن لتحديد الحدود */
+    box-shadow: 3px 3px 12px rgba(0, 0, 0, 0.15);
+}
+
+
+/* تحسين العناوين داخل التفاصيل */
+.details h3 {
+    margin: 10px 0;
+    font-size: 26px;
+    font-weight: bold;
+    color: #6d4c1b;
+    /* Richer brown */
+    border-bottom: 3px solid #b28d60;
+    padding-bottom: 6px;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
+}
+
+.details h4 {
+    margin: 10px 0;
+    font-size: 22px;
+    font-weight: bold;
+    color: #4a3210;
+    /* Deeper shade for better contrast */
+}
+
+/* تحسين تنسيق الفقرات */
+.details p {
+    margin-top: 15px;
+    padding: 18px;
+    font-size: 19px;
+    font-weight: 500;
+    line-height: 2;
+    background: #f9f3e6;
+    /* Softer beige */
+    color: #3d2a0d;
+    /* Darker text for contrast */
+    border-radius: 10px;
+    white-space: pre-line;
+}
+
+/* تنسيق الحواشي */
+.footnote {
+    display: block;
+    margin-top: 12px;
+    font-size: 17px;
+    font-weight: bold;
+    color: #a94442;
+    background: #f8e4e4;
+    padding: 12px 18px;
+    border-right: 6px solid #d9534f;
+    border-radius: 6px;
+}
+
+.colored-number {
+    font-weight: bold;
+    color: #c46561;
+    /* Dark red */
+}
+
+.highlight {
+    background-color: yellow;
+    color: black;
+    font-weight: bold;
+    padding: 2px 4px;
+    border-radius: 4px;
+}
+
+/* جعل معلومات الكتاب داخل إطار مماثل للحاوية الأساسية */
+.book-container {
+    width: 100%;
+    margin: auto;
+    padding: 25px;
+    border-radius: 15px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+    margin-bottom: 20px;
+}
+
+/* تنسيق الرأس (صورة الغلاف + المعلومات) */
+.book-header {
+    display: flex;
+    align-items: center;
+    justify-content: right;
+}
+
+/* تنسيق صورة الغلاف */
+.book-cover {
+    width: 150px;
+    height: auto;
+    border-radius: 10px;
+    margin-left: 20px;
+}
+
+/* تحسين تنسيق النص */
+.book-details {
+    font-size: 18px;
+    color: #333;
+}
+
+/* جعل العناوين الجانبية بلون مميز */
+.label {
+    color: #ff0000;
+    font-weight: bold;
+}
+
+/* تنسيق رابط التحميل */
+.download-link {
+    color: #d9534f;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.download-link:hover {
+    text-decoration: underline;
+}
+
+/* تحسين تنسيق فقرة التعريف بالكتاب */
+.book-description {
+    background: #fffaf0;
+    padding: 20px;
+    border-radius: 10px;
+    border: 2px solid #d4a373;
+    box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.1);
+    font-size: 18px;
+    line-height: 1.8;
+    margin-top: 20px;
+    max-width: 100%;
+}
+
+/* تحسين تنسيق العنوان داخل التعريف */
+.book-description h3 {
+    color: #8b4513;
+    font-size: 22px;
+    border-bottom: 2px solid #d4a373;
+    padding-bottom: 5px;
+}
+
+/* تحسين القوائم */
+.book-description ul {
+    padding-right: 20px;
+    list-style-type: square;
+}
+
+.book-description li {
+    margin-bottom: 10px;
+}
+
+/* تنسيق الحاوية الرئيسية */
+.content-container {
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+    width: 100%;
+    margin: auto;
+    padding: 25px;
+    background: #fff;
+    border-radius: 15px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+    flex-wrap: wrap;
+    /* يسمح بتغيير التخطيط على الشاشات الصغيرة */
+}
+
+/* تنسيق كل بطاقة */
+.content-card {
+    width: 45%;
+    padding: 20px;
+    background: #faf8f5;
+    border-radius: 12px;
+    border: 2px solid #b28d60;
+    box-shadow: 3px 3px 12px rgba(0, 0, 0, 0.15);
+}
+
+/* تنسيق العناوين داخل البطاقات */
+.content-title {
+    font-size: 26px;
+    font-weight: bold;
+    color: #6d4c1b;
+    border-bottom: 3px solid #b28d60;
+    padding-bottom: 6px;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
+    margin-bottom: 10px;
+}
+
+/* تنسيق النصوص داخل البطاقات */
+.content-text {
+    margin-top: 15px;
+    padding: 18px;
+    font-size: 19px;
+    font-weight: 500;
+    line-height: 2;
+    background: #f9f3e6;
+    color: #3d2a0d;
+    border-radius: 10px;
+}
+
+/* تنسيق النص القرآني */
+.quranic-text {
+    color: #165b33;
+    /* أخضر داكن يناسب المصحف */
+    font-weight: bold;
+    background-color: #e6f4ea;
+    /* أخضر فاتح لطيف */
+    padding: 4px 8px;
+    border-radius: 5px;
+    font-family: 'Traditional Arabic', 'Amiri', serif;
+    /* خط مناسب */
+    font-size: 24px;
+    /* تكبير حجم الخط */
+    display: inline-block;
+}
+
+
+.custom-container {
+    margin-top: 20px;
+    padding: 25px;
+    border-radius: 12px;
+    background: #f3f1eb;
+    /* لون بيج فاتح يناسب الأخضر */
+    border: 2px solid #9c7c50;
+    /* لون بني داكن لتحديد الحدود */
+    box-shadow: 3px 3px 12px rgba(0, 0, 0, 0.15);
+}
+
+.custom-layout {
+    display: flex;
+    flex-direction: row-reverse;
+    /* لضمان ظهور الصورة على اليمين */
+    gap: 15px;
+    align-items: flex-start;
+}
+
+.custom-cover {
+    flex: 0 0 30%;
+}
+
+.custom-cover-img {
+    width: 70%;
+    align-items: center;
+    justify-content: center;
+    border-radius: 8px;
+    box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.2);
+}
+
+.custom-details {
+    flex: 1;
+}
+
+.custom-label {
+    font-weight: bold;
+    color: #8b0000;
+}
+
+.custom-description,
+.custom-text {
+    font-size: 16px;
+    line-height: 1.8;
+    color: #333;
+}
+
+.custom-link {
+    color: #0066cc;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.custom-container p {
+    margin-top: 15px;
+    padding: 18px;
+    font-size: 19px;
+    font-weight: 500;
+    line-height: 2;
+    background: #f9f3e6;
+    /* Softer beige */
+    color: #3d2a0d;
+    /* Darker text for contrast */
+    border-radius: 10px;
+    white-space: pre-line;
+}
+.nav-buttons {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 10px;
+}
+
+.nav-button {
+    padding: 10px 15px;
+    font-size: 16px;
+    font-weight: bold;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background 0.3s ease;
+}
+
+#prevButton {
+    background-color: #dc3545; /* Red */
+    color: white;
+}
+
+#prevButton:hover {
+    background-color: #b02a37;
+}
+
+#nextButton {
+    background-color: #28a745; /* Green */
+    color: white;
+}
+
+#nextButton:hover {
+    background-color: #1e7e34;
+}
+
+.nav-button:disabled {
+    background-color: #ccc;
+    cursor: not-allowed;
+}
+/* الآية السابقة */
+.prev-verse {
+    background-color: #ff5733; /* أحمر */
+}
+
+.prev-verse:hover {
+    background-color: #e04e2b;
+}
+
+/* المفسر السابق */
+.prev-interpreter {
+    background-color: #3498db; /* أزرق */
+}
+
+.prev-interpreter:hover {
+    background-color: #2980b9;
+}
+
+/* المفسر التالي */
+.next-interpreter {
+    background-color: #2ecc71; /* أخضر */
+}
+
+.next-interpreter:hover {
+    background-color: #27ae60;
+}
+
+/* الآية التالية */
+.next-verse {
+    background-color: #f39c12; /* برتقالي */
+}
+
+.next-verse:hover {
+    background-color: #e67e22;
+}
+
+
+/* تحسين التصميم للهواتف */
+@media (max-width: 768px) {
+
+
+    .container {
+        width: 100%;
+        margin: 0;
+        padding: 1px;
+        background: #fff;
+        border-radius: 8px;
+    }
+
+    .search-container {
+        background: #ffffff;
+        padding: 1px;
+        border-radius: 6px;
+        max-width: 100%;
+    }
+
+    h2 {
+
+        margin-bottom: 5px;
+        font-size: 16px;
+    }
+
+    .form-label {
+        color: #333;
+        font-weight: bold;
+        margin-top: 1px;
+        font-size: 14px;
+    }
+
+    .form-select {
+        border: 1px solid #e98527 !important;
+        color: #ec8632 !important;
+        padding: 1px;
+        border-radius: 4px;
+        font-size: 14px;
+    }
+
+    .form-select:focus {
+        box-shadow: none;
+    }
+
+    /* تحسين عرض التفاصيل */
+    .details {
+        margin-top: 2px;
+        padding: 1px;
+        border-radius: 6px;
+        background: #f3f1eb;
+        box-shadow: none;
+    }
+
+    /* تحسين العناوين داخل التفاصيل */
+    .details h3 {
+        margin: 5px 0;
+        font-size: 16px;
+        font-weight: bold;
+        color: #6d4c1b;
+        padding-bottom: 3px;
+    }
+
+    .details h4 {
+        margin: 5px 0;
+        font-size: 14px;
+        font-weight: bold;
+        color: #4a3210;
+    }
+
+    /* تحسين تنسيق الفقرات */
+    .details p {
+        margin-top: 2px;
+        padding: 1px;
+        font-size: 12px;
+        line-height: 1.5;
+        background: #f9f3e6;
+        color: #3d2a0d;
+        border-radius: 4px;
+    }
+
+    /* تنسيق الحواشي */
+    .footnote {
+        display: block;
+        margin-top: 2px;
+        font-size: 12px;
+        font-weight: bold;
+        color: #a94442;
+        background: #f8e4e4;
+        padding: 1px;
+        border-right: 3px solid #d9534f;
+        border-radius: 4px;
+    }
+
+    .book-container {
+        width: 100%;
+        margin: 0;
+        padding: 1px;
+        border-radius: 8px;
+        box-shadow: none;
+        margin-bottom: 2px;
+    }
+
+    /* تنسيق الرأس (صورة الغلاف + المعلومات) */
+    .book-header {
+        display: flex;
+        align-items: center;
+        justify-content: right;
+        flex-direction: column;
+        /* يجعل الصورة والنص في عمود */
+        text-align: center;
+    }
+
+    /* تنسيق صورة الغلاف */
+    .book-cover {
+        width: 100px;
+        /* تصغير الحجم ليناسب الجوال */
+        height: auto;
+        border-radius: 6px;
+        margin-left: 0;
+        margin-bottom: 5px;
+    }
+
+    /* تحسين تنسيق النص */
+    .book-details {
+        font-size: 14px;
+        color: #333;
+    }
+
+    /* جعل العناوين الجانبية بلون مميز */
+    .label {
+        color: #ff0000;
+        font-weight: bold;
+        font-size: 14px;
+    }
+
+    /* تنسيق رابط التحميل */
+    .download-link {
+        color: #d9534f;
+        text-decoration: none;
+        font-weight: bold;
+        font-size: 14px;
+    }
+
+    .download-link:hover {
+        text-decoration: underline;
+    }
+
+    /* تحسين تنسيق فقرة التعريف بالكتاب */
+    .book-description {
+        background: #fffaf0;
+        padding: 1px;
+        border-radius: 6px;
+        box-shadow: none;
+        font-size: 14px;
+        line-height: 1.5;
+        margin-top: 2px;
+        max-width: 100%;
+    }
+
+    /* تحسين تنسيق العنوان داخل التعريف */
+    .book-description h3 {
+        color: #8b4513;
+        font-size: 16px;
+        padding-bottom: 2px;
+    }
+
+    /* تحسين القوائم */
+    .book-description ul {
+        padding-right: 1px;
+        list-style-type: square;
+    }
+
+    .book-description li {
+        margin-bottom: 2px;
+        font-size: 14px;
+    }
+
+    /* تنسيق الحاوية الرئيسية */
+    .content-container {
+        display: flex;
+        gap: 2px;
+        justify-content: center;
+        width: 100%;
+        margin: 0;
+        padding: 1px;
+        background: #fff;
+        border-radius: 8px;
+        box-shadow: none;
+        flex-wrap: wrap;
+        /* يسمح بتغيير التخطيط على الشاشات الصغيرة */
+    }
+
+    /* تنسيق كل بطاقة */
+    .content-card {
+        width: 100%;
+        padding: 1px;
+        background: #faf8f5;
+        border-radius: 6px;
+        box-shadow: none;
+    }
+
+    /* تنسيق العناوين داخل البطاقات */
+    .content-title {
+        font-size: 16px;
+        font-weight: bold;
+        color: #6d4c1b;
+
+        padding-bottom: 2px;
+        text-shadow: none;
+        margin-bottom: 2px;
+        text-align: center;
+    }
+
+    /* تنسيق النصوص داخل البطاقات */
+    .content-text {
+        margin-top: 2px;
+        padding: 1px;
+        font-size: 14px;
+        font-weight: 500;
+        line-height: 1.5;
+        background: #f9f3e6;
+        color: #3d2a0d;
+        border-radius: 4px;
+    }
+
+    .custom-container {
+        margin-top: 2px;
+        padding: 1px;
+        border-radius: 6px;
+        background: #f3f1eb;
+        /* لون بيج فاتح */
+        /* لون بني داكن */
+        box-shadow: none;
+    }
+
+    /* تغيير التخطيط لعرض الجوال */
+    .custom-layout {
+        display: flex;
+        flex-direction: column;
+        /* يجعل العناصر في عمود */
+        gap: 2px;
+        align-items: center;
+        text-align: center;
+    }
+
+    .custom-cover {
+        flex: none;
+        width: 100%;
+        /* جعل الصورة تأخذ العرض الكامل */
+    }
+
+    .custom-cover-img {
+        width: 50%;
+        /* تصغير الصورة قليلاً للجوال */
+        border-radius: 4px;
+        box-shadow: none;
+        display: block;
+        margin: auto;
+    }
+
+    .custom-details {
+        flex: none;
+        width: 100%;
+    }
+
+    .custom-label {
+        font-weight: bold;
+        color: #8b0000;
+        font-size: 14px;
+    }
+
+    .custom-description,
+    .custom-text {
+        font-size: 14px;
+        line-height: 1.5;
+        color: #333;
+    }
+
+    /* تحسين تنسيق الروابط */
+    .custom-link {
+        color: #0066cc;
+        text-decoration: none;
+        font-weight: bold;
+        font-size: 14px;
+    }
+
+    .custom-container p {
+        margin-top: 2px;
+        padding: 1px;
+        font-size: 14px;
+        font-weight: 500;
+        line-height: 1.5;
+        background: #f9f3e6;
+        color: #3d2a0d;
+        border-radius: 6px;
+        white-space: pre-line;
+    }
+
+}

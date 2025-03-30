@@ -1,0 +1,601 @@
+<!DOCTYPE html>
+<html lang="ar">
+
+<head>
+
+    <meta name="description" content="مؤلفات أ.د. نور الدين أبو لحية للبحث والتحميل والمطالعة" />
+    <meta name="keywords" content="مؤلفات أ.د. نور الدين أبو لحية للبحث والتحميل والمطالعة" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel='icon' href='../favicon.ico' type='image/x-icon' />
+    <link rel="stylesheet" href="../mystyle.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- jQuery -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+    <!-- Select2 -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/js/select2.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/css/select2.min.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>مؤلفات أ.د. نور الدين أبو لحية</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/js/select2.full.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/css/select2.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+    <div w3-include-html="../head.html"></div>
+    <script>
+        includeHTML();
+    </script>
+    <div id="mySidebar" class="sidebar">
+    </div>
+    <div class="container book-container">
+        <div class="book-header">
+
+
+
+            <div class="book-description">
+                <h3>كيفية البحث في المؤلفات</h3>
+                </p>
+                <p dir="rtl" class="aaac">في هذه النافذة، ومن خلال خانات البحث، يمكن البحث في المؤلفات والفصول والعناوين
+                    المختلفة كما يلي:
+                </p>
+                <p dir="rtl" class="aaac">1. النافذة الأولى تضم عناوين الكتب، بالضغط عليها تظهر عناوين الكتب، بالضغط على
+                    أي عنوان يظهر أسفل نافذة البحث التعريف به وروابط تحميله.
+                </p>
+                <p dir="rtl" class="aaac">2. النافذة الثانية تضم عناوين الفصول، بالضغط على أي فصل يظهر الفصل كاملا أسفل
+                    نافذة البحث.
+                </p>
+                <p dir="rtl" class="aaac">3. النافذة الثالثة تضم عناوين المطالب والفروع المرتبطة بالفصل.
+                </p>
+                <p dir="rtl" class="aaac">2. النافذة الرابعة مخصصة للبحث في عناوين كل الكتب، بالضغط على أي عنوان، يظهر
+                    الفصل الخاص به أسفل النافذة، ومن شاء الفرع فقط، يمكنه أن ينتقل إلى النافذة الثالثة لتحديده.
+
+                </p>
+
+
+            </div>
+        </div>
+    </div>
+    <div class="container">
+
+
+        <div class="search-container">
+            <h2>📖 للمطالعة والبحث في المؤلفات</h2>
+
+            <div>
+                <label for="col1" class="form-label">🔍 عناوين الكتب</label>
+                <select id="col1" class="form-select searchable">
+                    <option value="">اضغط هنا أو اكتب كلمة للبحث</option>
+                </select>
+            </div>
+
+            <div>
+                <label for="col2" class="form-label">📖 فصول الكتاب المحدد</label>
+                <select id="col2" class="form-select searchable">
+                    <option value="">اضغط هنا أو اكتب كلمة للبحث</option>
+                </select>
+            </div>
+
+            <div>
+                <label for="col3" class="form-label">🧑‍🏫 فروع ومباحث تفصيلية</label>
+                <select id="col3" class="form-select searchable">
+                    <option value="">اضغط هنا أو اكتب كلمة للبحث</option>
+                </select>
+            </div>
+            <div>
+                <label for="hadith_search" class="form-label">🔍 البحث في جميع العناوين وفي جميع الكتب</label>
+                <select id="hadith_search" class="form-select searchable">
+                    <option value="">اضغط هنا أو اكتب كلمة للبحث</option>
+                </select>
+            </div>
+        </div>
+        <div id="book-details">
+            <h3 id="title"></h3>
+            <p id="content"></p>
+        </div>
+
+        <div class="details" id="details">
+            <h3 id="title"></h3>
+            <h4 id="subtitle"></h4>
+            <h4 id="subsubtitle"></h4>
+            <p id="content"></p>
+        </div>
+        <div class="nav-buttons">
+            <button id="prevButton" class="nav-button">الكتاب السابق</button>
+            <button id="nextButton" class="nav-button">الكتاب التالي</button>
+        </div>
+
+
+
+        <script>
+            let data = {};
+            let reverseMapping = {};
+            let loadedSections = {};
+            let hadithsList = [];
+            let selectedHadith = null;
+            function normalizeArabic(text) {
+                if (!text) return "";
+                return text.normalize("NFC")
+                    .replace(/[\u064B-\u065F\u0670\u06E1\u06E2]/g, '')  // Remove diacritics (chakla)
+                    .replace(/[آأإ]/g, 'ا');  // Normalize hamza to plain "ا"
+            }
+            $(document).ready(function () {
+                let urlParams = new URLSearchParams(window.location.search);
+                let book = urlParams.get("book");
+                let chapter = urlParams.get("chapter");
+                let hadith = urlParams.get("hadith");
+                let highlight = urlParams.get("highlight");
+                $(".searchable").select2({
+                    width: '100%',
+                    dir: "rtl",
+                    language: {
+                        noResults: function () {
+                            return "لا توجد نتيجة";
+                        }
+                    },
+                    matcher: function (params, data) {
+                        if ($.trim(params.term) === '') {
+                            return data;
+                        }
+
+                        let term = normalizeArabic(params.term);
+                        let text = normalizeArabic(data.text);
+
+                        if (text.includes(term)) {
+                            return data;
+                        }
+                        return null;
+                    }
+                });
+
+                $.getJSON("books/books_index.json", function (bookIndex) {
+                    $.each(bookIndex, function (index, book) {
+                        $("#col1").append(new Option(book.book, book.data));
+                    });
+                    if (book) {
+
+                        $("#col1").val(book).trigger("change");
+                    }
+                });
+                $.getJSON("books/indexed_hadiths.json", function (data) {
+                    hadithsList = data.flatMap(book =>
+                        book.chapters.flatMap(chapter =>
+                            chapter.hadiths.map(hadith => ({
+                                id: hadith,
+                                text: hadith,
+                                book: book.file,
+                                book_name: book.book,
+                                chapter: chapter.chapter
+                            }))
+                        )
+                    );
+
+                    // Populate the hadith search dropdown
+                    hadithsList.forEach(hadith => {
+                        $("#hadith_search").append(new Option(hadith.text + " الكتاب :" + hadith.book_name + " الفصل :" + hadith.chapter, hadith.id));
+                    });
+                });
+
+
+                function waitForDropdown(selector, callback) {
+                    let checkDropdown = setInterval(function () {
+                        if ($(selector).children("option").length > 1) {
+                            clearInterval(checkDropdown);
+                            callback();
+                        }
+                    }, 100); // Check every 100ms
+                }
+                function syncColumns(selectedCol1, selectedCol2) {
+                    if (selectedCol1 && data[selectedCol1]) {
+                        let firstSubKey = Object.keys(data[selectedCol1])[0];
+                        $("#col2").val(firstSubKey).trigger('change.select2');
+                    } else if (selectedCol2 && reverseMapping[selectedCol2]) {
+                        $("#col1").val(reverseMapping[selectedCol2]).trigger('change.select2');
+                    }
+                }
+                // Function to load section JSON dynamically
+                function fetchSectionData(fileName, callback) {
+                    console.log(fileName)
+                    if (loadedSections[fileName]) {
+                        callback(loadedSections[fileName]);
+                    } else {
+                        $.getJSON("sections/" + fileName, function (jsonData) {
+                            loadedSections[fileName] = jsonData; // Cache loaded data
+                            callback(jsonData);
+                        });
+                    }
+                }
+
+                $("#col1").change(function () {
+                    let selectedBookFile = $(this).val();
+                    $("#col2").empty().append(new Option("-- اختر الفصل --", ""));
+                    $("#col3").empty().append(new Option("-- اختر الحديث --", ""));
+
+                    if (!selectedBookFile) return;
+
+                    $.getJSON("books/" + selectedBookFile, function (bookData) {
+                        $.each(bookData.chapters, function (index, chapter) {
+                            $("#col2").append(new Option(chapter.chapter, chapter.chapter));
+                        });
+                        console.log('aaxxaa', hadith)
+                        updateURL(selectedBookFile, null, null);
+
+                        if (selectedHadith) {
+                            $("#col2").val(selectedHadith.chapter).trigger("change");
+                        }
+                        if (chapter) {
+                            $("#col2").val(chapter).trigger("change");
+                            chapter = "";
+                        }
+                        // Display all hadiths in the selected chapter
+                        let detailsHtml = `<h3>${bookData.book}</h3>`;
+                        detailsHtml += formatBookDetails(bookData.description);
+
+                        $("#book-details").html(detailsHtml);
+
+                    });
+                });
+                function formatBookDetails(text) {
+                    if (!text) return "";
+
+                    // إزالة "سسس" وتلوين العناوين
+
+
+                    // استخراج رابط الغلاف وإزالته من النص
+                    let coverMatch = text.match(/الغلاف\s*سسس\s*:\s*([\S\s]*?)\s*\.?\s*jpg/);
+                    let coverImage = coverMatch ? `<img src="../${coverMatch[1].trim()}.jpg" alt="غلاف الكتاب" class="custom-cover-img">` : "";
+
+                    // تقسيم النص بعد الغلاف واعتباره وصفًا
+                    let parts = text.split(/الغلاف\s*سسس\s*:\s*[\S\s]*?\.?\s*jpg/);
+                    let description = parts.length > 1 ? `<p>${parts[1].trim()}</p>` : "";
+                    text = parts[0]
+                    // حذف سطر الغلاف من النص الأصلي
+
+                    let formattedText = text.replace(/(\S+)\s*سسس\s*:/g, '<span class="custom-label">$1:</span>');
+
+                    // تعديل "للمطالعة" لتحويل الرابط إلى "هنا" مع إزالة المسافات الزائدة
+                    formattedText = formattedText.replace(/<span class="custom-label">للمطالعة:<\/span>\s*([\S\s]*?)\s*\.?\s*html/g,
+                        '<span class="custom-label">للمطالعة:</span> <a href="../$1.html" class="custom-link">هنا</a>');
+                    formattedText = formattedText.replace(/<span class="custom-label">الغلاف:<\/span>\s*([\S\s]*?)\s*\.?\s*jpg/g, '');
+                    return `
+        <div class="custom-container">
+            <div class="custom-layout">
+                
+                <div class="custom-details">
+                    
+                    <p>${formattedText}</p>
+                </div>
+                <div class="custom-cover">${coverImage}</div>
+            </div>
+            ${description}
+        </div>
+    `;
+                }
+
+
+
+                $("#col2").change(function () {
+                    let selectedBookFile = $("#col1").val();
+                    let selectedChapter = $(this).val();
+                    $("#col3").empty().append(new Option("-- اختر الحديث --", ""));
+
+                    if (!selectedBookFile || !selectedChapter) return;
+
+                    $.getJSON("books/" + selectedBookFile, function (bookData) {
+                        let chapterData = bookData.chapters.find(ch => ch.chapter === selectedChapter);
+                        if (chapterData) {
+                            $.each(chapterData.hadiths, function (index, hadith) {
+                                $("#col3").append(new Option(hadith.hadith_number, hadith.hadith_number));
+                            });
+
+                            updateURL(selectedBookFile, selectedChapter, null);
+
+                            if (hadith) {
+
+                                // Select the chapter only after the book has been loaded
+                                $("#col3").val(hadith).trigger("change");
+                                hadith = "";
+                            }
+                            if (selectedHadith) {
+
+                                selectedHadith = null
+                            }
+                            // Display all hadiths in the selected chapter
+                            let detailsHtml = `<h3>${selectedChapter}</h3>`;
+                            $.each(chapterData.hadiths, function (index, hadith) {
+                                detailsHtml += `<h4>${hadith.hadith_number}</h4>`;
+                                detailsHtml += formatTextAsHtml(hadith.hadith_text);
+                            });
+
+                            $("#details").html(detailsHtml);
+                        }
+                    });
+                });
+
+                $("#col3").change(function () {
+                    let selectedBookFile = $("#col1").val();
+                    let selectedChapter = $("#col2").val();
+                    let selectedHadithNumber = $(this).val();
+                    updateURL(selectedBookFile, selectedChapter, selectedHadithNumber);
+                    console.log('aaa', hadith)
+                    $("#details").empty();
+                    if (!selectedHadithNumber) {
+                        $.getJSON("books/" + selectedBookFile, function (bookData) {
+                            let chapterData = bookData.chapters.find(ch => ch.chapter === selectedChapter);
+                            if (chapterData) {
+
+                                // Display all hadiths in the selected chapter
+                                let detailsHtml = `<h3>${selectedChapter}</h3>`;
+                                $.each(chapterData.hadiths, function (index, hadith) {
+                                    detailsHtml += `<h4>${hadith.hadith_number}</h4>`;
+                                    detailsHtml += formatTextAsHtml(hadith.hadith_text);
+                                });
+                                $("#details").html(detailsHtml);
+                            }
+                        });
+                    }
+                    if (!selectedBookFile || !selectedChapter || !selectedHadithNumber) return;
+
+                    updateDetails(selectedBookFile, selectedChapter, selectedHadithNumber);
+                });
+                $("#hadith_search").on("change", function () {
+                    selectedHadith = hadithsList.find(h => h.id === this.value);
+
+                    if (selectedHadith) {
+                        $("#col1").val(selectedHadith.book).trigger("change");
+                    }
+                });
+                function updateDetails(selectedBookFile, selectedChapter, selectedHadithNumber) {
+                    $.getJSON("books/" + selectedBookFile, function (bookData) {
+                        let chapterData = bookData.chapters.find(ch => ch.chapter === selectedChapter);
+                        if (chapterData) {
+                            let hadithData = chapterData.hadiths.find(h => h.hadith_number === selectedHadithNumber);
+                            if (hadithData) {
+                                let detailsHtml = `<h3>${selectedChapter}</h3>`;
+                                detailsHtml += `<h4>${hadithData.hadith_number}</h4>`;
+                                detailsHtml += formatTextAsHtml(hadithData.hadith_text);
+                                $("#details").html(detailsHtml);
+                            }
+                        }
+                    });
+                }
+                function formatTextAsHtml(text) {
+                    // Replace numbering (1. 2. 3., أ. ب. ج., -, •) inside the same paragraph
+                    let formattedText = text
+                        .replace(/^(\d+\.|[أ-ي]\.|[-•])/gm, '<span class="colored-number">$1</span>')
+                        .replace(/(\﴿.*?\﴾)/g, '<span class="quranic-text">$1</span>')
+                        .replace(/à\s*\n?([\s\S]*)/, '<span class="footnote">$1</span>');
+                    // If a highlight word exists, apply highlighting
+                    if (highlight) {
+
+                        let highlightRegex = new RegExp(`(${highlight})`, "gi");
+                        formattedText = formattedText.replace(highlightRegex, '<span class="highlight">$1</span>');
+                    }
+
+                    return `<p>${formattedText}</p>`;
+                }
+                function updateURL(book, chapter, hadith) {
+                    let url = new URL(window.location.href); // Get current URL
+                    let urlParams = url.searchParams; // Get existing parameters
+
+                    urlParams.set("page", "tab1"); // Ensure 'page' is always 'tab1'
+
+                    if (book) urlParams.set("book", book);
+                    else urlParams.delete("book");
+
+                    if (chapter) urlParams.set("chapter", chapter);
+                    else urlParams.delete("chapter");
+
+                    if (hadith) urlParams.set("hadith", hadith);
+                    else urlParams.delete("hadith");
+
+                    // Preserve the 'highlight' parameter if it exists
+                    highlight = urlParams.get("highlight");
+                    if (highlight) urlParams.set("highlight", highlight);
+
+                    let newUrl = url.pathname + "?" + urlParams.toString(); // Construct new URL
+                    history.pushState({}, "", newUrl); // Update URL without refreshing
+                }
+
+
+                console.log("Script loaded!");
+
+                $("#nextButton").click(async function () {
+                    console.log("Next button clicked");
+                    await moveToNext();
+                });
+
+                $("#prevButton").click(async function () {
+                    console.log("Previous button clicked");
+                    await moveToPrevious();
+                });
+
+                $("#col1, #col2, #col3").change(function () {
+                    console.log("Dropdown changed:", this.id);
+                    updateNavigationButtons();
+                });
+
+                function waitForDropdownUpdate(element) {
+                    return new Promise((resolve) => {
+                        const observer = new MutationObserver(() => {
+                            if (element.options.length > 1) { // Ensure options are loaded
+                                observer.disconnect();
+                                resolve();
+                            }
+                        });
+
+                        observer.observe(element, { childList: true, subtree: true });
+
+                        // Fallback timeout to prevent getting stuck
+                        setTimeout(() => {
+                            observer.disconnect();
+                            resolve();
+                        }, 500);
+                    });
+                }
+
+                async function updateNavigationButtons() {
+                    console.log("Updating navigation buttons");
+
+                    let col1Index = $("#col1 option:selected").index();
+                    let col2Index = $("#col2 option:selected").index();
+                    let col3Index = $("#col3 option:selected").index();
+                    let maxCol1 = $("#col1 option").length - 1;
+                    let maxCol2 = $("#col2 option").length - 1;
+                    let maxCol3 = $("#col3 option").length - 1;
+
+                    console.log(`col1: ${col1Index}, col2: ${col2Index}, col3: ${col3Index}`);
+
+                    let nextBtn = $("#nextButton");
+                    let prevBtn = $("#prevButton");
+
+                    // Next button text logic
+                    if (col3Index < maxCol3) {
+                        nextBtn.text("الفرع التالي");
+                    } else if (col3Index === maxCol3 && col2Index < maxCol2) {
+                        nextBtn.text("الفصل التالي");
+                    } else if (col3Index === maxCol3 && col2Index === maxCol2 && col1Index < maxCol1) {
+                        nextBtn.text("الكتاب التالي");
+                    }
+
+                    // Previous button text logic
+                    if (col3Index > 2) {
+                        prevBtn.text("الفرع السابق");
+                    } else if (col3Index <= 2 && col2Index > 1) {
+                        prevBtn.text("الفصل السابق");
+                    } else if (col3Index <= 2 && col2Index === 1 && col1Index > 1) {
+                        prevBtn.text("الكتاب السابق");
+                    }
+
+                    // Disable buttons when at the last/first item
+                    nextBtn.prop("disabled", col1Index === maxCol1 && col2Index === maxCol2 && col3Index === maxCol3);
+                    prevBtn.prop("disabled", col1Index === 0 && col2Index === 0 && col3Index === 0);
+                }
+
+                async function moveToNext() {
+                    console.log("Moving to next");
+
+                    let col3 = $("#col3")[0];
+                    let col2 = $("#col2")[0];
+                    let col1 = $("#col1")[0];
+
+                    if (col3.selectedIndex < col3.length - 1) {
+                        col3.selectedIndex++;
+                        $(col3).trigger("change");
+                    } else if (col3.selectedIndex === col3.length - 1 && col2.selectedIndex < col2.length - 1) {
+                        col2.selectedIndex++;
+                        $(col2).trigger("change");
+                        await waitForDropdownUpdate(col3);
+                        $("#col3")[0].selectedIndex = 2;
+                        $("#col3").trigger("change");
+                    } else if (col3.selectedIndex === col3.length - 1 && col2.selectedIndex === col2.length - 1 && col1.selectedIndex < col1.length - 1) {
+                        col1.selectedIndex++;
+                        $(col1).trigger("change");
+                        await waitForDropdownUpdate(col2);
+                        $("#col2")[0].selectedIndex = 2;
+                        $("#col2").trigger("change");
+                        await waitForDropdownUpdate(col3);
+                        $("#col3")[0].selectedIndex = 2;
+                        $("#col3").trigger("change");
+                    }
+                    scrollToDetails();
+                }
+
+                async function moveToPrevious() {
+                    console.log("Moving to previous");
+
+                    let col3 = $("#col3")[0];
+                    let col2 = $("#col2")[0];
+                    let col1 = $("#col1")[0];
+
+                    if (col3.selectedIndex > 2) {
+                        col3.selectedIndex--;
+                        $(col3).trigger("change");
+                    } else if (col3.selectedIndex <= 2 && col2.selectedIndex > 1) {
+                        console.log('Moving to previous chapter');
+                        col2.selectedIndex--;
+                        $(col2).trigger("change");
+
+                        await waitForDropdownUpdate(col3);
+                        console.log('Updated col3:', $("#col3 option").length);
+
+                        if ($("#col3 option").length > 1) {
+                            $("#col3")[0].selectedIndex = $("#col3 option").length - 1;
+                            $("#col3").trigger("change");
+                        }
+                    } else if (col3.selectedIndex <= 2 && col2.selectedIndex <= 1 && col1.selectedIndex > 1) {
+                        console.log('Moving to previous book');
+                        col1.selectedIndex--;
+                        $(col1).trigger("change");
+
+                        await waitForDropdownUpdate(col2);
+                        console.log('Updated col2:', $("#col2 option").length);
+
+                        if ($("#col2 option").length > 1) {
+                            $("#col2")[0].selectedIndex = $("#col2 option").length - 1;
+                            $("#col2").trigger("change");
+
+                            await waitForDropdownUpdate(col3);
+                            console.log('Updated col3:', $("#col3 option").length);
+
+                            if ($("#col3 option").length > 1) {
+                                $("#col3")[0].selectedIndex = $("#col3 option").length - 1;
+                                $("#col3").trigger("change");
+                            }
+                        }
+                    }
+                    scrollToDetails();
+                }
+                const detailsSection = document.getElementById("details");
+                async function scrollToDetails() {
+        // انتظار حتى يتم تحديث الـ div باستخدام MutationObserver
+        await waitForDetailsUpdate(detailsSection);
+        
+        if (detailsSection) {
+            window.scrollTo({
+                top: detailsSection.offsetTop, 
+                behavior: "smooth"
+            });
+        }
+    }
+    function waitForDetailsUpdate(element) {
+        return new Promise(resolve => {
+            const observer = new MutationObserver(() => {
+                observer.disconnect();
+                resolve();
+            });
+
+            observer.observe(element, { childList: true, subtree: true });
+
+            // تعيين مهلة احتياطية لتجنب التعليق في حالة عدم التحديث
+            setTimeout(() => {
+                observer.disconnect();
+                resolve();
+            }, 500);
+        });
+    }
+            });
+            function onPageLoad() {
+                urlParams = new URLSearchParams(window.location.search);
+                book = urlParams.get("book");
+                chapter = urlParams.get("chapter");
+                hadith = urlParams.get("hadith");
+                highlight = urlParams.get("highlight");
+                if (book) {
+                    // Select the book and wait for its change event to complete
+                    $("#col1").val(book).trigger("change");
+                    book = "";
+                }
+            };
+
+        </script>
+</body>
+
+</html>

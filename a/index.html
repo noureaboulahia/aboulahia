@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="ar">
+
+<head>
+
+    <meta name="description" content="موسوعة الأحاديث الموافقة للقرآن الكريم في المصادر السنية والشيعية" />
+    <meta name="keywords" content="موسوعة الأحاديث الموافقة للقرآن الكريم في المصادر السنية والشيعية" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel='icon' href='../favicon.ico' type='image/x-icon' />
+    <link rel="stylesheet" href="../mystyle.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="../myscripts.js"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>سلسلة سنة بلا مذاهب</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/js/select2.full.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/css/select2.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        body {
+    font-family: 'Droid Arabic Naskh', serif;
+    direction: rtl;
+    text-align: right;
+    background-color: #f8f9fa;
+    margin: 0;
+    padding-top: 20px;
+}
+
+/* مركز التبويبات وجعلها ذات عرض محدد */
+.tab-container {
+    display: flex;
+    justify-content: center; /* يجعل التبويبات في المنتصف */
+    background: #6d4c1b; /* بني غامق */
+    border-radius: 12px;
+    padding: 10px;
+    max-width: 80%; /* عرض محدد للحاوية */
+    margin: 20px auto; /* يجعلها في المنتصف */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+}
+
+/* تحسين تصميم التبويبات */
+.tab {
+    flex: 1;
+    text-align: center;
+    padding: 12px 20px;
+    cursor: pointer;
+    font-size: 17px;
+    font-weight: bold;
+    color: white;
+    background: linear-gradient(135deg, #8b5a2b, #a07045); /* لون بني بتدرج */
+    transition: all 0.3s ease-in-out;
+    border-radius: 8px;
+    margin: 0 5px; /* إضافة مسافة بين التبويبات */
+    box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* تحسين التأثير عند التحويل */
+.tab:hover,
+.tab.active {
+    background: linear-gradient(135deg, #5a3c18, #7a4f2c); /* تأثير لون أغمق */
+    transform: translateY(-3px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+}
+
+/* تحسين عرض المحتوى */
+#content {
+    width: 80%;
+    min-height: 500px;
+    padding: 20px;
+    border-top: 3px solid #b28d60;
+    background: #f3f1eb;
+    border-radius: 12px;
+    margin: auto; /* يجعل المحتوى في المنتصف */
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+}
+    </style>
+</head>
+
+<body>
+    <div w3-include-html="../head.html"></div>
+    <script>
+        includeHTML();
+    </script>
+    <div id="mySidebar" class="sidebar">
+    </div>
+    <div class="book-description">
+        <h3>كيفية البحث في المؤلفات</h3>
+        </p>
+        <p dir="rtl" class="aaac">في هذه النافذة، ومن خلال خانات البحث، يمكن البحث في المؤلفات والفصول والعناوين
+            المختلفة كما يلي:
+        </p>
+        <p dir="rtl" class="aaac">1. النافذة الأولى تضم عناوين الكتب، بالضغط عليها تظهر عناوين الكتب، بالضغط على
+            أي عنوان يظهر أسفل نافذة البحث التعريف به وروابط تحميله.
+        </p>
+        <p dir="rtl" class="aaac">2. النافذة الثانية تضم عناوين الفصول، بالضغط على أي فصل يظهر الفصل كاملا أسفل
+            نافذة البحث.
+        </p>
+        <p dir="rtl" class="aaac">3. النافذة الثالثة تضم عناوين المطالب والفروع المرتبطة بالفصل.
+        </p>
+        <p dir="rtl" class="aaac">2. النافذة الرابعة مخصصة للبحث في عناوين كل الكتب، بالضغط على أي عنوان، يظهر
+            الفصل الخاص به أسفل النافذة، ومن شاء الفرع فقط، يمكنه أن ينتقل إلى النافذة الثالثة لتحديده.
+
+        </p>
+
+
+    </div>
+    <div class="tab-container">
+        <div class="tab active" id="tab1" onclick="loadPage('books.html', 'tab1')">كافة الكتب</div>
+        <div class="tab" id="tab2" onclick="loadPage('tafsir.html', 'tab2')">تفاسير</div>
+        <div class="tab" id="tab3" onclick="loadPage('hadith.html', 'tab3')">حديث</div>
+        <div class="tab" id="tab4" onclick="loadPage('search.html', 'tab4')">البحث الشامل</div>
+    </div>
+
+    <div id="content">
+        <!-- Default Page 1 content will be loaded here -->
+    </div>
+
+    <script>
+        function loadPage(page, tabId) {
+            fetch(page)
+                .then(response => response.text())
+                .then(data => {
+                    let contentDiv = document.getElementById("content");
+                    contentDiv.innerHTML = data;
+                    executeScripts(contentDiv);
+                    // ✅ Update the URL correctly
+                    let urlParams = new URLSearchParams(window.location.search);
+                    urlParams.set("page", tabId);
+                    history.replaceState(null, "", `?${urlParams.toString()}`);
+
+                    // ✅ Update active tab styling
+                    document.querySelectorAll(".tab").forEach(tab => tab.classList.remove("active"));
+                    document.getElementById(tabId).classList.add("active");
+                })
+                .catch(error => console.error("Error loading page:", error));
+        }
+
+
+
+        function executeScripts(container, tabId) {
+            const scripts = container.getElementsByTagName("script");
+
+            for (let script of scripts) {
+                let newScript = document.createElement("script");
+
+                if (script.src) {
+                    if (document.querySelector(`script[src="${script.src}"][data-tab="${tabId}"]`)) {
+                        console.warn(`⚠️ Skipping already loaded script for ${tabId}:`, script.src);
+                        continue;
+                    }
+                    newScript.src = script.src;
+                    newScript.async = false;
+                    newScript.setAttribute("data-tab", tabId);
+                } else {
+                    newScript.textContent = `(function() { ${script.textContent} })();`;
+                }
+
+                document.body.appendChild(newScript);
+            }
+
+            // ✅ Force reapply styles after loading the tab
+            setTimeout(() => {
+                document.getElementById("searchBox")?.offsetHeight; // Trigger reflow
+            }, 50);
+
+            // ✅ Call onPageLoad for the tab if it exists
+            setTimeout(() => {
+                try {
+                    if (typeof window[`onPageLoad_${tabId}`] === "function") {
+                        console.log(`✅ Calling onPageLoad for tab ${tabId}...`);
+                        window[`onPageLoad_${tabId}`]();
+                    } else {
+                        console.warn(`⚠️ onPageLoad_${tabId} is not defined.`);
+                    }
+                } catch (error) {
+                    console.error(`❌ Error calling onPageLoad for ${tabId}:`, error);
+                }
+            }, 100);
+        }
+
+
+
+
+
+
+        // Load Page 1 as the default page when the site opens
+        window.onload = function () {
+            const urlParams = new URLSearchParams(window.location.search);
+            let page = urlParams.get("page") || "tab1"; // Default to tab1
+            let pageFile = {
+                "tab1": "books.html",
+                "tab2": "tafsir.html",
+                "tab3": "hadith.html",
+                "tab4": "search.html"
+            }[page] || "page1.html";
+
+            loadPage(pageFile, page);
+        };
+        // Handle back/forward navigation
+        window.onpopstate = function (event) {
+            if (event.state) {
+                loadPage(event.state.page, new URLSearchParams(window.location.search).get("page"));
+            }
+        };
+    </script>
+
+</body>
+
+</html>
