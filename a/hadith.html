@@ -373,7 +373,7 @@
                         .replace(/(\﴿.*?\﴾)/g, '<span class="quranic-text">$1</span>')
                         .replace(/(\⌈.*?\⌉)/g, '<span class="footnotehadith">$1</span>')
                         .replace(/à\s*\n?([\s\S]*)/, '<span class="footnote">$1</span>');
-                        // If a highlight word exists, apply highlighting
+                         // If a highlight word exists, apply highlighting
                     if (highlight) {
 
                         let highlightRegex = new RegExp(`(${highlight})`, "gi");
