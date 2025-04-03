@@ -267,7 +267,7 @@ h2 {
     color: #165b33;
     /* أخضر داكن يناسب المصحف */
     font-weight: bold;
-    background-color: #e6f4ea;
+   
     /* أخضر فاتح لطيف */
     padding: 4px 8px;
     border-radius: 5px;
@@ -275,7 +275,7 @@ h2 {
     /* خط مناسب */
     font-size: 24px;
     /* تكبير حجم الخط */
-    display: inline-block;
+   
 }
 
 
