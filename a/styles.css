@@ -419,7 +419,24 @@ h2 {
     background-color: #e67e22;
 }
 
+.footnotehadith {
+   
+    margin-top: 2px;
+    font-size: 12px;
+    font-weight: bold;
+    color: #a94442;
+    background: #f8e4e4;
+    padding: 1px;
+    border-right: 3px solid #d9534f;
+    border-radius: 4px;
+}
+.laughing-title {
 
+    color: #a94442; /* لون برتقالي */
+    font-weight: bold;
+    text-align: center;
+    padding: 5px;
+}
 /* تحسين التصميم للهواتف */
 @media (max-width: 768px) {
 
@@ -513,17 +530,7 @@ h2 {
         border-radius: 4px;
     }
  /*   حديث تنسيق الحواشي */
- .footnotehadith {
-   
-    margin-top: 2px;
-    font-size: 12px;
-    font-weight: bold;
-    color: #a94442;
-    background: #f8e4e4;
-    padding: 1px;
-    border-right: 3px solid #d9534f;
-    border-radius: 4px;
-}
+
     .book-container {
         width: 100%;
         margin: 0;
@@ -532,14 +539,7 @@ h2 {
         box-shadow: none;
         margin-bottom: 2px;
     }
-    .laughing-title {
-        color: #ff6600; /* لون برتقالي */
-        font-weight: bold;
-        text-align: center;
-        border-bottom: 2px solid #ff6600;
-        padding: 5px;
-        font-size: 1.5em;
-    }
+
     
 
     /* تنسيق الرأس (صورة الغلاف + المعلومات) */
