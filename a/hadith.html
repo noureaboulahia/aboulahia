@@ -128,10 +128,10 @@
             }
             $(document).ready(function () {
                 let urlParams = new URLSearchParams(window.location.search);
-                let book = urlParams.get("book");
-                let chapter = urlParams.get("chapter");
-                let hadith = urlParams.get("hadith");
-                let highlight = urlParams.get("highlight");
+                let book = urlParams.get("bookh");
+                let chapter = urlParams.get("chapterh");
+                let hadith = urlParams.get("hadithh");
+                let highlight = urlParams.get("highlighth");
                 $(".searchable").select2({
                     width: '100%',
                     dir: "rtl",
@@ -385,20 +385,20 @@
                     let url = new URL(window.location.href); // Get current URL
                     let urlParams = url.searchParams; // Get existing parameters
 
-                    urlParams.set("page", "tab1"); // Ensure 'page' is always 'tab1'
+                    urlParams.set("page", "tab3"); // Ensure 'page' is always 'tab3'
 
-                    if (book) urlParams.set("book", book);
-                    else urlParams.delete("book");
+                    if (book) urlParams.set("bookh", book);
+                    else urlParams.delete("bookh");
 
-                    if (chapter) urlParams.set("chapter", chapter);
-                    else urlParams.delete("chapter");
+                    if (chapter) urlParams.set("chapterh", chapter);
+                    else urlParams.delete("chapterh");
 
-                    if (hadith) urlParams.set("hadith", hadith);
-                    else urlParams.delete("hadith");
+                    if (hadith) urlParams.set("hadithh", hadith);
+                    else urlParams.delete("hadithh");
 
                     // Preserve the 'highlight' parameter if it exists
-                    highlight = urlParams.get("highlight");
-                    if (highlight) urlParams.set("highlight", highlight);
+                    highlight = urlParams.get("highlighth");
+                    if (highlight) urlParams.set("highlighth", highlight);
 
                     let newUrl = url.pathname + "?" + urlParams.toString(); // Construct new URL
                     history.pushState({}, "", newUrl); // Update URL without refreshing
@@ -584,10 +584,10 @@
             });
             function onPageLoad() {
                 urlParams = new URLSearchParams(window.location.search);
-                book = urlParams.get("book");
-                chapter = urlParams.get("chapter");
-                hadith = urlParams.get("hadith");
-                highlight = urlParams.get("highlight");
+                book = urlParams.get("bookh");
+                chapter = urlParams.get("chapterh");
+                hadith = urlParams.get("hadithh");
+                highlight = urlParams.get("highlighth");
                 if (book) {
                     // Select the book and wait for its change event to complete
                     $("#col1").val(book).trigger("change");
