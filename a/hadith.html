@@ -3,18 +3,23 @@
 
 <head>
 
-    <meta name="description" content="موسوعة الأحاديث الموافقة للقرآن الكريم في المصادر السنية والشيعية" />
-    <meta name="keywords" content="موسوعة الأحاديث الموافقة للقرآن الكريم في المصادر السنية والشيعية" />
+    <meta name="description" content="مؤلفات أ.د. نور الدين أبو لحية للبحث والتحميل والمطالعة" />
+    <meta name="keywords" content="مؤلفات أ.د. نور الدين أبو لحية للبحث والتحميل والمطالعة" />
 
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel='icon' href='../favicon.ico' type='image/x-icon' />
     <link rel="stylesheet" href="../mystyle.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-    <script src="../myscripts.js"></script>
+    <!-- jQuery -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+    <!-- Select2 -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/js/select2.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/css/select2.min.css">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>سلسلة سنة بلا مذاهب</title>
+    <title>مؤلفات أ.د. نور الدين أبو لحية</title>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/js/select2.full.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
@@ -22,7 +27,6 @@
     <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="styles.css">
 </head>
-
 
 <body>
     <div w3-include-html="../head.html"></div>
@@ -151,7 +155,7 @@
                     }
                 });
 
-                $.getJSON("books/books_index.json", function (bookIndex) {
+                $.getJSON("hadith/books_index.json", function (bookIndex) {
                     $.each(bookIndex, function (index, book) {
                         $("#col1").append(new Option(book.book, book.data));
                     });
@@ -160,7 +164,7 @@
                         $("#col1").val(book).trigger("change");
                     }
                 });
-                $.getJSON("books/indexed_hadiths.json", function (data) {
+                $.getJSON("hadith/indexed_hadiths.json", function (data) {
                     hadithsList = data.flatMap(book =>
                         book.chapters.flatMap(chapter =>
                             chapter.hadiths.map(hadith => ({
@@ -216,7 +220,7 @@
 
                     if (!selectedBookFile) return;
 
-                    $.getJSON("books/" + selectedBookFile, function (bookData) {
+                    $.getJSON("hadith/" + selectedBookFile, function (bookData) {
                         $.each(bookData.chapters, function (index, chapter) {
                             $("#col2").append(new Option(chapter.chapter, chapter.chapter));
                         });
@@ -284,7 +288,7 @@
 
                     if (!selectedBookFile || !selectedChapter) return;
 
-                    $.getJSON("books/" + selectedBookFile, function (bookData) {
+                    $.getJSON("hadith/" + selectedBookFile, function (bookData) {
                         let chapterData = bookData.chapters.find(ch => ch.chapter === selectedChapter);
                         if (chapterData) {
                             $.each(chapterData.hadiths, function (index, hadith) {
@@ -323,7 +327,7 @@
                     console.log('aaa', hadith)
                     $("#details").empty();
                     if (!selectedHadithNumber) {
-                        $.getJSON("books/" + selectedBookFile, function (bookData) {
+                        $.getJSON("hadith/" + selectedBookFile, function (bookData) {
                             let chapterData = bookData.chapters.find(ch => ch.chapter === selectedChapter);
                             if (chapterData) {
 
@@ -349,7 +353,7 @@
                     }
                 });
                 function updateDetails(selectedBookFile, selectedChapter, selectedHadithNumber) {
-                    $.getJSON("books/" + selectedBookFile, function (bookData) {
+                    $.getJSON("hadith/" + selectedBookFile, function (bookData) {
                         let chapterData = bookData.chapters.find(ch => ch.chapter === selectedChapter);
                         if (chapterData) {
                             let hadithData = chapterData.hadiths.find(h => h.hadith_number === selectedHadithNumber);
