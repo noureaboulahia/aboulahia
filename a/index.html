@@ -78,6 +78,27 @@
     margin: auto; /* يجعل المحتوى في المنتصف */
     box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
 }
+/* 🌟 تحسينات خاصة للهواتف */
+@media (max-width: 768px) {
+    .tab-container {
+        flex-direction: column; /* جعل التبويبات تحت بعضها */
+        max-width: 100%; /* تمديد العرض بالكامل */
+        padding: 8px; /* تقليل المساحة الداخلية */
+    }
+
+    .tab {
+        font-size: 14px; /* تصغير الخط */
+        padding: 8px 12px; /* تقليل المساحة الداخلية */
+        margin: 4px 0; /* تقليل المسافة بين التبويبات */
+        border-radius: 6px;
+    }
+
+    #content {
+        width: 100%; /* استخدام العرض الكامل */
+        min-height: 300px; /* تقليل ارتفاع المحتوى */
+        padding: 10px; /* تقليل التباعد الداخلي */
+    }
+}
     </style>
 </head>
 

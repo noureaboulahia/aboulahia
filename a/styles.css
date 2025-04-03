@@ -98,7 +98,7 @@ h2 {
     margin-top: 15px;
     padding: 18px;
     font-size: 19px;
-    font-weight: 500;
+    font-weight: 700;
     line-height: 2;
     background: #f9f3e6;
     /* Softer beige */
@@ -511,11 +511,12 @@ h2 {
     .details p {
         margin-top: 2px;
         padding: 1px;
-        font-size: 12px;
+        font-size: 13px;
         line-height: 1.5;
         background: #f9f3e6;
         color: #3d2a0d;
         border-radius: 4px;
+        
     }
 
     /* تنسيق الحواشي */
