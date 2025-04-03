@@ -426,7 +426,7 @@ h2 {
     font-weight: bold;
     color: #a94442;
     background: #f8e4e4;
-    padding: 1px;
+    padding: 0px;
     border-right: 3px solid #d9534f;
     border-radius: 4px;
 }
@@ -436,6 +436,7 @@ h2 {
     font-weight: bold;
     text-align: center;
     padding: 5px;
+
 }
 /* تحسين التصميم للهواتف */
 @media (max-width: 768px) {
