@@ -532,6 +532,15 @@ h2 {
         box-shadow: none;
         margin-bottom: 2px;
     }
+    .laughing-title {
+        color: #ff6600; /* لون برتقالي */
+        font-weight: bold;
+        text-align: center;
+        border-bottom: 2px solid #ff6600;
+        padding: 5px;
+        font-size: 1.5em;
+    }
+    
 
     /* تنسيق الرأس (صورة الغلاف + المعلومات) */
     .book-header {
