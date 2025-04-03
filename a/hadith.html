@@ -372,6 +372,10 @@
                         .replace(/^(\d+\.|[أ-ي]\.|[-•])/gm, '<span class="colored-number">$1</span>')
                         .replace(/(\﴿.*?\﴾)/g, '<span class="quranic-text">$1</span>')
                         .replace(/(\⌈.*?\⌉)/g, '<span class="footnotehadith">$1</span>')
+                        replace(/^\s*(.+?)(\s*ههه)\s*$/gm, '<span class="laughing-title">$1</span>')
+                        .replace(/^\s*(.+?)(\s*ووو)\s*$/gm, '<span class="laughing-title">$1</span>')
+                        .replace(/^\s*(.+?)(\s*ززز)\s*$/gm, '<span class="laughing-title">$1</span>')
+                        .replace(/^\s*(.+?)(\s*ددد)\s*$/gm, '<span class="laughing-title">$1</span>')
                         .replace(/à\s*\n?([\s\S]*)/, '<span class="footnote">$1</span>');
                                             // If a highlight word exists, apply highlighting
                     if (highlight) {
