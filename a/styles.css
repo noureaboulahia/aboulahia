@@ -512,7 +512,18 @@ h2 {
         border-right: 3px solid #d9534f;
         border-radius: 4px;
     }
-
+ /*   حديث تنسيق الحواشي */
+ .footnotehadith {
+   
+    margin-top: 2px;
+    font-size: 12px;
+    font-weight: bold;
+    color: #a94442;
+    background: #f8e4e4;
+    padding: 1px;
+    border-right: 3px solid #d9534f;
+    border-radius: 4px;
+}
     .book-container {
         width: 100%;
         margin: 0;
