@@ -441,7 +441,14 @@ h2 {
 /* تحسين التصميم للهواتف */
 @media (max-width: 768px) {
 
+    .quranic-text {
 
+        font-family: 'Traditional Arabic', 'Amiri', serif;
+        /* خط مناسب */
+        font-size: 22px;
+        /* تكبير حجم الخط */
+       
+    }
     .container {
         width: 100%;
         margin: 0;
@@ -494,17 +501,17 @@ h2 {
     /* تحسين العناوين داخل التفاصيل */
     .details h3 {
         margin: 5px 0;
-        font-size: 16px;
+        font-size: 18px;
         font-weight: bold;
-        color: #6d4c1b;
+        color: #ce2020;
         padding-bottom: 3px;
     }
 
     .details h4 {
         margin: 5px 0;
-        font-size: 14px;
+        font-size: 18px;
         font-weight: bold;
-        color: #4a3210;
+        color: #a11616;
     }
 
     /* تحسين تنسيق الفقرات */
@@ -512,10 +519,10 @@ h2 {
         margin-top: 2px;
         padding: 1px;
         font-weight: 650;
-        font-size: 13px;
-        line-height: 1.5;
-        background: #f9f3e6;
-        color: #3d2a0d;
+        font-size: 16px;
+        line-height: 2;
+        background: #ffffff;
+        color: #000000;
         border-radius: 4px;
         
     }
@@ -685,7 +692,7 @@ h2 {
         /* يجعل العناصر في عمود */
         gap: 2px;
         align-items: center;
-        text-align: center;
+
     }
 
     .custom-cover {
@@ -732,11 +739,11 @@ h2 {
     .custom-container p {
         margin-top: 2px;
         padding: 1px;
-        font-size: 14px;
-        font-weight: 500;
-        line-height: 1.5;
-        background: #f9f3e6;
-        color: #3d2a0d;
+        font-size: 16px;
+        font-weight: 600;
+        line-height: 2;
+        background: #ffffff;
+        color: #000000;
         border-radius: 6px;
         white-space: pre-line;
     }

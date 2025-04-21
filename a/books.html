@@ -9,13 +9,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel='icon' href='../favicon.ico' type='image/x-icon' />
     <link rel="stylesheet" href="../mystyle.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="ff/font-awesome.min.css">
+    <link href="ff/bootstrap.min.css" rel="stylesheet">
 
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>مؤلفات أ.د. نور الدين أبو لحية</title>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="ff/bootstrap.bundle.min.js"></script>
     <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="styles.css">
 </head>
@@ -27,9 +27,13 @@
     </script>
     <div id="mySidebar" class="sidebar">
     </div>
+    <div id="book-details">
+        <h3 id="title"></h3>
+        <p id="content"></p>
+    </div>
     <div class="container book-container">
      
-
+        
 
         <div class="search-container">
             <h2>📖 للمطالعة والبحث في المؤلفات</h2>
@@ -61,10 +65,7 @@
                 </select>
             </div>
         </div>
-        <div id="book-details">
-            <h3 id="title"></h3>
-            <p id="content"></p>
-        </div>
+
 
         <div class="details" id="details">
             <h3 id="title"></h3>
@@ -183,7 +184,7 @@
                 $("#col1").change(function () {
                     let selectedBookFile = $(this).val();
                     $("#col2").empty().append(new Option("-- اختر الفصل --", ""));
-                    $("#col3").empty().append(new Option("-- اختر الحديث --", ""));
+                    $("#col3").empty().append(new Option("اختر الفرع", ""));
 
                     if (!selectedBookFile) return;
 
@@ -217,7 +218,7 @@
 
                     // استخراج رابط الغلاف وإزالته من النص
                     let coverMatch = text.match(/الغلاف\s*سسس\s*:\s*([\S\s]*?)\s*\.?\s*jpg/);
-                    let coverImage = coverMatch ? `<img src="../${coverMatch[1].trim()}.jpg" alt="غلاف الكتاب" class="custom-cover-img">` : "";
+                    let coverImage = coverMatch ? `<img src="${coverMatch[1].trim()}.jpg" alt="غلاف الكتاب" class="custom-cover-img">` : "";
 
                     // تقسيم النص بعد الغلاف واعتباره وصفًا
                     let parts = text.split(/الغلاف\s*سسس\s*:\s*[\S\s]*?\.?\s*jpg/);
