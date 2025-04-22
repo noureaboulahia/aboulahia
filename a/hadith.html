@@ -251,7 +251,7 @@
                 $("#col2").change(function () {
                     let selectedBookFile = $("#col1").val();
                     let selectedChapter = $(this).val();
-                    $("#col3").empty().append(new Option("-- اختر الحديث --", ""));
+                    $("#col3").empty().append(new Option("اختر الفرع", ""));
 
                     if (!selectedBookFile || !selectedChapter) return;
 
@@ -336,7 +336,7 @@
                 function formatTextAsHtml(text) {
                     // Replace numbering (1. 2. 3., أ. ب. ج., -, •) inside the same paragraph
                     let formattedText = text
-                        .replace(/^(\d+\.|[أ-ي]\.|[-•])/gm, '<span class="colored-number">$1</span>')
+                        .replace(/^(\d+\.|[أ-ي]\.|[-•]|[-•])/gm, '<span class="colored-number">$1</span>')
                         .replace(/(\﴿.*?\﴾)/g, '<span class="quranic-text">$1</span>')
                         .replace(/(\⌈.*?\⌉)/g, '<span class="footnotehadith">$1</span>')
                         .replace(/^\s*(.+?)(\s*(ههه|ووو|ززز|ددد))\s*$/gm, '<span class="laughing-title">$1</span>')
