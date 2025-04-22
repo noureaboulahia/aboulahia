@@ -9,7 +9,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel='icon' href='../favicon.ico' type='image/x-icon' />
     <link rel="stylesheet" href="../mystyle.css">
-    <link rel="stylesheet" href="ff/font-awesome.min.css">
+    <link rel="stylesheet" href="ff/aa.css">
     <link href="ff/bootstrap.min.css" rel="stylesheet">
     <script src="../myscripts.js"></script>
     <meta charset="UTF-8">
@@ -78,19 +78,48 @@
     margin: auto; /* يجعل المحتوى في المنتصف */
     box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
 }
+#goTopBtn {
+    position: fixed;
+    bottom: 16px;
+    left: 16px; /* تغيير من right إلى left */
+    z-index: 99;
+    background-color: #6d4c1b;
+    color: white;
+    border: none;
+    outline: none;
+    padding: 8px 10px; /* أصغر حجمًا */
+    border-radius: 50%;
+    font-size: 16px;
+    cursor: pointer;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.25);
+    transition: all 0.3s ease;
+    display: none;
+}
+
+#goTopBtn:hover {
+    background-color: #a07045;
+}
+
 /* 🌟 تحسينات خاصة للهواتف */
 @media (max-width: 768px) {
     .tab-container {
-        flex-direction: column; /* جعل التبويبات تحت بعضها */
-        max-width: 100%; /* تمديد العرض بالكامل */
-        padding: 8px; /* تقليل المساحة الداخلية */
+        display: flex;
+        flex-direction: row; /* صف أفقية */
+        overflow-x: auto; /* لإتاحة التمرير إذا كانت التبويبات كثيرة */
+        -webkit-overflow-scrolling: touch; /* سلاسة التمرير في iOS */
+        padding: 8px;
+        gap: 8px; /* مسافة بين التبويبات */
+        width: 100%;
+        max-width: 100%;
     }
 
     .tab {
-        font-size: 14px; /* تصغير الخط */
-        padding: 8px 12px; /* تقليل المساحة الداخلية */
-        margin: 4px 0; /* تقليل المسافة بين التبويبات */
+        flex: 0 0 auto; /* الحفاظ على حجم ثابت لكل تبويب */
+        font-size: 14px;
+        padding: 10px 16px;
+        margin: 0;
         border-radius: 6px;
+        white-space: nowrap; /* منع التفاف النص */
     }
 
     #content {
@@ -109,14 +138,34 @@
     </script>
     <div id="mySidebar" class="sidebar">
     </div>
+    <button id="goTopBtn" title="الرجوع للأعلى">↑</button>
+    <script>
+        // إظهار الزر عند التمرير
+        window.onscroll = function () {
+            const btn = document.getElementById("goTopBtn");
+            if (document.body.scrollTop > 200 || document.documentElement.scrollTop > 200) {
+                btn.style.display = "block";
+            } else {
+                btn.style.display = "none";
+            }
+        };
+    
+        // التحرك للأعلى عند الضغط
+        document.getElementById("goTopBtn").onclick = function () {
+            window.scrollTo({
+                top: 0,
+                behavior: "smooth"
+            });
+        };
+    </script>
    
 
 
     </div>
     <div class="tab-container">
-        <div class="tab active" id="tab1" onclick="loadPage('books.html', 'tab1')">كافة الكتب</div>
-        <div class="tab" id="tab2" onclick="loadPage('tafsir.html', 'tab2')">تفاسير</div>
-        <div class="tab" id="tab3" onclick="loadPage('hadith.html', 'tab3')">حديث</div>
+        <div class="tab" id="tab2" onclick="loadPage('tafsir.html', 'tab2')">المفسّرون والتفسير التحليلي للقرآن</div>
+        <div class="tab" id="tab3" onclick="loadPage('hadith.html', 'tab3')">سنّة بلا مذاهب</div>
+        <div class="tab active" id="tab1" onclick="loadPage('books.html', 'tab1')">سائر الكتب والسلاسل</div>       
         <div class="tab" id="tab4" onclick="loadPage('search.html', 'tab4')">البحث الشامل</div>
     </div>
 

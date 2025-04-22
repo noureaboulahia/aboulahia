@@ -210,7 +210,8 @@ function myFunction() {
     x.className = "topnav";
   }
 }
-
+/*
+// تعطيل مؤقت لكود النسخ وإضافة الرابط
 document.addEventListener('copy', (event) => {
   const pagelink = `\n\n... لمواصلة المطالعة اضغط على الرابط: ${document.location.href}`;
   event.clipboardData.setData('text', document.getSelection() + pagelink);
@@ -218,11 +219,15 @@ document.addEventListener('copy', (event) => {
 });
 
 function addLink() {
- //Get the selected text and append the extra info
- var selection = window.getSelection(),
- pagelink = '<br /><br />  المصدر:   ' + '  ' +document.location.href + '   ', // Change this text
- copytext = selection + pagelink,
- newdiv = document.createElement('div');
+  //Get the selected text and append the extra info
+  var selection = window.getSelection(),
+      pagelink = '<br /><br />  المصدر:   ' + '  ' +document.location.href + '   ', // Change this text
+      copytext = selection + pagelink,
+      newdiv = document.createElement('div');
+}
+*/
+
+
 
  //hide the newly created container
  newdiv.style.position = 'absolute';
