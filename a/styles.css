@@ -62,10 +62,11 @@ h2 {
 
 /* تحسين عرض التفاصيل */
 .details {
+    display: none;
     margin-top: 20px;
     padding: 25px;
     border-radius: 12px;
-    background: #f3f1eb;
+    background: #ffffff;
     /* لون بيج فاتح يناسب الأخضر */
     border: 2px solid #9c7c50;
     /* لون بني داكن لتحديد الحدود */
@@ -75,10 +76,11 @@ h2 {
 
 /* تحسين العناوين داخل التفاصيل */
 .details h3 {
+    font-family: 'Traditional Arabic';
     margin: 10px 0;
-    font-size: 26px;
+    font-size: 30px;
     font-weight: bold;
-    color: #6d4c1b;
+    color: #ff0015;
     /* Richer brown */
     border-bottom: 3px solid #b28d60;
     padding-bottom: 6px;
@@ -86,10 +88,11 @@ h2 {
 }
 
 .details h4 {
+    font-family: 'Traditional Arabic';
     margin: 10px 0;
-    font-size: 22px;
+    font-size: 27px;
     font-weight: bold;
-    color: #4a3210;
+    color: #dd020d;
     /* Deeper shade for better contrast */
 }
 
@@ -97,12 +100,15 @@ h2 {
 .details p {
     margin-top: 15px;
     padding: 18px;
-    font-size: 19px;
+    font-size: 23px;
     font-weight: 500;
-    line-height: 2;
-    background: #f9f3e6;
+    text-align:justify; 
+    font-family:'Traditional Arabic'; 
+    font-weight:bold ;
+    line-height: 1.5;
+    background: #ffffff;
     /* Softer beige */
-    color: #3d2a0d;
+    color: #000000;
     /* Darker text for contrast */
     border-radius: 10px;
     white-space: pre-line;
@@ -110,9 +116,10 @@ h2 {
 
 /* تنسيق الحواشي */
 .footnote {
+    font-family: 'Traditional Arabic';
     display: block;
     margin-top: 12px;
-    font-size: 17px;
+    font-size: 20px;
     font-weight: bold;
     color: #a94442;
     background: #f8e4e4;
@@ -123,7 +130,7 @@ h2 {
 
 .colored-number {
     font-weight: bold;
-    color: #c46561;
+    color: #ff0000;
     /* Dark red */
 }
 
@@ -159,15 +166,39 @@ h2 {
     border-radius: 10px;
     margin-left: 20px;
 }
-
-/* تحسين تنسيق النص */
-.book-details {
-    font-size: 18px;
-    color: #333;
+#book-details {
+    font-size: 24px;
+    
+    display: none;
 }
+.book-details p {
 
+    font-size: 23px;
+    font-weight: 500;
+    text-align:justify; 
+    font-family:'Traditional Arabic'; 
+    font-weight:bold ;
+    line-height: 1;
+    background: #ffffff;
+    /* Softer beige */
+    color: #000000;
+
+}
+h3 {
+
+    font-size: 35px;
+    font-weight: 800;
+    text-align:justify; 
+    font-family:'Traditional Arabic'; 
+    font-weight:bold ;
+
+
+
+}
 /* جعل العناوين الجانبية بلون مميز */
 .label {
+    font-family: 'Traditional Arabic';
+
     color: #ff0000;
     font-weight: bold;
 }
@@ -185,7 +216,7 @@ h2 {
 
 /* تحسين تنسيق فقرة التعريف بالكتاب */
 .book-description {
-    background: #fffaf0;
+    background: #ffffff;
     padding: 20px;
     border-radius: 10px;
     border: 2px solid #d4a373;
@@ -195,11 +226,16 @@ h2 {
     margin-top: 20px;
     max-width: 100%;
 }
+.book-description p {
+    margin-bottom:0pt; text-indent:28.35pt; text-align:justify; line-height:normal; widows:0; orphans:0; font-family:'Traditional Arabic'; font-size:16pt; font-weight:bold 
+}
 
 /* تحسين تنسيق العنوان داخل التعريف */
 .book-description h3 {
-    color: #8b4513;
-    font-size: 22px;
+    font-family: 'Traditional Arabic';
+    color: #fa1024;
+    font-size: 28px;
+    font-weight: bold;
     border-bottom: 2px solid #d4a373;
     padding-bottom: 5px;
 }
@@ -233,7 +269,7 @@ h2 {
 .content-card {
     width: 45%;
     padding: 20px;
-    background: #faf8f5;
+    background: #ffffff;
     border-radius: 12px;
     border: 2px solid #b28d60;
     box-shadow: 3px 3px 12px rgba(0, 0, 0, 0.15);
@@ -243,10 +279,10 @@ h2 {
 .content-title {
     font-size: 26px;
     font-weight: bold;
-    color: #6d4c1b;
-    border-bottom: 3px solid #d8af7e;
+    color: #da000b;
+    border-bottom: 3px solid #b28d60;
     padding-bottom: 6px;
-    text-shadow: 1px 1px 2px rgba(253, 2, 2, 0.2);
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
     margin-bottom: 10px;
 }
 
@@ -283,7 +319,7 @@ h2 {
     margin-top: 20px;
     padding: 25px;
     border-radius: 12px;
-    background: #f3f1eb;
+    background: #ffffff;
     /* لون بيج فاتح يناسب الأخضر */
     border: 2px solid #9c7c50;
     /* لون بني داكن لتحديد الحدود */
@@ -327,20 +363,22 @@ h2 {
 }
 
 .custom-link {
-    color: #0066cc;
+    color: #306aa3;
     text-decoration: none;
     font-weight: bold;
 }
 
 .custom-container p {
+    text-align:justify;
     margin-top: 15px;
     padding: 18px;
-    font-size: 19px;
-    font-weight: 500;
-    line-height: 2;
-    background: #f9f3e6;
+    font-size: 22px;
+    font-weight: bold;
+    font-family: 'Traditional Arabic';
+    line-height: 1.5;
+    background: #ffffff;
     /* Softer beige */
-    color: #3d2a0d;
+    color: #000000;
     /* Darker text for contrast */
     border-radius: 10px;
     white-space: pre-line;
@@ -420,16 +458,17 @@ h2 {
 }
 
 .footnotehadith {
-   
-    margin-top: 2px;
-    font-size: 12px;
+    font-family: 'Traditional Arabic';
+    display: block;
+
+    font-size: 20px;
     font-weight: bold;
     color: #a94442;
     background: #f8e4e4;
-    padding: 0px;
-    border-right: 3px solid #d9534f;
-    border-radius: 4px;
+    border-right: 6px solid #d9534f;
+    border-radius: 6px;
 }
+
 .laughing-title {
 
     color: #a94442; /* لون برتقالي */
@@ -494,14 +533,15 @@ h2 {
         margin-top: 2px;
         padding: 1px;
         border-radius: 6px;
-        background: #f3f1eb;
+        background: #ffffff;
         box-shadow: none;
     }
 
     /* تحسين العناوين داخل التفاصيل */
     .details h3 {
         margin: 5px 0;
-        font-size: 18px;
+        font-family: 'Traditional Arabic';
+        font-size: 26px;
         font-weight: bold;
         color: #ce2020;
         padding-bottom: 3px;
@@ -509,9 +549,8 @@ h2 {
 
     .details h4 {
         margin: 5px 0;
-        font-size: 18px;
+        font-size: 22px;
         font-weight: bold;
-        color: #a11616;
     }
 
     /* تحسين تنسيق الفقرات */
@@ -519,19 +558,24 @@ h2 {
         margin-top: 2px;
         padding: 1px;
         font-weight: 650;
-        font-size: 16px;
-        line-height: 2;
+        font-size: 20px;
+        line-height: 1.5;
         background: #ffffff;
         color: #000000;
         border-radius: 4px;
         
     }
+    .book-details p {
 
+        font-size: 20px;
+        line-height: 1;
+    
+    }
     /* تنسيق الحواشي */
     .footnote {
         display: block;
         margin-top: 2px;
-        font-size: 12px;
+        font-size: 18px;
         font-weight: bold;
         color: #a94442;
         background: #f8e4e4;
@@ -574,15 +618,16 @@ h2 {
 
     /* تحسين تنسيق النص */
     .book-details {
-        font-size: 14px;
-        color: #333;
+        
+        font-size: 19px;
+        color: #000000;
     }
 
     /* جعل العناوين الجانبية بلون مميز */
     .label {
         color: #ff0000;
         font-weight: bold;
-        font-size: 14px;
+
     }
 
     /* تنسيق رابط التحميل */
@@ -590,7 +635,7 @@ h2 {
         color: #d9534f;
         text-decoration: none;
         font-weight: bold;
-        font-size: 14px;
+
     }
 
     .download-link:hover {
@@ -599,11 +644,11 @@ h2 {
 
     /* تحسين تنسيق فقرة التعريف بالكتاب */
     .book-description {
-        background: #fffaf0;
+        background: #ffffff;
         padding: 1px;
         border-radius: 6px;
         box-shadow: none;
-        font-size: 14px;
+        font-size: 20px;
         line-height: 1.5;
         margin-top: 2px;
         max-width: 100%;
@@ -611,8 +656,9 @@ h2 {
 
     /* تحسين تنسيق العنوان داخل التعريف */
     .book-description h3 {
-        color: #8b4513;
-        font-size: 16px;
+        font-family: 'Traditional Arabic';
+        color: #fa1024;
+        font-size: 28px;
         padding-bottom: 2px;
     }
 
@@ -624,7 +670,7 @@ h2 {
 
     .book-description li {
         margin-bottom: 2px;
-        font-size: 14px;
+        font-size: 18px;
     }
 
     /* تنسيق الحاوية الرئيسية */
@@ -646,7 +692,7 @@ h2 {
     .content-card {
         width: 100%;
         padding: 1px;
-        background: #faf8f5;
+        background: #ffffff;
         border-radius: 6px;
         box-shadow: none;
     }
@@ -655,7 +701,7 @@ h2 {
     .content-title {
         font-size: 16px;
         font-weight: bold;
-        color: #6d4c1b;
+        color: #da000b;
 
         padding-bottom: 2px;
         text-shadow: none;
@@ -667,9 +713,9 @@ h2 {
     .content-text {
         margin-top: 2px;
         padding: 1px;
-        font-size: 14px;
+        font-size: 20px;
         font-weight: 500;
-        line-height: 2;
+        line-height: 1.5;
         background: #ffffff;
         color: #000000;
         border-radius: 4px;
@@ -679,7 +725,7 @@ h2 {
         margin-top: 2px;
         padding: 1px;
         border-radius: 6px;
-        background: #f3f1eb;
+        background: #ffffff;
         /* لون بيج فاتح */
         /* لون بني داكن */
         box-shadow: none;
@@ -709,7 +755,11 @@ h2 {
         display: block;
         margin: auto;
     }
+    h3 {
 
+        font-size: 28px;
+
+    }
     .custom-details {
         flex: none;
         width: 100%;
@@ -718,12 +768,12 @@ h2 {
     .custom-label {
         font-weight: bold;
         color: #8b0000;
-        font-size: 14px;
+        font-size: 18px;
     }
 
     .custom-description,
     .custom-text {
-        font-size: 14px;
+        font-size: 18px;
         line-height: 1.5;
         color: #333;
     }
@@ -733,15 +783,15 @@ h2 {
         color: #0066cc;
         text-decoration: none;
         font-weight: bold;
-        font-size: 14px;
+        font-size: 18px;
     }
 
     .custom-container p {
         margin-top: 2px;
         padding: 1px;
-        font-size: 16px;
+        font-size: 20px;
         font-weight: 600;
-        line-height: 2;
+        line-height: 1.5;
         background: #ffffff;
         color: #000000;
         border-radius: 6px;

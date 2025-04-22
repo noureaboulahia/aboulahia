@@ -4,7 +4,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>بحث في الكتب 📖</title>
-    <script src="ff/ss.js"></script>
+    <script src="ff/jquery-3.6.0.min.js"></script>
+    <script src="ff/select2.full.min.js"></script>
+    <script src="ff/bootstrap.bundle.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/css/select2.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="stylesSearch.css">
     
 </head>
@@ -33,9 +37,9 @@
     <script>
     let booksList = [];
 
-    fetch("books/books_index.json")
-        .then(res => res.json())
-        .then(data => { booksList = data; });
+    $.getJSON("books/books_index.json", function (data) {
+    booksList = data;
+});
 
         window.searchBooks = function() {
         let query = document.getElementById("searchBox").value.trim();
@@ -50,10 +54,10 @@
         let foundResults = false;
 
         booksList.forEach(book => {
-            fetch("books/" + book.data)
-                .then(res => res.json())
-                .then(data => searchInBook(query, data, book.book, book.data));
+        $.getJSON("books/" + book.data, function(bookData) {
+            searchInBook(query, bookData, book.book, book.data);
         });
+    });
 
         function searchInBook(query, bookData, bookTitle, bookFile) {
             bookData.chapters.forEach(chapter => {
@@ -82,7 +86,7 @@
                 let link = `${baseUrl}?page=tab1&book=${bookFile}&chapter=${encodedChapter}&hadith=${encodedHadith}&highlight=${encodedHighlight}`;
 
                         let resultHTML = `
-                            <a href="${link}" target="_blank" class="result-card">
+                            <a href="${link}" target="_self" class="result-card">
                                 <h3>📖 ${bookTitle}</h3>
                                 <p><strong>📂 الفصل:</strong> ${chapterName}</p>
                                 <p><strong>🔢 الحديث:</strong> ${hadithNumber}</p>

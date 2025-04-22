@@ -7,10 +7,6 @@
     <meta name="keywords" content="مؤلفات أ.د. نور الدين أبو لحية للبحث والتحميل والمطالعة" />
 
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel='icon' href='../favicon.ico' type='image/x-icon' />
-    <link rel="stylesheet" href="../mystyle.css">
-    <link rel="stylesheet" href="ff/aa.css">
-    <link href="ff/bootstrap.min.css" rel="stylesheet">
 
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -18,6 +14,7 @@
     <script src="ff/jquery-3.6.0.min.js"></script>
     <script src="ff/select2.full.min.js"></script>
     <script src="ff/bootstrap.bundle.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/css/select2.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="styles.css">
 </head>
@@ -204,7 +201,8 @@
                         // Display all hadiths in the selected chapter
                         let detailsHtml = `<h3>${bookData.book}</h3>`;
                         detailsHtml += formatBookDetails(bookData.description);
-
+                        const bookDetails = document.getElementById("book-details");
+                        bookDetails.style.display = "block";
                         $("#book-details").html(detailsHtml);
 
                     });
@@ -217,7 +215,7 @@
 
                     // استخراج رابط الغلاف وإزالته من النص
                     let coverMatch = text.match(/الغلاف\s*سسس\s*:\s*([\S\s]*?)\s*\.?\s*jpg/);
-                    let coverImage = coverMatch ? `<img src="../${coverMatch[1].trim()}.jpg" alt="غلاف الكتاب" class="custom-cover-img">` : "";
+                    let coverImage = coverMatch ? `<img src="${coverMatch[1].trim()}.jpg" alt="غلاف الكتاب" class="custom-cover-img">` : "";
 
                     // تقسيم النص بعد الغلاف واعتباره وصفًا
                     let parts = text.split(/الغلاف\s*سسس\s*:\s*[\S\s]*?\.?\s*jpg/);
@@ -251,7 +249,7 @@
                 $("#col2").change(function () {
                     let selectedBookFile = $("#col1").val();
                     let selectedChapter = $(this).val();
-                    $("#col3").empty().append(new Option("اختر الفرع", ""));
+                    $("#col3").empty().append(new Option("-- اختر الحديث --", ""));
 
                     if (!selectedBookFile || !selectedChapter) return;
 
@@ -281,6 +279,8 @@
                                 detailsHtml += formatTextAsHtml(hadith.hadith_text);
                             });
 
+                            const DDetails = document.getElementById("details");
+                            DDetails.style.display = "block";  // Show the div
                             $("#details").html(detailsHtml);
                         }
                     });
@@ -304,7 +304,9 @@
                                     detailsHtml += `<h4>${hadith.hadith_number}</h4>`;
                                     detailsHtml += formatTextAsHtml(hadith.hadith_text);
                                 });
-                                $("#details").html(detailsHtml);
+                                const DDetails = document.getElementById("details");
+                            DDetails.style.display = "block";  // Show the div
+                            $("#details").html(detailsHtml);
                             }
                         });
                     }
@@ -328,7 +330,9 @@
                                 let detailsHtml = `<h3>${selectedChapter}</h3>`;
                                 detailsHtml += `<h4>${hadithData.hadith_number}</h4>`;
                                 detailsHtml += formatTextAsHtml(hadithData.hadith_text);
-                                $("#details").html(detailsHtml);
+                                const DDetails = document.getElementById("details");
+                            DDetails.style.display = "block";  // Show the div
+                            $("#details").html(detailsHtml);
                             }
                         }
                     });
@@ -336,7 +340,7 @@
                 function formatTextAsHtml(text) {
                     // Replace numbering (1. 2. 3., أ. ب. ج., -, •) inside the same paragraph
                     let formattedText = text
-                        .replace(/^(\d+\.|[أ-ي]\.|[-•]|[-•])/gm, '<span class="colored-number">$1</span>')
+                        .replace(/^(\d+\.|[أ-ي]\.|[-•])/gm, '<span class="colored-number">$1</span>')
                         .replace(/(\﴿.*?\﴾)/g, '<span class="quranic-text">$1</span>')
                         .replace(/(\⌈.*?\⌉)/g, '<span class="footnotehadith">$1</span>')
                         .replace(/^\s*(.+?)(\s*(ههه|ووو|ززز|ددد))\s*$/gm, '<span class="laughing-title">$1</span>')

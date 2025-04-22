@@ -241,7 +241,7 @@ function addLink() {
  window.setTimeout(function () {
  document.body.removeChild(newdiv);
  }, 100);
- }
+ 
 
  document.addEventListener('copy', addLink);
  function includeHTML() {

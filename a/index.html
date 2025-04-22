@@ -103,23 +103,18 @@
 /* 🌟 تحسينات خاصة للهواتف */
 @media (max-width: 768px) {
     .tab-container {
-        display: flex;
-        flex-direction: row; /* صف أفقية */
-        overflow-x: auto; /* لإتاحة التمرير إذا كانت التبويبات كثيرة */
-        -webkit-overflow-scrolling: touch; /* سلاسة التمرير في iOS */
-        padding: 8px;
-        gap: 8px; /* مسافة بين التبويبات */
-        width: 100%;
+        flex-direction: row;
+        flex-wrap: wrap;
         max-width: 100%;
+        padding: 8px;
     }
 
     .tab {
-        flex: 0 0 auto; /* الحفاظ على حجم ثابت لكل تبويب */
         font-size: 14px;
-        padding: 10px 16px;
-        margin: 0;
+        padding: 8px 12px;
+        margin: 4px;
         border-radius: 6px;
-        white-space: nowrap; /* منع التفاف النص */
+        flex: 0 0 auto;
     }
 
     #content {
@@ -175,23 +170,29 @@
 
     <script>
         function loadPage(page, tabId) {
-            fetch(page)
-                .then(response => response.text())
-                .then(data => {
-                    let contentDiv = document.getElementById("content");
-                    contentDiv.innerHTML = data;
-                    executeScripts(contentDiv);
-                    // ✅ Update the URL correctly
-                    let urlParams = new URLSearchParams(window.location.search);
-                    urlParams.set("page", tabId);
-                    history.replaceState(null, "", `?${urlParams.toString()}`);
+    var xhr = new XMLHttpRequest();
+    xhr.open('GET', page, true);
+    xhr.onreadystatechange = function() {
+        if (xhr.readyState === 4 && xhr.status === 200) {
+            let contentDiv = document.getElementById("content");
+            contentDiv.innerHTML = xhr.responseText;  // Insert the HTML content
+            executeScripts(contentDiv);
 
-                    // ✅ Update active tab styling
-                    document.querySelectorAll(".tab").forEach(tab => tab.classList.remove("active"));
-                    document.getElementById(tabId).classList.add("active");
-                })
-                .catch(error => console.error("Error loading page:", error));
+            // Update the URL correctly
+            let urlParams = new URLSearchParams(window.location.search);
+            urlParams.set("page", tabId);
+            history.replaceState(null, "", `?${urlParams.toString()}`);
+
+            // Update active tab styling
+            document.querySelectorAll(".tab").forEach(tab => tab.classList.remove("active"));
+            document.getElementById(tabId).classList.add("active");
         }
+    };
+    xhr.onerror = function(error) {
+        console.error("Error loading page:", error);
+    };
+    xhr.send();
+}
 
 
 

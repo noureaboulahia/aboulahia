@@ -8,15 +8,17 @@
 
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel='icon' href='../favicon.ico' type='image/x-icon' />
-    <link rel="stylesheet" href="../mystyle.css">
-    <link rel="stylesheet" href="ff/aa.css">
-    <link href="ff/bootstrap.min.css" rel="stylesheet">
+    
+    <script src="ff/jquery-3.6.0.min.js"></script>
+    <script src="ff/select2.full.min.js"></script>
+    <script src="ff/bootstrap.bundle.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/css/select2.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400;700&display=swap" rel="stylesheet">
 
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>مؤلفات أ.د. نور الدين أبو لحية</title>
-    <script src="ff/bootstrap.bundle.min.js"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400;700&display=swap" rel="stylesheet">
+
     <link rel="stylesheet" href="styles.css">
 </head>
 
@@ -205,7 +207,8 @@
                         // Display all hadiths in the selected chapter
                         let detailsHtml = `<h3>${bookData.book}</h3>`;
                         detailsHtml += formatBookDetails(bookData.description);
-
+                        const bookDetails = document.getElementById("book-details");
+                        bookDetails.style.display = "block";
                         $("#book-details").html(detailsHtml);
 
                     });
@@ -281,7 +284,9 @@
                                 detailsHtml += `<h4>${hadith.hadith_number}</h4>`;
                                 detailsHtml += formatTextAsHtml(hadith.hadith_text);
                             });
-
+                            
+                            const DDetails = document.getElementById("details");
+                            DDetails.style.display = "block";  // Show the div
                             $("#details").html(detailsHtml);
                         }
                     });
@@ -305,7 +310,9 @@
                                     detailsHtml += `<h4>${hadith.hadith_number}</h4>`;
                                     detailsHtml += formatTextAsHtml(hadith.hadith_text);
                                 });
-                                $("#details").html(detailsHtml);
+                                const DDetails = document.getElementById("details");
+                            DDetails.style.display = "block";  // Show the div
+                            $("#details").html(detailsHtml);
                             }
                         });
                     }
@@ -329,7 +336,9 @@
                                 let detailsHtml = `<h3>${selectedChapter}</h3>`;
                                 detailsHtml += `<h4>${hadithData.hadith_number}</h4>`;
                                 detailsHtml += formatTextAsHtml(hadithData.hadith_text);
-                                $("#details").html(detailsHtml);
+                                const DDetails = document.getElementById("details");
+                            DDetails.style.display = "block";  // Show the div
+                            $("#details").html(detailsHtml);
                             }
                         }
                     });

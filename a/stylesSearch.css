@@ -31,6 +31,7 @@ body {
 
 /* Search Results Styling */
 .result-card {
+    margin-bottom: 20px;
     display: block;
     text-decoration: none;
     padding: 15px;
@@ -40,6 +41,7 @@ body {
     box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.1);
     transition: transform 0.2s ease-in-out;
     font-size: 16px;
+
 }
 
 .result-card:hover {
