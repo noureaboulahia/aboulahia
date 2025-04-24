@@ -8,18 +8,41 @@
     <script src="ff/select2.full.min.js"></script>
     <script src="ff/bootstrap.bundle.min.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/css/select2.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400;700&display=swap" rel="stylesheet">
+
     <link rel="stylesheet" href="stylesSearch.css">
+    <style>
+        #searchBox {
+    flex: 1;
+    min-width: 200px;
+    padding: 12px;
+    border: 1px solid #9c7c50;
+    border-radius: 8px;
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1);
+    outline: none;
+    background-color: #fff;
+    color: #333;
+}
+
+/* Dark mode styles for the input field */
+body.dark-mode #searchBox {
+    background-color: #444; /* Dark background */
+    border: 1px solid #666; /* Darker border */
+    color: #fff; /* Light text color */
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2); /* Darker shadow */
+}
+h2 {
+    font-family: 'Traditional Arabic';
     
+}
+    </style>
 </head>
 <body>
 
-    <div class="search-container" style="background: #ffffff; padding: 20px; border-radius: 10px; box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15); max-width: 80%; margin: 30px auto; border: 3px solid #6d4c1b;">
+    <div class="search-container">
         <h2>🔍 بحث في الكتب</h2>
     
         <div style="display: flex; align-items: center; gap: 12px; justify-content: center; flex-wrap: wrap;">
             <input type="text" id="searchBox" 
-                style="flex: 1; min-width: 200px; padding: 12px; border: 1px solid #9c7c50; border-radius: 8px; box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1); outline: none;"
                 placeholder="أدخل كلمة البحث هنا..."
                 onkeypress="if(event.key === 'Enter') window.searchBooks()">
             <button onclick="window.searchBooks()" 

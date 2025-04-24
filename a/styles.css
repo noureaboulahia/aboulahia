@@ -1,7 +1,240 @@
-@import url("https://fonts.googleapis.com/earlyaccess/droidarabicnaskh.css");
 
+/* Header Styles */
+.site-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 25px;
+    background-color: #fff;
+    border-bottom: 2px solid #6d4c1b;
+    margin-bottom: 20px;
+    border-radius: 10px 10px 0 0;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.site-title {
+    font-size: 24px;
+    font-weight: bold;
+    color: #6d4c1b;
+}
+
+/* Dark Mode Toggle Button */
+.dark-mode-toggle {
+    background: linear-gradient(135deg, #6d4c1b, #a87f3d);
+    border: none;
+    border-radius: 50px;
+    padding: 8px 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    width: 70px;
+    height: 35px;
+    position: relative;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+.dark-mode-toggle .moon-icon,
+.dark-mode-toggle .sun-icon {
+    position: absolute;
+    transition: all 0.3s ease;
+    font-size: 18px;
+}
+
+/* Sun icon positioning */
+.dark-mode-toggle .sun-icon {
+    right: 12px;
+    opacity: 1;
+    transform: translateX(0);
+}
+
+/* Moon icon positioning */
+.dark-mode-toggle .moon-icon {
+    left: 12px;
+    opacity: 0;
+    transform: translateX(-10px);
+}
+
+/* When dark mode is active, we switch the position and opacity of icons */
+body.dark-mode .dark-mode-toggle .sun-icon {
+    opacity: 0;
+    transform: translateX(10px);
+}
+
+body.dark-mode .dark-mode-toggle .moon-icon {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+/* Hover effect on the button */
+.dark-mode-toggle:hover {
+    background: linear-gradient(135deg, #9c7c50, #a87f3d);
+    box-shadow: 0px 6px 15px rgba(0, 0, 0, 0.2);
+}
+
+/* Active effect on the button */
+.dark-mode-toggle:active {
+    transform: scale(0.95);
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3);
+}
+
+
+/* Dark Mode Styles */
+body.dark-mode {
+    background-color: #121212;
+    color: #e0e0e0;
+}
+
+body.dark-mode .site-header {
+    background-color: #1e1e1e;
+    border-bottom-color: #bb9457;
+}
+
+body.dark-mode .site-title {
+    color: #e0e0e0;
+}
+
+body.dark-mode .dark-mode-toggle {
+    background: #333;
+    border-color: #bb9457;
+}
+
+body.dark-mode .dark-mode-toggle .sun-icon {
+    opacity: 0;
+}
+
+body.dark-mode .dark-mode-toggle .moon-icon {
+    opacity: 1;
+}
+
+body.dark-mode .tab-container {
+    background-color: #1e1e1e;
+    border-color: #bb9457;
+}
+
+body.dark-mode .tab {
+    background-color: #2d2d2d;
+    color: #e0e0e0;
+    border-color: #bb9457;
+}
+
+body.dark-mode .tab:hover {
+    background-color: #3d3d3d;
+}
+
+body.dark-mode .tab.active {
+    background-color: #bb9457;
+    color: #121212;
+}
+
+body.dark-mode .container,
+body.dark-mode .content-container,
+body.dark-mode .book-container,
+body.dark-mode .search-container,
+body.dark-mode .custom-container,
+body.dark-mode .details,
+body.dark-mode .book-description,
+body.dark-mode .content-card {
+    background-color: #1e1e1e;
+    border-color: #bb9457;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+}
+
+body.dark-mode .content-text,
+body.dark-mode .details p,
+body.dark-mode .book-description p,
+body.dark-mode .custom-container p {
+    background-color: #2d2d2d;
+    color: #e0e0e0;
+}
+
+body.dark-mode h2,
+body.dark-mode h3,
+body.dark-mode h4,
+body.dark-mode .content-title,
+body.dark-mode .details h3,
+body.dark-mode .details h4 {
+    color: #bb9457;
+    border-color: #bb9457;
+}
+
+body.dark-mode .form-select {
+    background-color: #2d2d2d;
+    color: #e0e0e0 !important;
+    border-color: #bb9457 !important;
+}
+
+body.dark-mode .label,
+body.dark-mode .custom-label {
+    color: #bb9457;
+}
+
+body.dark-mode .footnote,
+body.dark-mode .footnotehadith {
+    background-color: #2d2d2d;
+    color: #e0e0e0;
+    border-color: #bb9457;
+}
+
+body.dark-mode .quranic-text {
+    color: #6fd687;
+}
+
+body.dark-mode .colored-number {
+    color: #ff6b6b;
+}
+
+body.dark-mode .highlight {
+    background-color: #bb9457;
+    color: #121212;
+}
+
+body.dark-mode .download-link,
+body.dark-mode .custom-link {
+    color: #bb9457;
+}
+
+body.dark-mode .nav-button {
+    background-color: #2d2d2d;
+    color: #e0e0e0;
+}
+
+body.dark-mode #prevButton {
+    background-color: #862a33;
+}
+
+body.dark-mode #prevButton:hover {
+    background-color: #a83340;
+}
+
+body.dark-mode #nextButton {
+    background-color: #1e5e34;
+}
+
+body.dark-mode #nextButton:hover {
+    background-color: #287a43;
+}
+
+body.dark-mode .toggle-button {
+    background-color: #bb9457;
+    color: #121212;
+}
+
+body.dark-mode .toggle-button:hover {
+    background-color: #d8b074;
+}
+
+body.dark-mode .prev-verse { background-color: #862a33; }
+body.dark-mode .prev-verse:hover { background-color: #a83340; }
+body.dark-mode .prev-interpreter { background-color: #1e5e7a; }
+body.dark-mode .prev-interpreter:hover { background-color: #2a799d; }
+body.dark-mode .next-interpreter { background-color: #1e5e34; }
+body.dark-mode .next-interpreter:hover { background-color: #287a43; }
+body.dark-mode .next-verse { background-color: #a66c10; }
+body.dark-mode .next-verse:hover { background-color: #c88112; }
 body {
-    font-family: 'Droid Arabic Naskh', serif;
+    font-family: 'Traditional Arabic';
     direction: rtl;
     text-align: right;
     background-color: #f8f9fa;
@@ -19,17 +252,187 @@ body {
     box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
 }
 
+/* ========================= */
+/* Light Mode Styling */
+/* ========================= */
+/* ========================= */
+/* Light Mode Styling */
+/* ========================= */
 .search-container {
     background: #ffffff;
-    /* لون الخلفية */
     padding: 20px;
-    border-radius: 10px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.15);
-    max-width: 100%;
-    margin: 30px auto;
+    border-radius: 12px;
     border: 3px solid #6d4c1b;
-    /* إضافة إطار حول المحتوى */
+    max-width: 80%;
+    margin: 30px auto;
 }
+
+.search-container h2 {
+    font-size: 24px;
+    color: #6d4c1b;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.search-container .form-label {
+    font-size: 18px;
+    font-weight: bold;
+    color: #3d2a0d;
+    margin: 12px 0 6px;
+}
+/* Select2 base styling */
+.search-container .select2-container--default .select2-selection--single {
+    background-color: #ffffff; /* Light mode background */
+    border: 2px solid #c4a56b;
+    border-radius: 8px;
+    height: 44px;
+    padding: 6px 12px;
+    font-size: 16px;
+    color: #333;
+    display: flex;
+    align-items: center;
+}
+
+/* Adjusted font size and color inside the select box */
+.search-container .select2-container--default .select2-selection__rendered {
+    color: #3d2a0d !important;
+    font-size: 18px; /* Increased font size */
+    line-height: 30px !important;
+}
+
+/* Hover effect on the select box */
+.search-container .select2-container--default .select2-selection--single:hover {
+    border-color: #6d4c1b; /* Highlighted border on hover */
+}
+
+/* Dropdown */
+.search-container .select2-container--default .select2-dropdown {
+    background-color: #f8f9fa; /* Light mode dropdown background */
+    border: 1px solid #c4a56b;
+    font-size: 16px;
+    max-height: 250px;
+    overflow-y: auto;
+}
+
+/* Dropdown options */
+.search-container .select2-results__option {
+    padding: 8px 12px;
+    color: #333;
+    background-color: #f8f9fa; /* Light mode option background */
+}
+
+/* Hover effect for dropdown options */
+.search-container .select2-results__option:hover {
+    background-color: #6d4c1b; /* Highlighted background on hover */
+    color: white; /* Text color change when hovering */
+    cursor: pointer; /* Shows pointer to indicate it's clickable */
+}
+
+/* Ensure options are highlighted on hover */
+.select2-results__option:hover {
+    background-color: #a87f3d !important;
+    color: white !important;
+}
+
+/* ========================= */
+/* Dark Mode Styling */
+/* ========================= */
+body.dark-mode .search-container {
+    background: #1e1e1e;
+    border-color: #a87f3d;
+}
+
+body.dark-mode .search-container h2 {
+    color: #f5d7a3;
+}
+
+body.dark-mode .search-container .form-label {
+    color: #f5d7a3;
+}
+
+/* Dark mode Select2 */
+body.dark-mode .search-container .select2-container--default .select2-selection--single {
+    background-color: #2c2c2c;
+    border-color: #a87f3d;
+    color: #eee;
+}
+
+/* Adjusted font size and color inside the select box */
+body.dark-mode .search-container .select2-selection__rendered {
+    color: #eee !important;
+    font-size: 18px;
+}
+
+/* Hover effect on the select box in dark mode */
+body.dark-mode .search-container .select2-container--default .select2-selection--single:hover {
+    border-color: #a87f3d;
+}
+
+/* Dropdown */
+body.dark-mode .search-container .select2-container--default .select2-dropdown {
+    background-color: #333333; /* Dark background for dropdown */
+    border-color: #a87f3d;
+    color: #eee;
+    max-height: 250px;
+    overflow-y: auto;
+}
+
+/* Dropdown options */
+body.dark-mode .search-container .select2-results__option {
+    padding: 8px 12px;
+    color: #eee;
+    background-color: #333333;
+}
+
+/* Hover effect for dropdown options in dark mode */
+body.dark-mode .search-container .select2-results__option:hover {
+    background-color: #a87f3d;
+    color: black;
+    cursor: pointer; /* Shows pointer to indicate it's clickable */
+}
+
+/* Ensure options are highlighted on hover */
+body.dark-mode .select2-results__option:hover {
+    background-color: #a87f3d !important;
+    color: white !important;
+}
+
+
+body.dark-mode .select2-container--default .select2-selection--single {
+    background-color: #2c2c2c !important;
+    color: #eee !important;
+}
+
+body.dark-mode .select2-container--default .select2-results__option {
+    background-color: #333333 !important;
+    color: #eee !important;
+}
+
+/* Ensure options are highlighted on hover */
+body.dark-mode .select2-results__option:hover {
+    background-color: #a87f3d !important;
+    color: white !important;
+}
+/* Dark Mode for the Select2 search input */
+body.dark-mode .select2-container--open .select2-search--dropdown {
+    background-color: #333 !important;  /* Dark background for the search box */
+    border: 1px solid #555 !important;  /* Dark border */
+}
+
+body.dark-mode .select2-container--open .select2-search__field {
+    background-color: #444 !important;  /* Dark background for the input */
+    color: #eee !important;             /* Light text color */
+    border: 1px solid #666 !important;  /* Darker border for the input */
+    padding: 6px 8px;                   /* Padding for the input field */
+    border-radius: 4px;                 /* Slight rounding of corners */
+}
+
+body.dark-mode .select2-container--open .select2-search__field:focus {
+    background-color: #555 !important;  /* Darker background on focus */
+    border-color: #888 !important;      /* Light border on focus */
+    color: #fff !important;             /* White text on focus */
+}
+
 
 h2 {
     text-align: center;
@@ -179,9 +582,6 @@ h2 {
     font-family:'Traditional Arabic'; 
     font-weight:bold ;
     line-height: 1;
-    background: #ffffff;
-    /* Softer beige */
-    color: #000000;
 
 }
 h3 {
@@ -477,6 +877,130 @@ h3 {
     padding: 5px;
 
 }
+.toggle-button {
+    display: block;
+    width: 100%;
+    padding: 20px;
+    background-color: #8B4513; /* Warm brown color */
+    color: white;
+    border: none;
+    text-align: center;
+    font-size: 18px;
+    font-weight: bold;
+    cursor: pointer;
+    border-radius: 10px;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.toggle-button:hover {
+    background-color: #A0522D; /* Slightly lighter brown for hover */
+    transform: scale(1.05);
+}
+
+.toggle-button:focus {
+    outline: none;
+}
+.toggle-content {
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+    width: 100%;
+    margin: auto;
+    padding: 25px;
+    border-radius: 15px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+    flex-wrap: wrap;
+
+}
+.tab-container {
+    display: flex;
+    justify-content: center; /* يجعل التبويبات في المنتصف */
+    background: #6d4c1b; /* بني غامق */
+    border-radius: 12px;
+    padding: 10px;
+    max-width: 80%; /* عرض محدد للحاوية */
+    margin: 20px auto; /* يجعلها في المنتصف */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+}
+
+/* تحسين تصميم التبويبات */
+.tab {
+    flex: 1;
+    text-align: center;
+    padding: 12px 20px;
+    cursor: pointer;
+    font-size: 17px;
+    font-weight: bold;
+    color: white;
+    background: linear-gradient(135deg, #8b5a2b, #a07045); /* لون بني بتدرج */
+    transition: all 0.3s ease-in-out;
+    border-radius: 8px;
+    margin: 0 5px; /* إضافة مسافة بين التبويبات */
+    box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* تحسين التأثير عند التحويل */
+.tab:hover,
+.tab.active {
+    background: linear-gradient(135deg, #5a3c18, #7a4f2c); /* تأثير لون أغمق */
+    transform: translateY(-3px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+}
+
+/* تحسين عرض المحتوى */
+#content {
+    width: 80%;
+    min-height: 500px;
+    padding: 20px;
+
+    margin: auto; /* يجعل المحتوى في المنتصف */
+}
+#goTopBtn {
+    position: fixed;
+    bottom: 16px;
+    left: 16px; /* تغيير من right إلى left */
+    z-index: 99;
+    background-color: #6d4c1b;
+    color: white;
+    border: none;
+    outline: none;
+    padding: 8px 10px; /* أصغر حجمًا */
+    border-radius: 50%;
+    font-size: 16px;
+    cursor: pointer;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.25);
+    transition: all 0.3s ease;
+    display: none;
+}
+
+#goTopBtn:hover {
+    background-color: #a07045;
+}
+
+/* 🌟 تحسينات خاصة للهواتف */
+@media (max-width: 768px) {
+    .tab-container {
+        flex-direction: row;
+        flex-wrap: wrap;
+        max-width: 100%;
+        padding: 8px;
+    }
+
+    .tab {
+        font-size: 14px;
+        padding: 8px 12px;
+        margin: 4px;
+        border-radius: 6px;
+        flex: 0 0 auto;
+    }
+
+    #content {
+        width: 100%; /* استخدام العرض الكامل */
+        min-height: 300px; /* تقليل ارتفاع المحتوى */
+        padding: 10px; /* تقليل التباعد الداخلي */
+    }
+}
 /* تحسين التصميم للهواتف */
 @media (max-width: 768px) {
 
@@ -620,7 +1144,7 @@ h3 {
     .book-details {
         
         font-size: 19px;
-        color: #000000;
+
     }
 
     /* جعل العناوين الجانبية بلون مميز */
