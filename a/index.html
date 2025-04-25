@@ -22,42 +22,130 @@
     <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="styles.css">
 
-</head>
+    <!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <title>أزرار التمرير</title>
+    <style>
+        body {
+            height: 3000px;
+            font-family: Arial, sans-serif;
+        }
 
+        /* زر مشترك */
+        .scroll-btn {
+            position: fixed;
+            bottom: 50px;
+            width: 50px;
+            height: 50px;
+            font-size: 24px;
+            color: white;
+            border: none;
+            border-radius: 50%;
+            cursor: pointer;
+            z-index: 9999;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            transition: opacity 0.4s ease;
+            pointer-events: none;
+        }
+
+        .scroll-btn.visible {
+            opacity: 1;
+            pointer-events: auto;
+        }
+
+        /* زر النزول لأسفل */
+        #goBottomBtn {
+            right: 20px;
+            background-color: #007bff;
+        }
+
+        /* زر النزول مقدار شاشة */
+        #scrollDownOneScreenBtn {
+            left: 20px;
+            background-color: #28a745;
+        }
+
+        /* زر الصعود للأعلى */
+        #goTopBtn {
+            left: 50%;
+            transform: translateX(-50%);
+            background-color: #dc3545;
+        }
+
+        /* التلميحات */
+        .scroll-btn::after {
+            content: attr(data-tooltip);
+            position: absolute;
+            bottom: 120%;
+            left: 50%;
+            transform: translateX(-50%);
+            background: rgba(0, 0, 0, 0.75);
+            color: #fff;
+            padding: 5px 8px;
+            border-radius: 5px;
+            font-size: 12px;
+            white-space: nowrap;
+            opacity: 0;
+            transition: opacity 0.3s;
+            pointer-events: none;
+        }
+
+        .scroll-btn:hover::after {
+            opacity: 1;
+        }
+    </style>
+</head>
 <body>
-    <div w3-include-html="../head.html"></div>
+
+    <!-- زر النزول إلى أسفل الصفحة -->
+    <button id="goBottomBtn" class="scroll-btn" data-tooltip="انزل إلى أسفل الصفحة">⬇</button>
+
+    <!-- زر النزول بمقدار شاشة واحدة -->
+    <button id="scrollDownOneScreenBtn" class="scroll-btn" data-tooltip="انزل بمقدار شاشة واحدة">↓</button>
+
+    <!-- زر الصعود إلى أعلى الصفحة -->
+    <button id="goTopBtn" class="scroll-btn" data-tooltip="ارجع إلى أعلى الصفحة">⬆</button>
+
     <script>
-        includeHTML();
-    </script>
-    <div id="mySidebar" class="sidebar">
-    </div>
-    <button id="goTopBtn" title="الرجوع للأعلى">↑</button>
-    <script>
-        // إظهار الزر عند التمرير
-        window.onscroll = function () {
-            const btn = document.getElementById("goTopBtn");
-            if (document.body.scrollTop > 200 || document.documentElement.scrollTop > 200) {
-                btn.style.display = "block";
-            } else {
-                btn.style.display = "none";
-            }
+        // وظائف الأزرار
+        document.getElementById("goBottomBtn").onclick = function () {
+            window.scrollTo({ top: document.body.scrollHeight, behavior: "smooth" });
         };
-    
-        // التحرك للأعلى عند الضغط
+
+        document.getElementById("scrollDownOneScreenBtn").onclick = function () {
+            window.scrollBy({ top: window.innerHeight, behavior: "smooth" });
+        };
+
         document.getElementById("goTopBtn").onclick = function () {
-            window.scrollTo({
-                top: 0,
-                behavior: "smooth"
-            });
+            window.scrollTo({ top: 0, behavior: "smooth" });
         };
+
+        // التحكم في الظهور والإخفاء مع التمرير
+        const scrollButtons = document.querySelectorAll('.scroll-btn');
+
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 100) {
+                scrollButtons.forEach(btn => btn.classList.add('visible'));
+            } else {
+                scrollButtons.forEach(btn => btn.classList.remove('visible'));
+            }
+        });
     </script>
-   
+
+</body>
+</html>
+
 
 
     </div>
      <!-- Add this new header section -->
      <header class="site-header">
-        <div class="site-title">مؤلفات د. نور الدين أبولحية</div>
+        <div class="site-title">مؤلفات أ.د. نور الدين أبو لحية</div>
         <button id="darkModeToggle" class="dark-mode-toggle" aria-label="تبديل الوضع المظلم">
             <i class="moon-icon">🌙</i>
             <i class="sun-icon">☀️</i>

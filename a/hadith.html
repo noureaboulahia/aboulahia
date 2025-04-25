@@ -31,7 +31,7 @@
         <p id="content"></p>
     </div>
     <div class="container book-container">
-       
+
 
         <div class="search-container">
             <h2>📖 للمطالعة والبحث في المؤلفات</h2>
@@ -63,7 +63,7 @@
                 </select>
             </div>
         </div>
-       
+
 
         <div class="details" id="details">
             <h3 id="title"></h3>
@@ -224,10 +224,9 @@
                     // حذف سطر الغلاف من النص الأصلي
 
                     let formattedText = text.replace(/(\S+)\s*سسس\s*:/g, '<span class="custom-label">$1:</span>');
-
                     // تعديل "للمطالعة" لتحويل الرابط إلى "هنا" مع إزالة المسافات الزائدة
-                    formattedText = formattedText.replace(/<span class="custom-label">للمطالعة:<\/span>\s*([\S\s]*?)\s*\.?\s*html/g,
-                        '<span class="custom-label">للمطالعة:</span> <a href="../$1.html" class="custom-link">هنا</a>');
+                    formattedText = formattedText.replace(/<span class="custom-label">تحميل:<\/span>\s*([\S\s]*?)\s*\.?\s*pdf/g,
+                        '<span class="custom-label">تحميل:</span> <a href="$1.pdf" class="custom-link">هنا</a>');
                     formattedText = formattedText.replace(/<span class="custom-label">الغلاف:<\/span>\s*([\S\s]*?)\s*\.?\s*jpg/g, '');
                     return `
         <div class="custom-container">
@@ -305,8 +304,8 @@
                                     detailsHtml += formatTextAsHtml(hadith.hadith_text);
                                 });
                                 const DDetails = document.getElementById("details");
-                            DDetails.style.display = "block";  // Show the div
-                            $("#details").html(detailsHtml);
+                                DDetails.style.display = "block";  // Show the div
+                                $("#details").html(detailsHtml);
                             }
                         });
                     }
@@ -331,8 +330,8 @@
                                 detailsHtml += `<h4>${hadithData.hadith_number}</h4>`;
                                 detailsHtml += formatTextAsHtml(hadithData.hadith_text);
                                 const DDetails = document.getElementById("details");
-                            DDetails.style.display = "block";  // Show the div
-                            $("#details").html(detailsHtml);
+                                DDetails.style.display = "block";  // Show the div
+                                $("#details").html(detailsHtml);
                             }
                         }
                     });
@@ -345,7 +344,7 @@
                         .replace(/(\⌈.*?\⌉)/g, '<span class="footnotehadith">$1</span>')
                         .replace(/^\s*(.+?)(\s*(ههه|ووو|ززز|ددد))\s*$/gm, '<span class="laughing-title">$1</span>')
                         .replace(/à\s*\n?([\s\S]*)/, '<span class="footnote">$1</span>');
-                         // If a highlight word exists, apply highlighting
+                    // If a highlight word exists, apply highlighting
                     if (highlight) {
 
                         let highlightRegex = new RegExp(`(${highlight})`, "gi");
@@ -528,32 +527,32 @@
                 }
                 const detailsSection = document.getElementById("details");
                 async function scrollToDetails() {
-        // انتظار حتى يتم تحديث الـ div باستخدام MutationObserver
-        await waitForDetailsUpdate(detailsSection);
-        
-        if (detailsSection) {
-            window.scrollTo({
-                top: detailsSection.offsetTop, 
-                behavior: "smooth"
-            });
-        }
-    }
-    function waitForDetailsUpdate(element) {
-        return new Promise(resolve => {
-            const observer = new MutationObserver(() => {
-                observer.disconnect();
-                resolve();
-            });
+                    // انتظار حتى يتم تحديث الـ div باستخدام MutationObserver
+                    await waitForDetailsUpdate(detailsSection);
 
-            observer.observe(element, { childList: true, subtree: true });
+                    if (detailsSection) {
+                        window.scrollTo({
+                            top: detailsSection.offsetTop,
+                            behavior: "smooth"
+                        });
+                    }
+                }
+                function waitForDetailsUpdate(element) {
+                    return new Promise(resolve => {
+                        const observer = new MutationObserver(() => {
+                            observer.disconnect();
+                            resolve();
+                        });
 
-            // تعيين مهلة احتياطية لتجنب التعليق في حالة عدم التحديث
-            setTimeout(() => {
-                observer.disconnect();
-                resolve();
-            }, 500);
-        });
-    }
+                        observer.observe(element, { childList: true, subtree: true });
+
+                        // تعيين مهلة احتياطية لتجنب التعليق في حالة عدم التحديث
+                        setTimeout(() => {
+                            observer.disconnect();
+                            resolve();
+                        }, 500);
+                    });
+                }
             });
             function onPageLoad() {
                 urlParams = new URLSearchParams(window.location.search);

@@ -956,27 +956,6 @@ h3 {
 
     margin: auto; /* يجعل المحتوى في المنتصف */
 }
-#goTopBtn {
-    position: fixed;
-    bottom: 16px;
-    left: 16px; /* تغيير من right إلى left */
-    z-index: 99;
-    background-color: #6d4c1b;
-    color: white;
-    border: none;
-    outline: none;
-    padding: 8px 10px; /* أصغر حجمًا */
-    border-radius: 50%;
-    font-size: 16px;
-    cursor: pointer;
-    box-shadow: 0 2px 6px rgba(0,0,0,0.25);
-    transition: all 0.3s ease;
-    display: none;
-}
-
-#goTopBtn:hover {
-    background-color: #a07045;
-}
 
 /* 🌟 تحسينات خاصة للهواتف */
 @media (max-width: 768px) {

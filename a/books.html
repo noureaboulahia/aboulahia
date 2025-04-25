@@ -232,8 +232,8 @@
                     let formattedText = text.replace(/(\S+)\s*سسس\s*:/g, '<span class="custom-label">$1:</span>');
 
                     // تعديل "للمطالعة" لتحويل الرابط إلى "هنا" مع إزالة المسافات الزائدة
-                    formattedText = formattedText.replace(/<span class="custom-label">للمطالعة:<\/span>\s*([\S\s]*?)\s*\.?\s*html/g,
-                        '<span class="custom-label">للمطالعة:</span> <a href="../$1.html" class="custom-link">هنا</a>');
+                    formattedText = formattedText.replace(/<span class="custom-label">تحميل:<\/span>\s*([\S\s]*?)\s*\.?\s*pdf/g,
+                        '<span class="custom-label">تحميل:</span> <a href="$1.pdf" class="custom-link">هنا</a>');
                     formattedText = formattedText.replace(/<span class="custom-label">الغلاف:<\/span>\s*([\S\s]*?)\s*\.?\s*jpg/g, '');
                     return `
         <div class="custom-container">
