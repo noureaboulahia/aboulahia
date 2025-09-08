@@ -1,365 +1,243 @@
-			body { direction: rtl;
-background-color: #D4D4D4;
-line-height: 2;
-text-align: center; 
-font-family:Calibri; font-size:11pt }
-			.aaa1 { margin-top:12pt; margin-bottom:12pt; text-indent:28.35pt; text-align:center; page-break-before:always; line-height:normal; widows:0; orphans:0; font-family:Calibri; font-size:20pt; color:#ff0000 }
-			.aaac { margin-bottom:0pt; text-indent:28.35pt; text-align:justify; line-height:normal; widows:0; orphans:0; font-family:'Traditional Arabic'; font-size:16pt; font-weight:bold }
-      .a2 { margin-bottom:0pt; text-indent:28.35pt; text-align:justify; line-height:normal; widows:0; orphans:0; font-family:'Traditional Arabic'; font-size:16pt; font-weight:bold; color:darkred; }
-			.aaav { margin-bottom:0pt; text-indent:14.2pt; text-align:justify; line-height:normal; widows:0; orphans:0; font-family:mylotus; font-size:10pt; font-weight:bold }
-		
-			.aavvv { margin-bottom:0pt; text-indent:28.35pt; text-align:center; line-height:normal; widows:0; orphans:0; font-family:'Traditional Arabic'; font-size:11pt; font-weight:bold; color:#eb430f; }
-			
-			span.FollowedHyperlink { text-decoration:underline; color:#954f72 }
-			
-			span.aaaahamich { font-family:'Traditional Arabic'; font-size:10pt; font-weight:bold; color:#833c0b }
-			hr {clear:both; color: #221122;}
-.aaaahamich { font-family:'Traditional Arabic'; font-size:10pt; font-weight:bold; color:#833c0b; text-align:right;}
-p {margin: 0px;}
-.title {color: #800000;}
-.footnote, .PageHead {font: 14pt "Simplified Arabic"; color: #464646;}
-.PageHead {font-style: normal}
-.PartName {float:right;}
-.PageNumber {float:left;}
-
-.Main {text-align:right; margin: 0 auto; max-width: 780px;}
-
-.PageText
-{
-padding: 20px;
-text-align: justify;
-background-color: #fefbe7;
-margin-top: 20px;
-padding: 40px 60px 40px 60px;
-border: solid 1px gray;
-border-right-width: 4px;
-border-bottom-width: 4px;
+/* إعدادات عامة للصفحة */
+body {
+    direction: rtl;
+    background-color: #F9F9F5; /* خلفية ناعمة */
+    line-height: 1.8;
+    text-align: justify;
+    font-family: 'Traditional Arabic', Arial, sans-serif;
+    font-size: 16px;
+    margin: 20px; /* هوامش للصفحة */
+    padding: 0;
+    color: #333333; 
 }
 
-Table
-{
-background-color: #800000;
-width: 90%;
+/* إطار للمجموعات من نفس النوع */
+.wrapper-aaaahamich {
+    padding: 15px 20px;
+    background-color: #FFF8F0;
+    border-left: 5px solid #A0522D; /* حدود واضحة */
+    border-radius: 8px;
+    box-shadow: 2px 2px 5px rgba(0,0,0,0.15);
+    margin-bottom: 16px;
 }
 
-TD {background-color: #fefbe7; padding: 0px 10px 0px 10px; vertical-align:middle;} 
-TH {background-color: #e3e1cf; padding: 0px 10px 0px 10px; text-align:center; vertical-align:middle;}
+.wrapper-aaac {
+    padding: 15px 20px;
+    background-color: #FDFDF5;
+    border: 2px solid #C0C0C0; /* حدود أكثر وضوحًا */
+    border-radius: 8px;
+    box-shadow: 2px 2px 5px rgba(0,0,0,0.1);
+    margin-bottom: 16px;
 }
 
-@media print
-{
-.Main {width:650px;}
-.PageText
-
-{
-page-break-before:always;
-border-width:0px;
-margin:0px;
-padding:1px;
+/* لا نطبق حدود إضافية على الفقرات الفردية داخل الـdiv */
+.wrapper-aaaahamich p, .wrapper-aaac p {
+    border: none;
+    margin: 4px 0;
+    padding: 0;
 }
 
-}
-@media screen and (max-width: 580px) {
-  .PageText {
-   padding: 17px 20px 17px 20px !important;
-  }
-}
-body { 
-  margin: 0;
-  font-family: "Lato", sans-serif;
-  font-family: Arial, Helvetica, sans-serif;
+/* الفقرات */
+p { margin: 0 0 14px 0; }
+
+/* العناوين */
+.aaa1 {
+    margin: 25px 0 18px 0;
+    text-align: center;
+    page-break-before: always;
+    font-family: 'Traditional Arabic', Calibri;
+    font-size: 22pt;
+    color: #B22222;
+    font-weight: bold;
 }
 
-.float{
-	position:fixed;
-	width:60px;
-	height:60px;
-	bottom:40px;
-	left:40px;
-	background-color:#922B21 ;
-	color:#FFF;
-	border-radius:50px;
-	text-align:center;
-	box-shadow: 2px 2px 3px #999;
+.a2 {
+    margin: 14px 0 12px 0;
+    text-indent: 28.35pt;
+    text-align: justify;
+    font-family: 'Traditional Arabic';
+    font-size: 17pt;
+    color: #8B0000;
+    font-weight: bold;
 }
 
-.my-float{
-	margin-top:22px;
-}
-.sidenav {
-  height: 100%;
-  width: 0;
-  position: fixed;
-  z-index: 1;
-  top: 0;
-  left: 0;
-  background-color: #f1f1f1;
-  overflow-x: hidden;
-  transition: 0.5s;
-  padding-top: 10px;
+/* النصوص الأساسية */
+.aaac {
+    margin-bottom: 12px;
+    text-indent: 28.35pt;
+    text-align: justify;
+    line-height: 1.6;
+    font-family: 'Traditional Arabic';
+    font-size: 16pt;
+    font-weight: bold; /* تغليظ */
+    color: #333333;
 }
 
-.sidenav a {
-  padding: 8px 8px 8px 32px;
-  text-decoration: none;
-  font-size: 15px;
-  color: #17202A !important;
-  font-style: normal !important;
-  text-decoration:none !important;
-  text-align: right;
-  display: block;
-  transition: 0.3s;
+/* الحواشي المحوّلة */
+.aaaahamich {
+    font-family: 'Traditional Arabic';
+    font-size: 13pt;
+    font-weight: bold;
+    color: #A0522D;
+    text-indent: 14.2pt;
+    text-align: justify;
+    line-height: 1.5;
 }
 
-.sidenav a:hover {
-  color: #f1f1f1;
-}
-a#jouz {
-  padding: -3px -3px -3px -14px;
-  text-decoration: none;
-  font-size: 15px;
-  color: #17202A !important;
-  font-style: normal !important;
-  text-decoration:none !important;
-  text-align: right;
-  display: inline;
-  transition: 0.3s;
+/* فقرات فرعية */
+.aaav, .aavvv {
+    margin-bottom: 8px;
+    text-indent: 14.2pt;
+    text-align: justify;
+    font-size: 11pt;
+    font-weight: bold;
+    font-family: 'Traditional Arabic';
+    color: #4B4B4B;
 }
 
-a#jouz:hover {
-  color: #f1f1f1;
-}
-.sidenav a#jouz {
-  padding: 0px 0px 0px 0px;
-  display: inline;
-  
-}
-.sidenav a#jouz:hover {
-  color: #f1f1f1;
-}
-.sidenav span {
-padding: 8px 8px 8px 32px;
-  text-decoration: none;
-  font-size: 15px;
-  color: #17202A !important;
-  font-style: normal !important;
-  text-decoration:none !important;
-  text-align: right;
-  display: block;
-transition: 0.3s;
+/* الروابط */
+span.FollowedHyperlink { text-decoration: underline; color: #6A5ACD; }
+
+/* تباعد الحواشي */
+hr { clear: both; color: #AAA; margin: 14px 0; }
+
+/* الأقسام الرئيسية */
+.Main {
+    text-align: right;
+    margin: 0 auto;
+    max-width: 780px;
+    padding: 10px;
 }
 
-.sidenav .closebtn {
-  position: sticky;
-  top: 0;
-  left: 0px;
-  font-size: 36px;
-text-align: left !important;
+/* صندوق النصوص */
+.PageText {
+    padding: 40px 60px;
+    text-align: justify;
+    background-color: #FFFDF0;
+    margin-top: 20px;
+    border: solid 2px #C0C0C0; /* حدود أوضح */
+    border-right-width: 5px;
+    border-bottom-width: 5px;
+    border-radius: 12px;
+    line-height: 1.7;
+    box-shadow: 2px 2px 8px rgba(0,0,0,0.1);
 }
 
-
-@media screen and (max-height: 450px) {
-  .sidenav {padding-top: 15px;}
-  .sidenav a {font-size: 18px;}
-}
-.sidebar {
-  height: 100%;
-  width: 0;
-  position: fixed;
-  z-index: 1;
-  overflow-x: hidden;
-  top: 0;
-  right: 0;
-  background-color: #ECF0F1  ;
-  transition: 0.5s;
-  padding-top: 10px;
+/* الجداول */
+table {
+    background-color: #800000;
+    width: 90%;
+    border-collapse: collapse;
+    border-radius: 6px;
+    overflow: hidden;
 }
 
-.sidebar a {
-  padding: 8px 8px 8px 32px;
-  text-decoration: none;
-  font-size: 15px;
-  color: #17202A !important;
-  font-style: normal !important;
-  text-decoration:none !important;
-  text-align: right;
-  display: block;
-  transition: 0.3s;
+td {
+    background-color: #FFFDF0;
+    padding: 10px;
+    vertical-align: middle;
 }
 
-.sidebar a:hover {
-  color: #f1f1f1;
+th {
+    background-color: #E3E1CF;
+    padding: 10px;
+    text-align: center;
+    vertical-align: middle;
 }
 
-.sidebar .closebtn {
-  position: sticky;
-  top: 0;
-  right: 10px;
-  font-size: 36px;
-  margin-right: 170px;
-}
+/* الروابط */
+a { color: #006400; text-decoration: none; }
+a:hover { color: #004d00; text-decoration: underline; }
 
-.openbtn {
-  font-size: 20px;
-  cursor: pointer;
-  background-color: #111;
-  color: white;
-  padding: 10px 15px;
-  border: none;
-}
-
-.openbtn:hover {
-  background-color: #444;
-}
-
-#main {
-  transition: margin-left .5s;
-  padding: 16px;
-  
-}
-
-/* On smaller screens, where height is less than 450px, change the style of the sidenav (less padding and a smaller font size) */
-@media screen and (max-height: 450px) {
-  .sidebar {padding-top: 60px;}
-  .sidebar a {font-size: 18px;}
-}
-#navbar {
-  transition: 0.4s;
-  background-color: #333;
-  position: fixed;
-  top: 0;
-  width: 100%;
-  display: block;
-  transition: top 0.3s;
-}
-
-#navbar a {
-  float: right;
-  display: block;
-  color: #f2f2f2;
-  text-align: center;
-  padding: 15px;
-  text-decoration: none;
-  font-size: 17px;
-}
-
-#navbar a:hover {
-  background-color: #ddd;
-  color: black;
-} 
-.topnav {
-	transition: 0.4s;
-  position: fixed;
-  top: 0;
-  width: 100%;
-  display: block;
-  transition: top 0.3s;
-  background-color: #333;
-  overflow: hidden;
-}
-
-/* Style the links inside the navigation bar */
-.topnav a {
-  float: right;
-  display: block;
-  color: #f2f2f2;
-  text-align: center;
-  padding: 14px 16px;
-  text-decoration: none;
-  font-size: 17px;
- 
-}
-
-/* Change the color of links on hover */
-.topnav a:hover {
-  background-color: #ddd;
-  color: black;
-}
-
-/* Add an active class to highlight the current page */
-.topnav a.active {
-	
-  background-color: #4CAF50;
-  color: white;
-}
-.topnav a.lefte {
-float:left;
-}
-
-/* Hide the link that should open and close the topnav on small screens */
-.topnav .icon {
-	
-  display: none;
-}
-/* When the screen is less than 600 pixels wide, hide all links, except for the first one ("Home"). Show the link that contains should open and close the topnav (.icon) */
-@media screen and (max-width: 600px) {
-  .topnav a:not(:first-child) {display: none;}
-  .topnav a.icon {
-	 
-    float: left;
-    display: block;
-  }
-}
-
-/* The "responsive" class is added to the topnav with JavaScript when the user clicks on the icon. This class makes the topnav look good on small screens (display the links vertically instead of horizontally) */
-@media screen and (max-width: 600px) {
-  .topnav.responsive { position: fixed;
-  z-index: 1;
-  overflow-x: hidden;}
-  .topnav.responsive a.icon {
-    position: absolute;
-    left: 0;
+/* القوائم الجانبية */
+.sidebar, .sidenav {
+    height: 100%;
+    width: 0;
+    position: fixed;
+    z-index: 1000;
     top: 0;
-  }
-  .topnav.responsive a {
-	 
-    float: none;
+    transition: 0.5s;
+    padding-top: 10px;
+    overflow-x: hidden;
+}
+.sidebar { right: 0; background-color: #ECF0F1; }
+.sidenav { left: 0; background-color: #F1F1F1; }
+
+.sidebar a, .sidenav a {
+    padding: 8px 32px;
+    font-size: 15px;
+    color: #17202A;
+    text-align: right;
     display: block;
-    text-align: right !important;
-  }
-  .topnav a.lefte {
-float:right;
+    transition: 0.3s;
 }
+.sidebar a:hover, .sidenav a:hover { color: #FFF; background-color: #922B21; }
+
+/* أزرار الفهرس والجزء */
+.top-menu {
+    position: sticky;
+    top: 0;
+    margin: 15px;
+    text-align: right;
+    background-color: #F0FFF0;
+    padding: 10px 15px;
+    border: 2px solid #228B22;
+    border-radius: 10px;
+    width: fit-content;
+    z-index: 1002;
 }
-#myInput {
-  background-image: url('/css/searchicon.png');
-  background-position: 10px 12px;
-  background-repeat: no-repeat;
-  width: 100%;
-  font-size: 16px;
-  padding: 12px 20px 12px 40px;
-  border: 1px solid #ddd;
-  margin-bottom: 12px;
+.top-menu p {
+    margin: 0;
+    font-family: 'Traditional Arabic';
+    font-size: 14pt;
+    font-weight: bold;
+    color: #228B22;
 }
-
-#myUL {
-  list-style-type: none;
-  padding: 0;
-  margin: 0;
-  display: none;
-  width: 250px;
+.top-menu select, .top-menu button, .top-menu a.download-btn {
+    font-family: 'Traditional Arabic';
+    font-size: 14pt;
+    font-weight: bold;
+    padding: 6px 16px;
+    border-radius: 8px;
+    border: 2px solid #228B22;
+    cursor: pointer;
 }
+.top-menu select { background-color: #F0FFF0; color: #228B22; }
+.top-menu select:hover { background-color: #E0FFE0; }
+.top-menu button { background-color: #F0FFF0; color: #228B22; }
+.top-menu button:hover { background-color: #E0FFE0; }
+.top-menu a.download-btn { color: white; background-color: #228B22; text-decoration: none; }
+.top-menu a.download-btn:hover { background-color: #006400; }
 
-#myUL li a {
-
-  border: 1px solid #ddd;
-  margin-top: -1px; /* Prevent double borders */
-  background-color: #f6f6f6;
-  padding: 12px;
-  text-decoration: none;
-  font-size: 18px;
-  color: black;
-  display: block;
-  
-  
-
+/* القوائم المنسدلة للفهرس */
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #FFFFFF;
+    min-width: 250px;
+    border: 2px solid #AAA;
+    border-radius: 8px;
+    max-height: 400px;
+    overflow-y: auto;
+    text-align: right;
 }
-#listbooks {
-
-  display: block;
-  
+.dropdown:hover .dropdown-content { display: block; }
+.dropdown-content a {
+    color: #17202A;
+    padding: 8px 14px;
+    font-family: 'Traditional Arabic';
+    font-size: 14pt;
+    display: block;
+    text-decoration: none;
 }
+.dropdown-content a:hover { background-color: #E0FFE0; }
 
+/* تحسين المظهر على الهواتف */
+@media screen and (max-width: 580px) {
+    .PageText { padding: 20px 25px !important; }
+    .top-menu { font-size: 12pt; }
+    .dropdown-content { min-width: 200px; font-size: 13pt; }
+}
 
 
 /*************************************/
