@@ -1,0 +1,17 @@
+.mytoc-root, .mytoc-submenu {
+  list-style: none;
+  padding-left: 10px;
+  margin: 0;
+}
+.mytoc-root > li {
+  margin-bottom: 5px;
+}
+.mytoc-submenu {
+  display: none; /* مخفي افتراضيًا */
+}
+.mytoc-toggle {
+  cursor: pointer;
+  margin-left: 5px;
+  color: #0ff;
+  font-weight: bold;
+}

@@ -14,6 +14,7 @@ font-family:Calibri; font-size:11pt }
 			
 			span.aaaahamich { font-family:'Traditional Arabic'; font-size:10pt; font-weight:bold; color:#833c0b }
 			hr {clear:both; color: #221122;}
+.aaaahamich { font-family:'Traditional Arabic'; font-size:10pt; font-weight:bold; color:#833c0b; text-align:right;}
 p {margin: 0px;}
 .title {color: #800000;}
 .footnote, .PageHead {font: 14pt "Simplified Arabic"; color: #464646;}
@@ -607,3 +608,30 @@ hr{border:0;border-top:1px solid #eee;margin:20px 0}
 .w3-border-pale-yellow,.w3-hover-border-pale-yellow:hover{border-color:#ffffcc!important}.w3-border-pale-blue,.w3-hover-border-pale-blue:hover{border-color:#e7ffff!important}
 
 
+.sidebar {
+    height: 100%;
+    width: 0;
+    position: fixed;
+    z-index: 1000;
+    top: 0;
+    left: 0;   /* 👈 بدل right: 0 إلى left: 0 */
+    background-color: #fff; /* 👈 الخلفية بيضاء */
+    overflow-x: hidden;
+    transition: 0.4s;
+    padding-top: 60px;
+}
+.sidebar a {
+    padding: 8px 16px;
+    text-decoration: none;
+    font-size: 18px;
+    color: #000;   /* 👈 النص أسود */
+    display: block;
+    transition: 0.2s;
+}
+.sidebar a:hover {
+    background: #e0e0e0; /* 👈 رمادي فاتح عند التمرير */
+}
+.child {
+    font-size: 16px;
+    color: #333;   /* 👈 أسود أفتح للفرعيات */
+}

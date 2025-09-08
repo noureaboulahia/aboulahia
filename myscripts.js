@@ -304,3 +304,12 @@ function removehamza(book){
 	return result;
 }
 
+function toggleSubitems(event, pid) {
+  event.preventDefault();
+  var sub = document.getElementById("sub_" + pid);
+  if (sub.style.display === "block") {
+    sub.style.display = "none";
+  } else {
+    sub.style.display = "block";
+  }
+}
