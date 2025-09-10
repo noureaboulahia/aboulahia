@@ -67,26 +67,57 @@
 }
 .dropdown-content a:hover { background-color: #e5ffe5; }
 .dropdown:hover .dropdown-content { display: block; }
-.toc-group > a { cursor: pointer; font-weight: bold; display: flex; align-items: center; }
-.toc-toggle { margin-left: 5px; font-size: 12px; }
-.toc-sub { display: none; margin-right: 15px; overflow: hidden; }
-.toc-sub a { font-weight: normal; font-size: 13pt; }
+
+/* الفهرس التفاعلي */
+.toc-group > a {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    font-weight: bold;
+    text-decoration: none;
+    color: darkgreen;
+}
+.toc-toggle {
+    margin-left: 5px;
+    font-size: 12px;
+}
+.toc-sub {
+    display: none;
+    margin-right: 20px;
+}
+.toc-sub a {
+    display: block;
+    font-weight: normal;
+    font-size: 13pt;
+    color: black;
+    text-decoration: none;
+}
+.toc-sub a:hover {
+    background-color: #e5ffe5;
+}
 
 /* تلوين الأرقام والحروف والآيات */
 .colored-number { color: #EE0000; font-weight:bold; }
 .quranic-text { color: #15460E; font-weight:bold; }
 </style>
 <script>
-function toggleSub(el) {
-  let sub = el.nextElementSibling;
-  let arrow = el.querySelector(".toc-toggle");
-  if (sub.style.display === "block") {
-    sub.style.display = "none";
-    arrow.textContent = "▶";
-  } else {
-    sub.style.display = "block";
-    arrow.textContent = "▼";
-  }
+function toggleSub(el, targetId) {
+    let sub = el.nextElementSibling;
+    let arrow = el.querySelector(".toc-toggle");
+    if(sub.style.display === "block") {
+        sub.style.display = "none";
+        arrow.textContent = "▶";
+    } else {
+        sub.style.display = "block";
+        arrow.textContent = "▼";
+    }
+    // الانتقال للنص المرتبط
+    if(targetId) {
+        let anchor = document.getElementById(targetId);
+        if(anchor){
+            anchor.scrollIntoView({behavior:'smooth'});
+        }
+    }
 }
 </script>
 </head>
@@ -100,13 +131,13 @@ function toggleSub(el) {
       <button class="dropbtn">📖 الفهرس</button>
       <div class="dropdown-content">
 <div class="toc-group">
-  <a onclick="toggleSub(this)"><span class="toc-toggle">▶</span> المقدمة</a>
+  <a onclick="toggleSub(this, '_Toc53774491')"><span class="toc-toggle">▶</span> المقدمة</a>
   <div class="toc-sub">
 </div>
 </div>
 
 <div class="toc-group">
-  <a onclick="toggleSub(this)"><span class="toc-toggle">▶</span> أولا ـ المسيرة القرآنية.. وأسس التزكية</a>
+  <a onclick="toggleSub(this, '_Toc53774492')"><span class="toc-toggle">▶</span> أولا ـ المسيرة القرآنية.. وأسس التزكية</a>
   <div class="toc-sub">
 <a href="c156.html#_Toc53774493">1. التزكية والقرآن:</a>
 <a href="c156.html#_Toc53774494">أ. التزكية والشخصية:</a>
@@ -133,7 +164,7 @@ function toggleSub(el) {
 </div>
 
 <div class="toc-group">
-  <a onclick="toggleSub(this)"><span class="toc-toggle">▶</span> ثانيا ـ المسيرة القرآنية.. ووسائل التزكية</a>
+  <a onclick="toggleSub(this, '_Toc53774514')"><span class="toc-toggle">▶</span> ثانيا ـ المسيرة القرآنية.. ووسائل التزكية</a>
   <div class="toc-sub">
 <a href="c156.html#_Toc53774515">1. التوحيد والتزكية:</a>
 <a href="c156.html#_Toc53774516">أ. التوحيد والتنزيه:</a>
@@ -184,7 +215,7 @@ function toggleSub(el) {
 </div>
 
 <div class="toc-group">
-  <a onclick="toggleSub(this)"><span class="toc-toggle">▶</span> ثالثا ـ المسيرة القرآنية.. وثمار التزكية</a>
+  <a onclick="toggleSub(this, '_Toc53774560')"><span class="toc-toggle">▶</span> ثالثا ـ المسيرة القرآنية.. وثمار التزكية</a>
   <div class="toc-sub">
 <a href="c156.html#_Toc53774561">1. التوبة والتزكية:</a>
 <a href="c156.html#_Toc53774562">أ. التوبة والنجاة:</a>
@@ -2550,4 +2581,4 @@ function toggleSub(el) {
     <button onclick="window.scrollTo({top:0, behavior:'smooth'})" style="padding:6px 10px; border-radius:5px; border:1px solid darkgreen; background:#f0fff0; font-weight:bold; cursor:pointer;">⬆ الأعلى</button>
     <button onclick="window.scrollTo({top:document.body.scrollHeight, behavior:'smooth'})" style="padding:6px 10px; border-radius:5px; border:1px solid darkgreen; background:#f0fff0; font-weight:bold; cursor:pointer;">⬇ الأسفل</button>
     </div>
-    </body></html></body></html>
+    </body></html>
