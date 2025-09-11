@@ -210,22 +210,105 @@ function myFunction() {
     x.className = "topnav";
   }
 }
-/*
-// تعطيل مؤقت لكود النسخ وإضافة الرابط
-document.addEventListener('copy', (event) => {
-  const pagelink = `\n\n... لمواصلة المطالعة اضغط على الرابط: ${document.location.href}`;
-  event.clipboardData.setData('text', document.getSelection() + pagelink);
-  event.preventDefault();
-});
 
-function addLink() {
-  //Get the selected text and append the extra info
-  var selection = window.getSelection(),
-      pagelink = '<br /><br />  المصدر:   ' + '  ' +document.location.href + '   ', // Change this text
-      copytext = selection + pagelink,
-      newdiv = document.createElement('div');
-}
-*/
+// myscript.js
+// عند النسخ يضاف تلقائياً: رابط الصفحة، رابط التحميل من archive.org (إن وُجد)، ورابط تطبيق جوجل بلاي
+// ضع <script src="myscript.js"></script> قبل </body> في صفحاتك
+
+(function () {
+  'use strict';
+
+  // رابط التطبيق الثابت
+  const APP_LINK = 'https://play.google.com/store/apps/details?id=com.aboulahia.www&hl=ar';
+
+  // دالة مساعدة للحصول على محتوى HTML من التحديد
+  function getSelectionHtml() {
+    const sel = window.getSelection();
+    if (!sel || sel.rangeCount === 0) return '';
+    const container = document.createElement('div');
+    for (let i = 0; i < sel.rangeCount; i++) {
+      container.appendChild(sel.getRangeAt(i).cloneContents());
+    }
+    return container.innerHTML;
+  }
+
+  document.addEventListener('copy', function (event) {
+    try {
+      // اختيار المستخدم
+      const selection = window.getSelection();
+      let selectedText = selection ? selection.toString() : '';
+      let selectedHtml = getSelectionHtml() || selectedText;
+
+      // إيجاد رابط الأرشيف إن وُجد في الصفحة
+      const archiveAnchor = document.querySelector('a[href*="archive.org"]');
+      const archiveHref = archiveAnchor ? archiveAnchor.href : '';
+
+      // نصوص الروابط التي ستضاف
+      const pageLinkText = '\n\nلمطالعة الكتاب من الموقع: ' + document.location.href;
+      const archiveText = archiveHref ? '\n\nلتحميل الكتاب: ' + archiveHref : '';
+      const appText = '\n\nلمطالعة الكتاب من التطبيق: ' + APP_LINK;
+
+      // تحاشٍ لإضافة روابط مكررة إذا كانت موجودة بالفعل في النص المحدد
+      const alreadyHasPageLink = selectedText.includes(document.location.href);
+      const alreadyHasArchive = archiveHref && selectedText.includes(archiveHref);
+      const alreadyHasApp = /play\.google\.com/.test(selectedText);
+
+      // إعداد نص الـ plain
+      let plainOut = selectedText;
+      if (!alreadyHasPageLink) plainOut += pageLinkText;
+      if (archiveHref && !alreadyHasArchive) plainOut += archiveText;
+      if (!alreadyHasApp) plainOut += appText;
+
+      // إعداد نص الـ HTML (جعل الروابط قابلة للنقر عند اللصق في محررات تدعم HTML)
+      // إذا لم يكن لدينا HTML من التحديد نستخدم النص العادي مع تحويل بسيط
+      let htmlOut = '';
+      const pageLinkHtml = `<p>لمطالعة الكتاب من الموقع: <a href="${document.location.href}">${document.location.href}</a></p>`;
+      const archiveHtml = archiveHref ? `<p>لتحميل الكتاب: <a href="${archiveHref}">${archiveHref}</a></p>` : '';
+      const appHtml = `<p>لمطالعة الكتاب من التطبيق: <a href="${APP_LINK}">${APP_LINK}</a></p>`;
+
+      // إذا كان التحديد يحتوي HTML نلحقه، وإلا نحول النص لعُنصر <p>
+      if (selectedHtml && selectedHtml.trim() !== '') {
+        htmlOut = selectedHtml;
+        if (!alreadyHasPageLink) htmlOut += pageLinkHtml;
+        if (archiveHref && !alreadyHasArchive) htmlOut += archiveHtml;
+        if (!alreadyHasApp) htmlOut += appHtml;
+      } else {
+        // لا توجد HTML، ننشئ واحداً بسيطاً
+        htmlOut = `<p>${escapeHtml(selectedText)}</p>`;
+        if (!alreadyHasPageLink) htmlOut += pageLinkHtml;
+        if (archiveHref && !alreadyHasArchive) htmlOut += archiveHtml;
+        if (!alreadyHasApp) htmlOut += appHtml;
+      }
+
+      // وضع البيانات في الحافظة (دعم text/plain و text/html)
+      if (event.clipboardData) {
+        event.clipboardData.setData('text/plain', plainOut);
+        event.clipboardData.setData('text/html', htmlOut);
+        event.preventDefault();
+      } else if (window.clipboardData && window.clipboardData.setData) {
+        // دعم IE القديم
+        window.clipboardData.setData('Text', plainOut);
+        event.preventDefault();
+      }
+    } catch (err) {
+      // لا نكسر سلوك النسخ الأساسي إذا وقع خطأ
+      console.error('خطأ في معالج النسخ:', err);
+    }
+  }, true);
+
+  // دالة بسيطة للهروب من أحرف HTML عند تحويل النص إلى HTML
+  function escapeHtml(str) {
+    if (!str) return '';
+    return str.replace(/&/g, '&amp;')
+      .replace(/</g, '&lt;')
+      .replace(/>/g, '&gt;')
+      .replace(/"/g, '&quot;')
+      .replace(/'/g, '&#039;')
+      .replace(/\n/g, '<br>');
+  }
+
+})();
+
 
 
 

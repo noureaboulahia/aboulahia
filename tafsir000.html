@@ -4,124 +4,19 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" href="mystyle.css">
-<title>tafsir000.docx</title>
-<style>
-/* القائمة المنسدلة للفهرس */
-.top-menu {
-  position: sticky;
-  top: 0;
-  margin: 10px;
-  text-align: right;
-  background-color: #f5fff5;
-  padding: 8px 12px;
-  border: 1px solid darkgreen;
-  border-radius: 10px;
-  width: fit-content;
-  z-index: 1002;
-}
-.top-menu p {
-  margin: 0;
-  font-family:'Traditional Arabic';
-  font-size: 14pt;
-  font-weight:bold;
-  color: darkgreen;
-  display: flex;
-  align-items: center;
-  gap: 8px;
-}
-.dropdown {
-  position: relative;
-  display: inline-block;
-}
-.dropdown button {
-  font-family:'Traditional Arabic';
-  font-size: 14pt;
-  font-weight: bold;
-  padding: 4px 12px;
-  border-radius: 8px;
-  border: 2px solid darkgreen;
-  background-color: #f0fff0;
-  color: darkgreen;
-  cursor: pointer;
-}
-.dropdown button:hover { background-color: #e5ffe5; }
-.dropdown-content {
-  display: none;
-  position: absolute;
-  background-color: #ffffff;
-  min-width: 250px;
-  border: 1px solid #ccc;
-  border-radius: 8px;
-  z-index: 1003;
-  max-height: 400px;
-  overflow-y: auto;
-  text-align: right;
-}
-.dropdown-content a {
-  color: black;
-  padding: 6px 12px;
-  text-decoration: none;
-  display: block;
-  font-family:'Traditional Arabic';
-  font-size: 14pt;
-}
-.dropdown-content a:hover { background-color: #e5ffe5; }
-.dropdown:hover .dropdown-content { display: block; }
-
-/* الفهرس التفاعلي */
-.toc-group > a {
-    display: flex;
-    align-items: center;
-    cursor: pointer;
-    font-weight: bold;
-    text-decoration: none;
-    color: darkgreen;
-}
-.toc-toggle {
-    margin-left: 5px;
-    font-size: 12px;
-}
-.toc-sub {
-    display: none;
-    margin-right: 20px;
-}
-.toc-sub a {
-    display: block;
-    font-weight: normal;
-    font-size: 13pt;
-    color: black;
-    text-decoration: none;
-}
-.toc-sub a:hover {
-    background-color: #e5ffe5;
-}
-
-/* تلوين الأرقام والحروف والآيات */
-.colored-number { color: #EE0000; font-weight:bold; }
-.quranic-text { color: #15460E; font-weight:bold; }
-</style>
-<script>
-function toggleSub(el, targetId) {
-    let sub = el.nextElementSibling;
-    let arrow = el.querySelector(".toc-toggle");
-    if(sub.style.display === "block") {
-        sub.style.display = "none";
-        arrow.textContent = "▶";
-    } else {
-        sub.style.display = "block";
-        arrow.textContent = "▼";
-    }
-    // الانتقال للنص المرتبط
-    if(targetId) {
-        let anchor = document.getElementById(targetId);
-        if(anchor){
-            anchor.scrollIntoView({behavior:'smooth'});
-        }
-    }
-}
-</script>
+<title>المفسّرون والتفسير التحليلي للقرآن</title>
+<script src="myscripts.js"></script>
+...
 </head>
 <body>
+
+<!-- زر التعريف بالكتاب -->
+<div class="top-menu">
+  <p>
+    <a href="https://www.aboulahia.com/tafsir000.html" class="download-btn">📥 للتعريف بالكتاب وتحميله</a>
+  </p>
+</div>
+
 <!-- زر البحث -->
 <div class="top-menu">
   <p>
@@ -239,6 +134,7 @@ function toggleSub(el, targetId) {
     </select>
   </p>
 </div>
+
 <!-- زر الفهرس -->
 <div class="top-menu">
   <p>
@@ -267,25 +163,12 @@ function toggleSub(el, targetId) {
     </div>
   </p>
 </div>
-
-<div style="direction:rtl; text-align:right; display:flex; margin:20px;">
-  <div style="display:flex; background:#fafafa; border:1px solid #ddd; border-radius:15px; box-shadow:0 4px 8px rgba(0,0,0,0.1); padding:15px; max-width:750px; margin-left:auto;">
-    <div style="flex:0 0 auto; margin-left:20px;">
-      <img src="c160.jpg" width="200" alt="غلاف الكتاب" style="border-radius:10px; border:1px solid #ccc;" />
-    </div>
-    <div style="flex:1; font-family:'Traditional Arabic'; line-height:1.8; font-size:16px;">
-      <p class="aaac"><span style="color:#d40000; font-weight:bold;">📖 الكتاب:</span>المفسّرون والتفسير التحليلي للقرآن </p>
-      <p class="aaac"><span style="color:#d40000; font-weight:bold;">📝 الوصف:</span>عرض وتهذيب لما ورد في تفاسير المدارس الإسلامية حول المعاني القرآنية</p>
-      <p class="aaac"><span style="color:#d40000; font-weight:bold;">📚 السلسلة:</span> المفسّرون والقرآن</p>
-      <p class="aaac"><span style="color:#d40000; font-weight:bold;">✍ المؤلف:</span> أ.د. نور الدين أبو لحية</p>
-      <p class="aaac"><span style="color:#d40000; font-weight:bold;">🏢 الناشر:</span> دار الأنوار للنشر والتوزيع</p>
-      <p class="aaac"><span style="color:#d40000; font-weight:bold;">📅 الطبعة:</span> الأولى</p>
-      <p class="aaac"><span style="color:#d40000; font-weight:bold;">📥 تحميل:</span> 
-        <a href="https://archive.org/compress/NOURETAFSIR1/formats=TEXT%20PDF&file=/NOURETAFSIR1.zip" style="color:#0066cc; text-decoration:none; font-weight:bold;">هنا</a>
-      </p>
-    </div>
-  </div>
+<p class="Normal">الوصف سسس: رواية حول قضايا الصراع والسلام وعلاقتها بالإسلام</p>
+<p class="Normal">المؤلف سسس: <span class="colored-number">أ.</span>د. نور الدين أبو لحية</p>
+<div class="wrapper-aaac">
+<p class="aaac">تحميل سسس: https://archive.org/compress/NOURETAFSIR1/formats=TEXT%20PDF&file=/NOURETAFSIR1.zip</p>
 </div>
+<p class="Normal">الغلاف سسس: c160.jpg</p>
 <p class="aaa1" id="_Toc53774491">مقدمة السلسلة:</p>
 <div class="wrapper-aaac">
 <p class="aaac">تهدف هذه السلسلة المعنونة بـ [المفسّرون.. والقرآن] إلى هدفين كبيرين:</p>
@@ -441,9 +324,9 @@ function toggleSub(el, targetId) {
 <p class="aaac"><span class="colored-number">6.</span> الاهتمام بالجوانب الحركية، ومسؤوليات الأمة، وفهم القرآن الكريم من خلال الواقع، وكيفية تطبيقه، ومن هذا الباب اعتمدنا تفسير سيد قطب ومحمد حسين فضل الله، وغيرهما، ممن يهتم بالجوانب الحركية، وخصوصا المعاصرة منها.</p>
 <p class="aaac"><span class="colored-number">7.</span> الاهتمام بالجوانب البيانية واللغوية في القرآن الكريم، باعتبارها توضح مقصوده، وتبين أسرار إعجازه، ولكنا مع ذلك لم نذكر كل ما ورد في تفاصيل لغوية، وخاصة ما يتعلق بالإعراب منها، باعتبار أن الكثير منها نوع من الحشو والاستطراد، ولذلك اكتفينا بذكر ما يفي بالغرض.</p>
 </div>
-    <!-- شريط التنقل للأسفل/للأعلى -->
-    <div style="position: fixed; bottom: 20px; right: 20px; display: flex; flex-direction: column; gap: 5px; z-index: 1005;">
-    <button onclick="window.scrollTo({top:0, behavior:'smooth'})" style="padding:6px 10px; border-radius:5px; border:1px solid darkgreen; background:#f0fff0; font-weight:bold; cursor:pointer;">⬆ الأعلى</button>
-    <button onclick="window.scrollTo({top:document.body.scrollHeight, behavior:'smooth'})" style="padding:6px 10px; border-radius:5px; border:1px solid darkgreen; background:#f0fff0; font-weight:bold; cursor:pointer;">⬇ الأسفل</button>
-    </div>
-    </body></html>
+<!-- شريط التنقل للأسفل/للأعلى -->
+<div style="position: fixed; bottom: 20px; right: 20px; display: flex; flex-direction: column; gap: 5px; z-index: 1005;">
+  <button onclick="window.scrollTo({top:0, behavior:'smooth'})" style="padding:6px 10px; border-radius:5px; border:1px solid darkgreen; background:#f0fff0; font-weight:bold; cursor:pointer;">⬆ الأعلى</button>
+  <button onclick="window.scrollTo({top:document.body.scrollHeight, behavior:'smooth'})" style="padding:6px 10px; border-radius:5px; border:1px solid darkgreen; background:#f0fff0; font-weight:bold; cursor:pointer;">⬇ الأسفل</button>
+</div>
+</body></html>
