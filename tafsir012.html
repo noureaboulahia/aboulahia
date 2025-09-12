@@ -1,36 +1,113 @@
 <!DOCTYPE html>
-<html lang="ar" dir="rtl">
+
+<html dir="rtl" lang="ar">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<link rel="stylesheet" href="mystyle.css">
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1" name="viewport"/>
+<link href="mystyle.css" rel="stylesheet"/>
 <title>المفسّرون والتفسير التحليلي للقرآن</title>
 <script src="myscripts.js"></script>
 ...
+
+<style>
+.dropbtn, .dropbtn-toc {
+  background-color: #4CAF50;
+  color: white;
+  width: 160px;
+  height: 42px;
+  font-size: 15px;
+  border: none;
+  cursor: pointer;
+  border-radius: 6px;
+  text-align: center;
+  line-height: 42px;
+  white-space: nowrap;
+}
+.dropbtn:hover, .dropbtn-toc:hover {background-color: #45a049;}
+.top-toc-buttons {
+  position: fixed;
+  top: 20px;
+  left: 20px;
+  display: flex;
+  gap: 6px;
+  z-index: 1000;
+}
+.dropdown, .dropdown-toc {position: relative; display: inline-block;}
+.dropdown-content, .dropdown-content-toc {
+  display: none;
+  position: absolute;
+  top: 45px; left: 0;
+  background-color: #f9f9f9;
+  min-width: 350px; max-height: 500px;
+  overflow-y: auto;
+  box-shadow: 0px 8px 16px rgba(0,0,0,0.2);
+  padding: 10px;
+  direction: rtl; text-align: right;
+}
+.dropdown-content a, .dropdown-content-toc a {
+  display: block;
+  padding: 4px 6px;
+  text-decoration: none;
+  color: #333;
+}
+.dropdown-content a:hover, .dropdown-content-toc a:hover {background-color: #eee;}
+.show {display:block;}
+.show-toc {display:block;}
+</style>
+<script>
+function toggleDropdown() {
+  document.getElementById("myDropdown").classList.toggle("show");
+}
+function toggleDropdownToc() {
+  document.getElementById("myDropdownToc").classList.toggle("show-toc");
+}
+function filterToc() {
+  var input = document.getElementById("tocSearch");
+  var filter = input.value.toLowerCase();
+  var div = document.getElementById("myDropdownToc");
+  var a = div.getElementsByTagName("a");
+  for (var i = 0; i < a.length; i++) {
+    var txtValue = a[i].textContent || a[i].innerText;
+    if (txtValue.toLowerCase().indexOf(filter) > -1) {
+      a[i].style.display = "";
+    } else {
+      a[i].style.display = "none";
+    }
+  }
+}
+window.onclick = function(event) {
+  // 🔹 تعديل: لا تغلق الفهرس إذا كنت تكتب في مربع البحث
+  if (!event.target.matches('.dropbtn') && 
+      !event.target.matches('.dropbtn-toc') && 
+      !event.target.matches('#tocSearch')) {
+    var dd1 = document.getElementsByClassName("dropdown-content");
+    var dd2 = document.getElementsByClassName("dropdown-content-toc");
+    for (var i = 0; i < dd1.length; i++) {dd1[i].classList.remove('show');}
+    for (var i = 0; i < dd2.length; i++) {dd2[i].classList.remove('show-toc');}
+  }
+}
+</script>
 </head>
 <body>
-
 <!-- زر التعريف بالكتاب -->
 <div class="top-menu">
-  <p>
-    <a href="https://www.aboulahia.com/tafsir000.html" class="download-btn">📥 للتعريف بالكتاب وتحميله</a>
-  </p>
+<p>
+<a class="download-btn" href="https://www.aboulahia.com/tafsir000.html">📥 للتعريف بالكتاب وتحميله</a>
+</p>
 </div>
-
 <!-- زر البحث -->
 <div class="top-menu">
-  <p>
-    <a href="https://www.aboulahia.com/a/?page=tab2" class="download-btn">📥 للبحث في الآيات القرآنية وعناوينها</a>
-  </p>
+<p>
+<a class="download-btn" href="https://www.aboulahia.com/a/?page=tab2">📥 للبحث في الآيات القرآنية وعناوينها</a>
+</p>
 </div>
-
 <!-- اختيار الجزء -->
 <div class="top-menu">
-  <p>
+<p>
     اختر جزءا من الكتاب:
     <select id="parts" onchange="goToPart(this)">
-      <option value="">-- اختر --</option>
-      <option value="https://www.aboulahia.com/tafsir001.html">الجزء 1</option>
+<option value="">-- اختر --</option>
+<option value="https://www.aboulahia.com/tafsir001.html">الجزء 1</option>
 <option value="https://www.aboulahia.com/tafsir002.html">الجزء 2</option>
 <option value="https://www.aboulahia.com/tafsir003.html">الجزء 3</option>
 <option value="https://www.aboulahia.com/tafsir004.html">الجزء 4</option>
@@ -130,21 +207,452 @@
 <option value="https://www.aboulahia.com/tafsir098.html">الجزء 98</option>
 <option value="https://www.aboulahia.com/tafsir099.html">الجزء 99</option>
 <option value="https://www.aboulahia.com/tafsir100.html">الجزء 100</option>
-
-    </select>
-  </p>
+</select>
+</p>
 </div>
-
 <!-- زر الفهرس -->
 <div class="top-menu">
-  <p>
+<p>
     اختر عنوانا من الكتاب:
-    <div class="dropdown">
-      <button class="dropbtn">📖 الفهرس</button>
-      <div class="dropdown-content">
+    <div class="top-toc-buttons">
+<div class="dropdown-toc">
+<button class="dropbtn-toc" onclick="toggleDropdownToc()">📖 الفهرس الموضوعي</button>
+<div class="dropdown-content-toc" id="myDropdownToc">
+<input id="tocSearch" onkeyup="filterToc()" placeholder="🔍 ابحث في العناوين..." style="width:95%;padding:6px;margin-bottom:8px;direction:rtl;text-align:right;" type="text"/>
+<a href="https://www.aboulahia.com/tafsir001.html#_Toc53774491">مقدمة السلسلة:</a>
+<a href="https://www.aboulahia.com/tafsir001.html#_Toc53774495">مقدمة الكتاب</a>
+<a href="https://www.aboulahia.com/tafsir001.html#_Toc53774499">سورة الفاتحة</a>
+<a href="https://www.aboulahia.com/tafsir001.html#_Toc53774500">1.البسملة</a>
+<a href="https://www.aboulahia.com/tafsir001.html#_Toc53774528">2.الحمدلة</a>
+<a href="https://www.aboulahia.com/tafsir001.html#_Toc53774571">3.العبادة والاستعانة</a>
+<a href="https://www.aboulahia.com/tafsir001.html#_Toc53774600">4.الهداية والصراط المستقيم</a>
+<a href="https://www.aboulahia.com/tafsir001.html#_Toc53774632">سورة البقرة</a>
+<a href="https://www.aboulahia.com/tafsir001.html#_Toc53774633">1.ألم.. والحروف المقطعة</a>
+<a href="https://www.aboulahia.com/tafsir001.html#_Toc53774677">2.الكتاب وصفات المتقين</a>
+<a href="https://www.aboulahia.com/tafsir001.html#_Toc53774718">3.صفات الكافرين</a>
+<a href="https://www.aboulahia.com/tafsir001.html#_Toc53774756">4.صفات المنافقين</a>
+<a href="https://www.aboulahia.com/tafsir002.html#_Toc53774491">5.مثال المنافقين</a>
+<a href="https://www.aboulahia.com/tafsir002.html#_Toc53774539">6.العبادة والأنداد</a>
+<a href="https://www.aboulahia.com/tafsir002.html#_Toc53774573">7.القرآن والتحدي</a>
+<a href="https://www.aboulahia.com/tafsir002.html#_Toc53774611">8.الصالحون والجنة</a>
+<a href="https://www.aboulahia.com/tafsir002.html#_Toc53774649">9.الله وضرب الأمثال</a>
+<a href="https://www.aboulahia.com/tafsir002.html#_Toc53774688">10.قدرة الله والبعث والتدبير</a>
+<a href="https://www.aboulahia.com/tafsir002.html#_Toc53774721">11.آدم والخلافة</a>
+<a href="https://www.aboulahia.com/tafsir003.html#_Toc53774491">12.آدم وتعليم الأسماء</a>
+<a href="https://www.aboulahia.com/tafsir003.html#_Toc53774530">13.آدم والسجود</a>
+<a href="https://www.aboulahia.com/tafsir003.html#_Toc53774568">14.آدم والجنة</a>
+<a href="https://www.aboulahia.com/tafsir003.html#_Toc53774603">15.وسوسة الشيطان لآدم ونتائجها</a>
+<a href="https://www.aboulahia.com/tafsir003.html#_Toc53774643">16.آدم والكلمات</a>
+<a href="https://www.aboulahia.com/tafsir003.html#_Toc53774684">17.بنو إسرائيل والنعم والوفاء</a>
+<a href="https://www.aboulahia.com/tafsir003.html#_Toc53774725">18.الحقّ واللبس والكتمان</a>
+<a href="https://www.aboulahia.com/tafsir003.html#_Toc53774756">19.البرّ والاستعانة</a>
+<a href="https://www.aboulahia.com/tafsir004.html#_Toc53774491">20.بنو إسرائيل والنعم والبلاء</a>
+<a href="https://www.aboulahia.com/tafsir004.html#_Toc53774538">21.موسى والكتاب والفرقان</a>
+<a href="https://www.aboulahia.com/tafsir004.html#_Toc53774585">22.بنو إسرائيل واختبار القرية</a>
+<a href="https://www.aboulahia.com/tafsir004.html#_Toc53774621">23.موسى والاستسقاء لقومه</a>
+<a href="https://www.aboulahia.com/tafsir004.html#_Toc53774659">24.بنو إسرائيل والملل والتعنت</a>
+<a href="https://www.aboulahia.com/tafsir004.html#_Toc53774691">25.حكم الله بين أهل الأديان</a>
+<a href="https://www.aboulahia.com/tafsir004.html#_Toc53774732">26.بنو إسرائيل والميثاق والطور</a>
+<a href="https://www.aboulahia.com/tafsir004.html#_Toc53774770">27.أصحاب السبت وعقوبتهم</a>
+<a href="https://www.aboulahia.com/tafsir004.html#_Toc53774814">28.بنو إسرائيل وقصة البقرة</a>
+<a href="https://www.aboulahia.com/tafsir005.html#_Toc53774491">29.القسوة والحجارة</a>
+<a href="https://www.aboulahia.com/tafsir005.html#_Toc53774524">30.بنو إسرائيل والتحريف والكتمان</a>
+<a href="https://www.aboulahia.com/tafsir005.html#_Toc53774564">31.بنو إسرائيل والأماني والتحريف</a>
+<a href="https://www.aboulahia.com/tafsir005.html#_Toc53774607">32.بنو إسرائيل ومواثيق العبودية والأخلاق</a>
+<a href="https://www.aboulahia.com/tafsir005.html#_Toc53774639">33.الميثاق وحرمة النفس</a>
+<a href="https://www.aboulahia.com/tafsir005.html#_Toc53774675">34.بنو إسرائيل والتكبر على الأنبياء والهداة</a>
+<a href="https://www.aboulahia.com/tafsir005.html#_Toc53774710">35.بنو إسرائيل وجحود النبوة</a>
+<a href="https://www.aboulahia.com/tafsir005.html#_Toc53774747">36.بنو إسرائيل والتعامل المزاجي مع الحق</a>
+<a href="https://www.aboulahia.com/tafsir005.html#_Toc53774773">37.نماذج عن عناد بني إسرائيل</a>
+<a href="https://www.aboulahia.com/tafsir005.html#_Toc53774804">38.الكفر بالله والحرص على الحياة الدنيا</a>
+<a href="https://www.aboulahia.com/tafsir005.html#_Toc53774837">39.عداوة الملائكة والكفر</a>
+<a href="https://www.aboulahia.com/tafsir005.html#_Toc53774867">40.الكفر والفسوق ونبذ الكتاب</a>
+<a href="https://www.aboulahia.com/tafsir005.html#_Toc53774899">41.الشياطين والسحر</a>
+<a href="https://www.aboulahia.com/tafsir006.html#_Toc53774491">42.انتقاء الألفاظ</a>
+<a href="https://www.aboulahia.com/tafsir006.html#_Toc53774530">43.النسخ والشرائع</a>
+<a href="https://www.aboulahia.com/tafsir006.html#_Toc53774573">44.الحسد والعفو والصفح</a>
+<a href="https://www.aboulahia.com/tafsir006.html#_Toc53774603">45.أهل الكتاب والتعصّب والأماني</a>
+<a href="https://www.aboulahia.com/tafsir006.html#_Toc53774638">46.الظلم والمساجد</a>
+<a href="https://www.aboulahia.com/tafsir006.html#_Toc53774670">47.الله والقداسة والإبداع</a>
+<a href="https://www.aboulahia.com/tafsir006.html#_Toc53774712">48.التعنت والجاهلون</a>
+<a href="https://www.aboulahia.com/tafsir006.html#_Toc53774741">49.أهل الكتاب وشروط الرضى</a>
+<a href="https://www.aboulahia.com/tafsir006.html#_Toc53774767">50.المؤمنون وحق التلاوة</a>
+<a href="https://www.aboulahia.com/tafsir006.html#_Toc53774803">51.نعم الله والجزاء</a>
+<a href="https://www.aboulahia.com/tafsir006.html#_Toc53774818">52.إبراهيم والكلمات والإمامة</a>
+<a href="https://www.aboulahia.com/tafsir006.html#_Toc53774863">53.البيت والمقام والطهارة</a>
+<a href="https://www.aboulahia.com/tafsir007.html#_Toc53774491">54.دعاء إبراهيم والبركات</a>
+<a href="https://www.aboulahia.com/tafsir007.html#_Toc53774523">55.دعاء إبراهيم وإسماعيل والهداية</a>
+<a href="https://www.aboulahia.com/tafsir007.html#_Toc53774575">56.ملّة إبراهيم والإسلام</a>
+<a href="https://www.aboulahia.com/tafsir007.html#_Toc53774608">57.وصية إبراهيم ويعقوب</a>
+<a href="https://www.aboulahia.com/tafsir007.html#_Toc53774639">58.الإسلام واليهود والنصارى</a>
+<a href="https://www.aboulahia.com/tafsir007.html#_Toc53774680">59.احتجاجات الكاتمين الظالمين</a>
+<a href="https://www.aboulahia.com/tafsir007.html#_Toc53774714">60.اختبار القبلة والأمة الوسط</a>
+<a href="https://www.aboulahia.com/tafsir007.html#_Toc53774764">61.التشريع الإلهي للقبلة والأهواء</a>
+<a href="https://www.aboulahia.com/tafsir007.html#_Toc53774806">62.الشرائع الإلهية واستباق الخيرات</a>
+<a href="https://www.aboulahia.com/tafsir008.html#_Toc53774491">63.نعمة الرسول وشكرها</a>
+<a href="https://www.aboulahia.com/tafsir008.html#_Toc53774535">64.الصبر والابتلاء والجزاء</a>
+<a href="https://www.aboulahia.com/tafsir008.html#_Toc53774578">65.الصفا والمروة وشعائر الله</a>
+<a href="https://www.aboulahia.com/tafsir008.html#_Toc53774615">66.الكاتمون للبينات واللعنات</a>
+<a href="https://www.aboulahia.com/tafsir008.html#_Toc53774654">67.الكفّار واللعنات</a>
+<a href="https://www.aboulahia.com/tafsir008.html#_Toc53774678">68.توحيد الله ودلائله</a>
+<a href="https://www.aboulahia.com/tafsir008.html#_Toc53774714">69.التبعية العمياء وأسبابها ومصيرها</a>
+<a href="https://www.aboulahia.com/tafsir008.html#_Toc53774758">70.أكل الحلال وخطوات الشيطان</a>
+<a href="https://www.aboulahia.com/tafsir008.html#_Toc53774796">71.الهداية واتباع الآباء</a>
+<a href="https://www.aboulahia.com/tafsir008.html#_Toc53774833">72.الطيبات والخبائث</a>
+<a href="https://www.aboulahia.com/tafsir009.html#_Toc53774491">73.الكتمان وعواقبه</a>
+<a href="https://www.aboulahia.com/tafsir009.html#_Toc53774528">74.حقيقة البر ومجالاته</a>
+<a href="https://www.aboulahia.com/tafsir009.html#_Toc53774571">75.أحكام القصاص</a>
+<a href="https://www.aboulahia.com/tafsir009.html#_Toc53774618">76.أحكام الوصية</a>
+<a href="https://www.aboulahia.com/tafsir009.html#_Toc53774669">77.الصيام وأحكامه</a>
+<a href="https://www.aboulahia.com/tafsir009.html#_Toc53774738">78.السؤال والقرب والإجابة</a>
+<a href="https://www.aboulahia.com/tafsir010.html#_Toc53774491">79.حدود الصوم والاعتكاف</a>
+<a href="https://www.aboulahia.com/tafsir010.html#_Toc53774534">80.المال والباطل والحكام</a>
+<a href="https://www.aboulahia.com/tafsir010.html#_Toc53774575">81.الأهلة والحج والأبواب</a>
+<a href="https://www.aboulahia.com/tafsir010.html#_Toc53774613">82.الجهاد والاعتداء والفتنة</a>
+<a href="https://www.aboulahia.com/tafsir010.html#_Toc53774657">83.الحرمات والاعتداء والتهلكة</a>
+<a href="https://www.aboulahia.com/tafsir010.html#_Toc53774703">84.الحج والعمرة والإحصار والتمتع</a>
+<a href="https://www.aboulahia.com/tafsir010.html#_Toc53774765">85.أحكام الحج وآدابه</a>
+<a href="https://www.aboulahia.com/tafsir011.html#_Toc53774491">86.قضاء المناسك والذكر والدعاء</a>
+<a href="https://www.aboulahia.com/tafsir011.html#_Toc53774535">87.الذكر والأيام المعدودات</a>
+<a href="https://www.aboulahia.com/tafsir011.html#_Toc53774580">88.من علامات المفسدين والمصلحين</a>
+<a href="https://www.aboulahia.com/tafsir011.html#_Toc53774631">89.الإسلام والالتزام التام</a>
+<a href="https://www.aboulahia.com/tafsir011.html#_Toc53774679">90.بنو إسرائيل والآيات والتبديل</a>
+<a href="https://www.aboulahia.com/tafsir011.html#_Toc53774716">91.الناس والأنبياء والكتاب والبغاة</a>
+<a href="https://www.aboulahia.com/tafsir011.html#_Toc53774753">92.الجنة والاختبار والنصر</a>
+<a href="https://www.aboulahia.com/tafsir011.html#_Toc53774782">93.الإنفاق ومصارفه</a>
+<a href="https://www.aboulahia.com/tafsir011.html#_Toc53774814">94.القتال والكره والفتنة</a>
+<a href="https://www.aboulahia.com/tafsir012.html#_Toc53774491">95.الإيمان والهجرة والجهاد والرجاء</a>
+<a href="https://www.aboulahia.com/tafsir012.html#_Toc53774516">96.الخمر والميسروالإنفاق والعفو</a>
+<a href="https://www.aboulahia.com/tafsir012.html#_Toc53774573">97.اليتامى والإصلاح والمخالطة</a>
+<a href="https://www.aboulahia.com/tafsir012.html#_Toc53774613">98.الزواج بين المسلمين والمشركين ومعايير الكفاءة</a>
+<a href="https://www.aboulahia.com/tafsir012.html#_Toc53774650">99.العشرة الزوجية والطهارة</a>
+<a href="https://www.aboulahia.com/tafsir012.html#_Toc53774700">100.الأيمان واللغو والإصلاح</a>
+<a href="https://www.aboulahia.com/tafsir012.html#_Toc53774748">101.الإيلاء والتربص والطلاق</a>
+<a href="https://www.aboulahia.com/tafsir012.html#_Toc53774800">102.الطلاق والعدة والرجعة والمعروف</a>
+<a href="https://www.aboulahia.com/tafsir013.html#_Toc53774491">103.الطلاق الرجعي والخلع</a>
+<a href="https://www.aboulahia.com/tafsir013.html#_Toc53774551">104.الطلاق البائن والرجعة</a>
+<a href="https://www.aboulahia.com/tafsir013.html#_Toc53774583">105.الطلاق والإمساك والتسريح</a>
+<a href="https://www.aboulahia.com/tafsir013.html#_Toc53774617">106.الطلاق والعضل والتراضي</a>
+<a href="https://www.aboulahia.com/tafsir013.html#_Toc53774648">107.من أحكام الرضاعة</a>
+<a href="https://www.aboulahia.com/tafsir013.html#_Toc53774701">108.من أحكام العدة والخطبة</a>
+<a href="https://www.aboulahia.com/tafsir013.html#_Toc53774748">109.المطلقات والمتعة والمهر</a>
+<a href="https://www.aboulahia.com/tafsir013.html#_Toc53774803">110.المحافظة على الصلوات والصلاة الوسطى والقنوت</a>
+<a href="https://www.aboulahia.com/tafsir013.html#_Toc53774851">111.صلاة الخوف</a>
+<a href="https://www.aboulahia.com/tafsir014.html#_Toc53774491">112.الأرامل والوصية ومتعة الطلاق</a>
+<a href="https://www.aboulahia.com/tafsir014.html#_Toc53774533">113.الخائفون من الموت وإحياؤهم</a>
+<a href="https://www.aboulahia.com/tafsir014.html#_Toc53774576">114.القتال والإنفاق</a>
+<a href="https://www.aboulahia.com/tafsir014.html#_Toc53774617">115.طالوت والقيادة والقتال</a>
+<a href="https://www.aboulahia.com/tafsir014.html#_Toc53774665">116.طالوت والابتلاء والنصر</a>
+<a href="https://www.aboulahia.com/tafsir014.html#_Toc53774707">117.التدافع والفساد والفضل الإلهي</a>
+<a href="https://www.aboulahia.com/tafsir014.html#_Toc53774738">118.درجات الرسل واختلاف الأتباع</a>
+<a href="https://www.aboulahia.com/tafsir014.html#_Toc53774772">119.الإنفاق ويوم الجزاء وقوانينه</a>
+<a href="https://www.aboulahia.com/tafsir014.html#_Toc53774804">120.آية الكرسي والقيومية الإلهية ومقتضياتها</a>
+<a href="https://www.aboulahia.com/tafsir015.html#_Toc53774491">121.الحرية والهداية والعروة والوثقى</a>
+<a href="https://www.aboulahia.com/tafsir015.html#_Toc53774540">122.ولاية الله وولاية الطواغيت ونتائجها</a>
+<a href="https://www.aboulahia.com/tafsir015.html#_Toc53774576">123.إبراهيم ومحاجة الملك</a>
+<a href="https://www.aboulahia.com/tafsir015.html#_Toc53774615">124.قصة الذي أحياه الله بعد موته</a>
+<a href="https://www.aboulahia.com/tafsir015.html#_Toc53774662">125.إبراهيم وإحياء الموتى</a>
+<a href="https://www.aboulahia.com/tafsir015.html#_Toc53774706">126.شروط الإنفاق وجزاء المنفقين</a>
+<a href="https://www.aboulahia.com/tafsir015.html#_Toc53774741">127.الصدقات ومحبطاتها ومثال ذلك</a>
+<a href="https://www.aboulahia.com/tafsir015.html#_Toc53774782">128.مثال المنفقين المخلصين المتثبتين</a>
+<a href="https://www.aboulahia.com/tafsir015.html#_Toc53774822">129.مثال المفرّطين والمرائين</a>
+<a href="https://www.aboulahia.com/tafsir015.html#_Toc53774862">130.الإنفاق والطيبات والكسب والزرع</a>
+<a href="https://www.aboulahia.com/tafsir015.html#_Toc53774914">131.الشيطان والإنفاق والحكمة</a>
+<a href="https://www.aboulahia.com/tafsir015.html#_Toc53774961">132.الإنفاق والإبداء والإخفاء</a>
+<a href="https://www.aboulahia.com/tafsir016.html#_Toc53774491">133.الهداية والإنفاق والجزاء</a>
+<a href="https://www.aboulahia.com/tafsir016.html#_Toc53774528">133.الهداية والإنفاق والجزاء</a>
+<a href="https://www.aboulahia.com/tafsir016.html#_Toc53774565">134.صفات الفقراء المستحقين للصدقات</a>
+<a href="https://www.aboulahia.com/tafsir016.html#_Toc53774608">135.صفات المنفقين الصالحين وجزاؤهم</a>
+<a href="https://www.aboulahia.com/tafsir016.html#_Toc53774639">136.حرمة الربا وعقوبة المرابي</a>
+<a href="https://www.aboulahia.com/tafsir016.html#_Toc53774678">137.الربا والمحق وتنزه المؤمنين</a>
+<a href="https://www.aboulahia.com/tafsir016.html#_Toc53774711">138.الربا وحرب الله ورسوله وكيفية التوبة</a>
+<a href="https://www.aboulahia.com/tafsir016.html#_Toc53774749">139.الربا والتصدق والتقوى والنظرة إلى ميسرة</a>
+<a href="https://www.aboulahia.com/tafsir016.html#_Toc53774787">140.الدَّين والتوثيق والكتابة</a>
+<a href="https://www.aboulahia.com/tafsir016.html#_Toc53774832">141.الدَّين والتوثيق والإشهاد</a>
+<a href="https://www.aboulahia.com/tafsir016.html#_Toc53774891">142.الرهن والكتابة والإشهاد</a>
+<a href="https://www.aboulahia.com/tafsir016.html#_Toc53774931">143.علم الله ودقة الحساب</a>
+<a href="https://www.aboulahia.com/tafsir016.html#_Toc53774970">144.المؤمنون والتصديق والإذعان</a>
+<a href="https://www.aboulahia.com/tafsir016.html#_Toc53774998">145.الإصر والتكليف والدعاء</a>
+<a href="https://www.aboulahia.com/tafsir017.html#_Toc53774491">سورة آل عمران</a>
+<a href="https://www.aboulahia.com/tafsir017.html#_Toc53774492">1.الله والكتاب والهداية</a>
+<a href="https://www.aboulahia.com/tafsir017.html#_Toc53774530">2.الله والعلم والتصوير</a>
+<a href="https://www.aboulahia.com/tafsir017.html#_Toc53774564">3.القرآن والمحكم والمتشابه</a>
+<a href="https://www.aboulahia.com/tafsir017.html#_Toc53774612">4.المتشابه والزائغون والراسخون</a>
+<a href="https://www.aboulahia.com/tafsir017.html#_Toc53774660">5.الراسخون في العلم والتسليم والدعاء</a>
+<a href="https://www.aboulahia.com/tafsir017.html#_Toc53774695">6.عواقب الكفر ومصير الكفرة</a>
+<a href="https://www.aboulahia.com/tafsir017.html#_Toc53774728">7.آيات الله ونصر المؤمنين</a>
+<a href="https://www.aboulahia.com/tafsir017.html#_Toc53774763">8.المتاع الفاني والتزيين</a>
+<a href="https://www.aboulahia.com/tafsir017.html#_Toc53774802">9.المتاع الباقي وأهله</a>
+<a href="https://www.aboulahia.com/tafsir017.html#_Toc53774838">10.وحدانية الله والشهود عليها</a>
+<a href="https://www.aboulahia.com/tafsir017.html#_Toc53774875">11.الدين الحق والمعارضون له</a>
+<a href="https://www.aboulahia.com/tafsir017.html#_Toc53774913">12.الدين الحق والتسليم المطلق لله</a>
+<a href="https://www.aboulahia.com/tafsir018.html#_Toc53774491">13.جزاء الكافرين وقتلة الصالحين</a>
+<a href="https://www.aboulahia.com/tafsir018.html#_Toc53774527">14.الإعراض عن الحاكمية الإلهية والاغترار</a>
+<a href="https://www.aboulahia.com/tafsir018.html#_Toc53774562">15.الله والملك والتدبير</a>
+<a href="https://www.aboulahia.com/tafsir018.html#_Toc53774615">16.الولاء والبراء والتقية</a>
+<a href="https://www.aboulahia.com/tafsir018.html#_Toc53774657">17.علم الله وأعمال العباد</a>
+<a href="https://www.aboulahia.com/tafsir018.html#_Toc53774687">18.المحبة والاتباع والطاعة</a>
+<a href="https://www.aboulahia.com/tafsir018.html#_Toc53774719">19.الله واصطفاء الصالحين وآلهم</a>
+<a href="https://www.aboulahia.com/tafsir018.html#_Toc53774753">20.امرأة عمران وولادة مريم</a>
+<a href="https://www.aboulahia.com/tafsir018.html#_Toc53774794">21.مريم وزكريا وتقبل الله والرزق الحسن</a>
+<a href="https://www.aboulahia.com/tafsir018.html#_Toc53774835">22.زكريا والبشارة بابنه يحيى</a>
+<a href="https://www.aboulahia.com/tafsir018.html#_Toc53774877">23.زكريا والآية الدالة على البشارة</a>
+<a href="https://www.aboulahia.com/tafsir018.html#_Toc53774926">24.مريم والاصطفاء والطهارة والقنوت</a>
+<a href="https://www.aboulahia.com/tafsir018.html#_Toc53774966">25.مريم والخصومة في كفالتها</a>
+<a href="https://www.aboulahia.com/tafsir018.html#_Toc53775003">26.مريم والبشارة بالمسيح</a>
+<a href="https://www.aboulahia.com/tafsir019.html#_Toc53774491">27.المسيح وآياته</a>
+<a href="https://www.aboulahia.com/tafsir019.html#_Toc53774540">28.المسيح ورسالته</a>
+<a href="https://www.aboulahia.com/tafsir019.html#_Toc53774569">29.المسيح والحواريون ونصرة الله</a>
+<a href="https://www.aboulahia.com/tafsir019.html#_Toc53774610">30.المسيح والتوفي ومصير من بعده</a>
+<a href="https://www.aboulahia.com/tafsir019.html#_Toc53774660">31.المسيح وآدم والخلق الإلهي</a>
+<a href="https://www.aboulahia.com/tafsir019.html#_Toc53774689">32.المسيح والمباهلة والقصص الحق</a>
+<a href="https://www.aboulahia.com/tafsir019.html#_Toc53774728">33.أهل الكتاب والكلمة السواء</a>
+<a href="https://www.aboulahia.com/tafsir019.html#_Toc53774765">34.أهل الكتاب وملّة إبراهيم</a>
+<a href="https://www.aboulahia.com/tafsir019.html#_Toc53774806">35.أهل الكتاب والكفر والتضليل</a>
+<a href="https://www.aboulahia.com/tafsir019.html#_Toc53774840">36.أهل الكتاب والإيمان المخادع</a>
+<a href="https://www.aboulahia.com/tafsir019.html#_Toc53774882">37.أهل الكتاب والوفاء والأميين</a>
+<a href="https://www.aboulahia.com/tafsir019.html#_Toc53774922">38.الناقضون للعهد الإلهي وعقوبتهم</a>
+<a href="https://www.aboulahia.com/tafsir019.html#_Toc53774960">39.المحرفون والكذب على الله</a>
+<a href="https://www.aboulahia.com/tafsir019.html#_Toc53774992">40.الربانيون والتوحيد</a>
+<a href="https://www.aboulahia.com/tafsir020.html#_Toc53774491">41.الأنبياء والميثاق والرسول المصدّق</a>
+<a href="https://www.aboulahia.com/tafsir020.html#_Toc53774519">42.الإسلام والكون والأنبياء</a>
+<a href="https://www.aboulahia.com/tafsir020.html#_Toc53774554">43.الكافرون بعد الإيمان وجزاؤهم</a>
+<a href="https://www.aboulahia.com/tafsir020.html#_Toc53774582">44.عاقبة من استبدلوا الإيمان بالكفر</a>
+<a href="https://www.aboulahia.com/tafsir020.html#_Toc53774615">45.البر والإنفاق</a>
+<a href="https://www.aboulahia.com/tafsir020.html#_Toc53774653">46.التشدد والافتراء</a>
+<a href="https://www.aboulahia.com/tafsir020.html#_Toc53774687">47.ملة إبراهيم والحنيفية والتوحيد</a>
+<a href="https://www.aboulahia.com/tafsir020.html#_Toc53774709">48.البيت الحرام ومقام إبراهيم والأمن والبركات</a>
+<a href="https://www.aboulahia.com/tafsir020.html#_Toc53774760">49.وجوب الحج والاستطاعة</a>
+<a href="https://www.aboulahia.com/tafsir020.html#_Toc53774806">50.أهل الكتاب والجحود والصدّ</a>
+<a href="https://www.aboulahia.com/tafsir020.html#_Toc53774838">51.طاعة أهل الكتاب والكفر</a>
+<a href="https://www.aboulahia.com/tafsir020.html#_Toc53774872">52.حق التقوى والموت على الإسلام</a>
+<a href="https://www.aboulahia.com/tafsir020.html#_Toc53774914">53.الاعتصام وحبل الله والأخوة</a>
+<a href="https://www.aboulahia.com/tafsir020.html#_Toc53774965">54.الأمة والأمر بالمعروف والنهي عن المنكر</a>
+<a href="https://www.aboulahia.com/tafsir020.html#_Toc53774993">55.عواقب التفرق والاختلاف</a>
+<a href="https://www.aboulahia.com/tafsir020.html#_Toc53775019">56.الوجوه والبياض والسواد يوم الجزاء</a>
+<a href="https://www.aboulahia.com/tafsir020.html#_Toc53775052">57.الوحدة والاعتصام</a>
+<a href="https://www.aboulahia.com/tafsir021.html#_Toc53774491">58.خيرية الأمة وشروطها</a>
+<a href="https://www.aboulahia.com/tafsir021.html#_Toc53774532">59.أعداء الأمة وصفاتهم</a>
+<a href="https://www.aboulahia.com/tafsir021.html#_Toc53774568">60.الصالحون من الأمم</a>
+<a href="https://www.aboulahia.com/tafsir021.html#_Toc53774606">61.الكفار ومصير أموالهم وأولادهم</a>
+<a href="https://www.aboulahia.com/tafsir021.html#_Toc53774646">62.التحذير من البطانة المنحرفة</a>
+<a href="https://www.aboulahia.com/tafsir021.html#_Toc53774682">63.التحذير من الولاء للمعتدين وأحقادهم</a>
+<a href="https://www.aboulahia.com/tafsir021.html#_Toc53774716">64.أحقاد المعتدين والصبر والتقوى</a>
+<a href="https://www.aboulahia.com/tafsir021.html#_Toc53774751">65.الاستعداد للقتال والجبناء</a>
+<a href="https://www.aboulahia.com/tafsir021.html#_Toc53774789">66.بدر والنصر والمدد</a>
+<a href="https://www.aboulahia.com/tafsir021.html#_Toc53774837">67.التدبير الإلهي والكفار المعتدون</a>
+<a href="https://www.aboulahia.com/tafsir021.html#_Toc53774877">68.الربا والتقوى والوعيد الإلهي</a>
+<a href="https://www.aboulahia.com/tafsir021.html#_Toc53774912">69.المسارعون للمغفرة والجنة وصفاتهم</a>
+<a href="https://www.aboulahia.com/tafsir021.html#_Toc53774969">70.سنن الله والسير والبيان والهداية</a>
+<a href="https://www.aboulahia.com/tafsir022.html#_Toc53774491">71.الوهن والحزن والبلاء والتمحيص</a>
+<a href="https://www.aboulahia.com/tafsir022.html#_Toc53774539">72.الجنة والمجاهدون والصابرون</a>
+<a href="https://www.aboulahia.com/tafsir022.html#_Toc53774564">73.الموت والتمنى</a>
+<a href="https://www.aboulahia.com/tafsir022.html#_Toc53774597">74.التحذير من الانقلاب بعد وفاة النبي أو قتله</a>
+<a href="https://www.aboulahia.com/tafsir022.html#_Toc53774639">75.الموت والأجل والثواب وجزاء الشاكرين</a>
+<a href="https://www.aboulahia.com/tafsir022.html#_Toc53774669">76.الأنبياء والربيون والقتال والجزاء الإلهي</a>
+<a href="https://www.aboulahia.com/tafsir022.html#_Toc53774711">77.طاعة الكافرين والخسارة</a>
+<a href="https://www.aboulahia.com/tafsir022.html#_Toc53774739">78.الرعب والشرك والوعيد</a>
+<a href="https://www.aboulahia.com/tafsir022.html#_Toc53774766">79.الوعد الإلهي والفشل والتنازع</a>
+<a href="https://www.aboulahia.com/tafsir022.html#_Toc53774811">80.التولي والغم</a>
+<a href="https://www.aboulahia.com/tafsir022.html#_Toc53774849">81.طوائف المنهزمين وظن السوء</a>
+<a href="https://www.aboulahia.com/tafsir022.html#_Toc53774888">82.المتولون عن الزحف والشيطان</a>
+<a href="https://www.aboulahia.com/tafsir022.html#_Toc53774923">83.الشهادة والموت والمفاهيم والمواقف الخاطئة</a>
+<a href="https://www.aboulahia.com/tafsir022.html#_Toc53774955">84.النبي والرحمة والعفو والمشاورة</a>
+<a href="https://www.aboulahia.com/tafsir022.html#_Toc53774997">85.النصر والخذلان والتوكل</a>
+<a href="https://www.aboulahia.com/tafsir022.html#_Toc53775026">86.نزاهة النبي وجزاء الغالين</a>
+<a href="https://www.aboulahia.com/tafsir022.html#_Toc53775060">87.الرضوان والسخط والدرجات</a>
+<a href="https://www.aboulahia.com/tafsir023.html#_Toc53774491">88.النبي وصفاته ووظائفه</a>
+<a href="https://www.aboulahia.com/tafsir023.html#_Toc53774519">89.المصائب والكسب والقدر</a>
+<a href="https://www.aboulahia.com/tafsir023.html#_Toc53774556">90.المنافقون والقتال والدفع</a>
+<a href="https://www.aboulahia.com/tafsir023.html#_Toc53774592">91.القاعدون والخذلان والموت</a>
+<a href="https://www.aboulahia.com/tafsir023.html#_Toc53774623">92.فضل الشهداء</a>
+<a href="https://www.aboulahia.com/tafsir023.html#_Toc53774668">93.فضل الثابتين وتوكلهم</a>
+<a href="https://www.aboulahia.com/tafsir023.html#_Toc53774713">94.المسارعون للكفر ومصيرهم</a>
+<a href="https://www.aboulahia.com/tafsir023.html#_Toc53774744">95.الكفار والإملاء والإثم</a>
+<a href="https://www.aboulahia.com/tafsir023.html#_Toc53774781">96.التمحيص الإلهي والغيب والاجتباء</a>
+<a href="https://www.aboulahia.com/tafsir023.html#_Toc53774820">97.البخل وعواقبه</a>
+<a href="https://www.aboulahia.com/tafsir023.html#_Toc53774854">98.المفترون وغنى الله وقتل الأنبياء</a>
+<a href="https://www.aboulahia.com/tafsir023.html#_Toc53774887">99.المفترون والقربان والعهود الكاذبة</a>
+<a href="https://www.aboulahia.com/tafsir023.html#_Toc53774922">100.الموت والحياة والفوز الحقيقي</a>
+<a href="https://www.aboulahia.com/tafsir023.html#_Toc53774958">101.البلاء وأهل الكتاب والمشركون</a>
+<a href="https://www.aboulahia.com/tafsir023.html#_Toc53774991">102.الميثاق والكتاب والبيان والكاتمون</a>
+<a href="https://www.aboulahia.com/tafsir023.html#_Toc53775032">103.الفارحون بالحمد الكاذب وجزاؤهم</a>
+<a href="https://www.aboulahia.com/tafsir023.html#_Toc53775073">104.قدرة الله والآيات وأولو الألباب</a>
+<a href="https://www.aboulahia.com/tafsir024.html#_Toc53774491">105.أولو الألباب والفكر الذكر والدعاء</a>
+<a href="https://www.aboulahia.com/tafsir024.html#_Toc53774532">106.المستجاب لدعواتهم وصفاتهم ومصيرهم</a>
+<a href="https://www.aboulahia.com/tafsir024.html#_Toc53774561">107.أهل الغرور وأهل التقوى ومصير كليهما</a>
+<a href="https://www.aboulahia.com/tafsir024.html#_Toc53774599">108.المؤمنون من أهل الكتاب ومصيرهم</a>
+<a href="https://www.aboulahia.com/tafsir024.html#_Toc53774632">109.الصبر والتصابر والرباط والتقوى</a>
+<a href="https://www.aboulahia.com/tafsir024.html#_Toc53774676">سورة النساء</a>
+<a href="https://www.aboulahia.com/tafsir024.html#_Toc53774677">1.التقوى والأرحام والنفس الواحدة وزوجها</a>
+<a href="https://www.aboulahia.com/tafsir024.html#_Toc53774718">2.أموال اليتامى وتبديل الخبيث بالطيب</a>
+<a href="https://www.aboulahia.com/tafsir024.html#_Toc53774762">3.القسط في اليتامى والتعدد والعدل</a>
+<a href="https://www.aboulahia.com/tafsir024.html#_Toc53774806">4.الصداق والتبرع به</a>
+<a href="https://www.aboulahia.com/tafsir024.html#_Toc53774855">5.التعامل مع السفهاء الأموال</a>
+<a href="https://www.aboulahia.com/tafsir024.html#_Toc53774906">6.أموال اليتامى والابتلاء والأكل والدفع</a>
+<a href="https://www.aboulahia.com/tafsir024.html#_Toc53774968">7.حقوق الأقارب في الأنصبة</a>
+<a href="https://www.aboulahia.com/tafsir024.html#_Toc53774996">8.حضور أولي القرى واليتامى والمساكين القسمة</a>
+<a href="https://www.aboulahia.com/tafsir025.html#_Toc53774491">9.أكل مال اليتامى والخشية والتقوى</a>
+<a href="https://www.aboulahia.com/tafsir025.html#_Toc53774528">10.ميراث الأولاد</a>
+<a href="https://www.aboulahia.com/tafsir025.html#_Toc53774559">11.ميراث الأبوين</a>
+<a href="https://www.aboulahia.com/tafsir025.html#_Toc53774589">12.الوصية والدَّين</a>
+<a href="https://www.aboulahia.com/tafsir025.html#_Toc53774626">13.ميراث الأزواج</a>
+<a href="https://www.aboulahia.com/tafsir025.html#_Toc53774651">14.ميراث الكلالة</a>
+<a href="https://www.aboulahia.com/tafsir025.html#_Toc53774684">15.حدود الله والجزاء المرتبط باتقائها وتعديها</a>
+<a href="https://www.aboulahia.com/tafsir025.html#_Toc53774716">16.عاقبة الذين يأتون الفاحشة بأنواعها</a>
+<a href="https://www.aboulahia.com/tafsir025.html#_Toc53774755">17.شروط قبول التوبة</a>
+<a href="https://www.aboulahia.com/tafsir025.html#_Toc53774803">18.الإرث والإكراه والعضل</a>
+<a href="https://www.aboulahia.com/tafsir025.html#_Toc53774847">19.العشرة الزوجية والكره</a>
+<a href="https://www.aboulahia.com/tafsir025.html#_Toc53774877">20.الاستبدال والحقوق</a>
+<a href="https://www.aboulahia.com/tafsir025.html#_Toc53774917">21.حرمة زوجة الأب</a>
+<a href="https://www.aboulahia.com/tafsir025.html#_Toc53774958">22.المحرمات من النسب</a>
+<a href="https://www.aboulahia.com/tafsir025.html#_Toc53774980">23.المحرمات بسبب الرضاعة</a>
+<a href="https://www.aboulahia.com/tafsir025.html#_Toc53775010">24.المحرمات بسبب المصاهرة</a>
+<a href="https://www.aboulahia.com/tafsir025.html#_Toc53775052">25.حرمة الجمع بين الأختين</a>
+<a href="https://www.aboulahia.com/tafsir026.html#_Toc53774491">26.حرمة المحصنات من النساء</a>
+<a href="https://www.aboulahia.com/tafsir026.html#_Toc53774523">27.الزواج والتمتع والأجور</a>
+<a href="https://www.aboulahia.com/tafsir026.html#_Toc53774572">28.الزواج من الإماء</a>
+<a href="https://www.aboulahia.com/tafsir026.html#_Toc53774614">29.التشريع الإلهي والتخفيف</a>
+<a href="https://www.aboulahia.com/tafsir026.html#_Toc53774646">30.الكسب الحلال والحرام</a>
+<a href="https://www.aboulahia.com/tafsir026.html#_Toc53774684">31.حرمة القتل والانتحار</a>
+<a href="https://www.aboulahia.com/tafsir026.html#_Toc53774717">32.الكبائر والتكفير</a>
+<a href="https://www.aboulahia.com/tafsir026.html#_Toc53774754">33.الاختبار والتقدير والتمني</a>
+<a href="https://www.aboulahia.com/tafsir026.html#_Toc53774793">34.القرابة والميراث</a>
+<a href="https://www.aboulahia.com/tafsir026.html#_Toc53774839">35.قوامة الرجال وأسبابها</a>
+<a href="https://www.aboulahia.com/tafsir026.html#_Toc53774876">36.الصالحات وأزواجهن</a>
+<a href="https://www.aboulahia.com/tafsir026.html#_Toc53774908">37.الناشز وكيفية التعامل معها</a>
+<a href="https://www.aboulahia.com/tafsir026.html#_Toc53774949">38.الشقاق والإصلاح</a>
+<a href="https://www.aboulahia.com/tafsir027.html#_Toc53774491">39.الإحسان والعلاقات الاجتماعية</a>
+<a href="https://www.aboulahia.com/tafsir027.html#_Toc53774532">40.البخل والجحود</a>
+<a href="https://www.aboulahia.com/tafsir027.html#_Toc53774563">41.الرياء والكفر</a>
+<a href="https://www.aboulahia.com/tafsir027.html#_Toc53774589">42.الله والعدل والشكر</a>
+<a href="https://www.aboulahia.com/tafsir027.html#_Toc53774621">43.شهادة الرسول وعواقبها</a>
+<a href="https://www.aboulahia.com/tafsir027.html#_Toc53774663">44.الصلاة والعقل</a>
+<a href="https://www.aboulahia.com/tafsir027.html#_Toc53774703">45.الجنابة والمساجد والصلاة</a>
+<a href="https://www.aboulahia.com/tafsir027.html#_Toc53774735">46.التيمم والأعذار المبيحة له</a>
+<a href="https://www.aboulahia.com/tafsir027.html#_Toc53774787">47.الضلالة وأسبابها ومظاهرها</a>
+<a href="https://www.aboulahia.com/tafsir027.html#_Toc53774818">48.اليهود والتحريف والمعصية</a>
+<a href="https://www.aboulahia.com/tafsir027.html#_Toc53774861">49.أهل الكتاب والطمس واللعن</a>
+<a href="https://www.aboulahia.com/tafsir027.html#_Toc53774898">50.المغفرة والشرك والمشيئة الإلهية</a>
+<a href="https://www.aboulahia.com/tafsir027.html#_Toc53774933">51.تزكية النفس وتزكية الله</a>
+<a href="https://www.aboulahia.com/tafsir027.html#_Toc53774971">52.أهل الكتاب والجبت والطاغوت</a>
+<a href="https://www.aboulahia.com/tafsir027.html#_Toc53775005">53.أهل الكتاب والحسد</a>
+<a href="https://www.aboulahia.com/tafsir027.html#_Toc53775053">54.العذاب والجلود</a>
+<a href="https://www.aboulahia.com/tafsir027.html#_Toc53775092">55.من نعيم الجنة</a>
+<a href="https://www.aboulahia.com/tafsir028.html#_Toc53774491">56.أداء الأمانة</a>
+<a href="https://www.aboulahia.com/tafsir028.html#_Toc53774528">57.الحكم بالعدل</a>
+<a href="https://www.aboulahia.com/tafsir028.html#_Toc53774557">58.طاعة الله والرسول وأولي الأمر</a>
+<a href="https://www.aboulahia.com/tafsir028.html#_Toc53774603">59.النزاعات والمرجعية الشرعية</a>
+<a href="https://www.aboulahia.com/tafsir028.html#_Toc53774632">60.الإيمان والتحاكم للطاغوت</a>
+<a href="https://www.aboulahia.com/tafsir028.html#_Toc53774665">61.المنافقون والإعراض عن الله والرسول</a>
+<a href="https://www.aboulahia.com/tafsir028.html#_Toc53774701">62.الرسول والهداية والاستغفار</a>
+<a href="https://www.aboulahia.com/tafsir028.html#_Toc53774728">63.الإيمان والتحاكم والتسليم</a>
+<a href="https://www.aboulahia.com/tafsir028.html#_Toc53774762">64.التسليم والاختبارات الصعبة</a>
+<a href="https://www.aboulahia.com/tafsir028.html#_Toc53774792">65.المنعَم عليهم والمعيّة</a>
+<a href="https://www.aboulahia.com/tafsir028.html#_Toc53774834">66.المؤمنون والنفير</a>
+<a href="https://www.aboulahia.com/tafsir028.html#_Toc53774863">67.المتباطئون والنفير</a>
+<a href="https://www.aboulahia.com/tafsir028.html#_Toc53774892">68.القتال في سبيل الله والجزاء الإلهي</a>
+<a href="https://www.aboulahia.com/tafsir028.html#_Toc53774917">69.القتال ونصرة المستضعفين</a>
+<a href="https://www.aboulahia.com/tafsir028.html#_Toc53774951">70.الفرق بين قتال المؤمنين وقتال غيرهم</a>
+<a href="https://www.aboulahia.com/tafsir028.html#_Toc53774976">71.الجهاد والجبناء</a>
+<a href="https://www.aboulahia.com/tafsir028.html#_Toc53775010">72.الجبناء والخوف من الموت</a>
+<a href="https://www.aboulahia.com/tafsir028.html#_Toc53775048">73.المصائب والتقدير الإلهي</a>
+<a href="https://www.aboulahia.com/tafsir028.html#_Toc53775085">74.مصدر النعيم والبلاء</a>
+<a href="https://www.aboulahia.com/tafsir028.html#_Toc53775118">75.الرسول والطاعة</a>
+<a href="https://www.aboulahia.com/tafsir028.html#_Toc53775149">76.الطاعة قول وعمل</a>
+<a href="https://www.aboulahia.com/tafsir029.html#_Toc53774491">77.التدبر والاختلاف</a>
+<a href="https://www.aboulahia.com/tafsir029.html#_Toc53774521">78.الإذاعة وأولي الأمر</a>
+<a href="https://www.aboulahia.com/tafsir029.html#_Toc53774564">79.القتال والتكليف</a>
+<a href="https://www.aboulahia.com/tafsir029.html#_Toc53774594">80.الشفاعة الحسنة والسيئة</a>
+<a href="https://www.aboulahia.com/tafsir029.html#_Toc53774635">81.التحية وردها</a>
+<a href="https://www.aboulahia.com/tafsir029.html#_Toc53774674">82.التوحيد والبعث</a>
+<a href="https://www.aboulahia.com/tafsir029.html#_Toc53774700">83.المنافقون والارتكاس</a>
+<a href="https://www.aboulahia.com/tafsir029.html#_Toc53774737">84.البراءة من المنافقين ومواجهتهم</a>
+<a href="https://www.aboulahia.com/tafsir029.html#_Toc53774767">85.المسالمون وكيفية التعامل معهم</a>
+<a href="https://www.aboulahia.com/tafsir029.html#_Toc53774809">86.المعادون وكيفية التعامل معهم</a>
+<a href="https://www.aboulahia.com/tafsir029.html#_Toc53774841">87.القتل الخطأ وأحكامه</a>
+<a href="https://www.aboulahia.com/tafsir029.html#_Toc53774888">88.القتل الخطأ والأعداء والمعاهدون</a>
+<a href="https://www.aboulahia.com/tafsir029.html#_Toc53774930">89.القتل العمد وجزاؤه</a>
+<a href="https://www.aboulahia.com/tafsir029.html#_Toc53774980">90.الجهاد والتثبت قبل القتل</a>
+<a href="https://www.aboulahia.com/tafsir029.html#_Toc53775016">91.فضل المجاهدين على القاعدين</a>
+<a href="https://www.aboulahia.com/tafsir029.html#_Toc53775046">92.المستضعفون الظالمون لأنفسهم والهجرة</a>
+<a href="https://www.aboulahia.com/tafsir029.html#_Toc53775078">93.المستضعفون العاجزون</a>
+<a href="https://www.aboulahia.com/tafsir030.html#_Toc53774491">94.الهجرة والمراغم والجزاء الألهي</a>
+<a href="https://www.aboulahia.com/tafsir030.html#_Toc53774533">95.السفر وقصر الصلاة</a>
+<a href="https://www.aboulahia.com/tafsir030.html#_Toc53774573">96.صلاة الخوف والحذر</a>
+<a href="https://www.aboulahia.com/tafsir030.html#_Toc53774606">97.الحذر ووضع السلاح</a>
+<a href="https://www.aboulahia.com/tafsir030.html#_Toc53774628">98.الذكر والصلاة على كل الأحوال والأوقات</a>
+<a href="https://www.aboulahia.com/tafsir030.html#_Toc53774663">99.الجهاد والوهن والألم والرجاء</a>
+<a href="https://www.aboulahia.com/tafsir030.html#_Toc53774690">100.الكتاب والحاكمية والحق والخونة</a>
+<a href="https://www.aboulahia.com/tafsir030.html#_Toc53774726">101.النهي عن الجدال عن الخائنين وأسبابه</a>
+<a href="https://www.aboulahia.com/tafsir030.html#_Toc53774758">102.الإثم والظلم والكسب والاستغفار</a>
+<a href="https://www.aboulahia.com/tafsir030.html#_Toc53774784">103.كسب الخطايا واتهام الأبرياء</a>
+<a href="https://www.aboulahia.com/tafsir030.html#_Toc53774808">104.الاعتصام بالله والمضللون</a>
+<a href="https://www.aboulahia.com/tafsir030.html#_Toc53774834">105.النجوى الصالحة ومظاهرها وجزاؤها</a>
+<a href="https://www.aboulahia.com/tafsir030.html#_Toc53774864">106.الشقاق واتباع غير سبيل المؤمنين وجزاؤه</a>
+<a href="https://www.aboulahia.com/tafsir030.html#_Toc53774893">107.المغفرة والشرك والذنوب والضلال</a>
+<a href="https://www.aboulahia.com/tafsir030.html#_Toc53774917">108.الشرك والشيطان وكيده ووعوده</a>
+<a href="https://www.aboulahia.com/tafsir030.html#_Toc53774959">109.العمل والأماني والجزاء</a>
+<a href="https://www.aboulahia.com/tafsir030.html#_Toc53775001">110.الدين الحسن وملة إبراهيم الخليل</a>
+<a href="https://www.aboulahia.com/tafsir030.html#_Toc53775035">111.الزواج واليتامى والمستضعفين</a>
+<a href="https://www.aboulahia.com/tafsir030.html#_Toc53775076">112.النشوز والصلح</a>
+<a href="https://www.aboulahia.com/tafsir031.html#_Toc53774491">113.العدل بين النساء والصلح</a>
+<a href="https://www.aboulahia.com/tafsir031.html#_Toc53774528">114.التفريق وإغناء الله</a>
+<a href="https://www.aboulahia.com/tafsir031.html#_Toc53774554">115.عظمة الله وغناه</a>
+<a href="https://www.aboulahia.com/tafsir031.html#_Toc53774582">116.غنى الله عن عباده وسنة الاستبدال</a>
+<a href="https://www.aboulahia.com/tafsir031.html#_Toc53774609">117.النية والثواب</a>
+<a href="https://www.aboulahia.com/tafsir031.html#_Toc53774635">118.العدالة الشاملة</a>
+<a href="https://www.aboulahia.com/tafsir031.html#_Toc53774670">119.أركان الإيمان والضلال البعيد</a>
+<a href="https://www.aboulahia.com/tafsir031.html#_Toc53774703">120.المترددون بين الإيمان والكفر</a>
+<a href="https://www.aboulahia.com/tafsir031.html#_Toc53774740">121.المنافقون والولاء والعزة</a>
+<a href="https://www.aboulahia.com/tafsir031.html#_Toc53774766">122.الإعراض عن المستهزئين</a>
+<a href="https://www.aboulahia.com/tafsir031.html#_Toc53774797">123.المنافقون وصفاتهم وجزاؤهم</a>
+<a href="https://www.aboulahia.com/tafsir031.html#_Toc53774831">124.المنافقون والخداع والكسل والتذبذب</a>
+<a href="https://www.aboulahia.com/tafsir031.html#_Toc53774868">125.النهي عن اتخاذ الكافرين أولياء</a>
+<a href="https://www.aboulahia.com/tafsir031.html#_Toc53774895">126.المنافقون والدرك الأسفل من النار</a>
+<a href="https://www.aboulahia.com/tafsir031.html#_Toc53774923">127.توبة المنافقين وشروطها</a>
+<a href="https://www.aboulahia.com/tafsir031.html#_Toc53774951">128.الشكر والإيمان والعذاب</a>
+<a href="https://www.aboulahia.com/tafsir031.html#_Toc53774977">129.الجهر بالسوء والمظلوم</a>
+<a href="https://www.aboulahia.com/tafsir031.html#_Toc53775011">130.إبداء الخير وإخفاؤه والعفو</a>
+<a href="https://www.aboulahia.com/tafsir031.html#_Toc53775039">131.الكفار والتفريق بين الرسل</a>
+<a href="https://www.aboulahia.com/tafsir031.html#_Toc53775067">132.المؤمنون وعدم التفريق بين الرسل</a>
+<a href="https://www.aboulahia.com/tafsir031.html#_Toc53775090">133.اليهود والخلل في معرفة الله</a>
+<a href="https://www.aboulahia.com/tafsir031.html#_Toc53775122">134.اليهود وخيانة المواثيق</a>
+<a href="https://www.aboulahia.com/tafsir031.html#_Toc53775153">135.الطبع على القلوب وأسبابه</a>
+<a href="https://www.aboulahia.com/tafsir031.html#_Toc53775189">136.اليهود والافتراء على مريم</a>
+<a href="https://www.aboulahia.com/tafsir031.html#_Toc53775215">137.اليهود ودعوى قتل المسيح</a>
+<a href="https://www.aboulahia.com/tafsir031.html#_Toc53775253">138.المسيح والإيمان به قبل موته</a>
+<a href="https://www.aboulahia.com/tafsir031.html#_Toc53775292">139.ظلم اليهود وأكلهم الربا وتحريم الطيبات</a>
+<a href="https://www.aboulahia.com/tafsir032.html#_Toc53774491">140.الراسخون في العلم وصفاتهم وجزاؤهم</a>
+<a href="https://www.aboulahia.com/tafsir032.html#_Toc53774519">141.الأنبياء والوحي الإلهي</a>
+<a href="https://www.aboulahia.com/tafsir032.html#_Toc53774548">142.الرسول والقصص وموسى والتكليم</a>
+<a href="https://www.aboulahia.com/tafsir032.html#_Toc53774581">143.الرسل والبشارة والإنذار والحجج</a>
+<a href="https://www.aboulahia.com/tafsir032.html#_Toc53774605">144.رسالة الرسول وشهاد الله وملائكته</a>
+<a href="https://www.aboulahia.com/tafsir032.html#_Toc53774632">145.حقيقة الكفرة ومصيرهم</a>
+<a href="https://www.aboulahia.com/tafsir032.html#_Toc53774658">146.الرسول والحق</a>
+<a href="https://www.aboulahia.com/tafsir032.html#_Toc53774682">147.أهل الكتاب والغلو وحقيقة المسيح</a>
+<a href="https://www.aboulahia.com/tafsir032.html#_Toc53774720">148.المسيح والملائكة والعبودية لله</a>
+<a href="https://www.aboulahia.com/tafsir032.html#_Toc53774748">149.جزاء المؤمنين وجزاء المستنكفين المستكبرين</a>
+<a href="https://www.aboulahia.com/tafsir032.html#_Toc53774769">150.القرآن والبرهان الإلهي والاعتصام</a>
+<a href="https://www.aboulahia.com/tafsir032.html#_Toc53774800">151.أحكام الكلالة</a>
+<a href="https://www.aboulahia.com/tafsir032.html#_Toc53774844">سورة المائدة</a>
+<a href="https://www.aboulahia.com/tafsir032.html#_Toc53774845">1.الإيمان والوفاء بالعقود</a>
+<a href="https://www.aboulahia.com/tafsir032.html#_Toc53774883">2.الأنعام والحل والحرمة</a>
+<a href="https://www.aboulahia.com/tafsir032.html#_Toc53774921">3.تحريم الصيد للمحرم</a>
+<a href="https://www.aboulahia.com/tafsir032.html#_Toc53774948">4.حرمة شعائر الله والآمّين لها</a>
+<a href="https://www.aboulahia.com/tafsir032.html#_Toc53774990">5.حل الصيد لغير المحرم</a>
+<a href="https://www.aboulahia.com/tafsir032.html#_Toc53775017">6.الصد عن المسجد الحرام وحرمة الاعتداء</a>
+<a href="https://www.aboulahia.com/tafsir032.html#_Toc53775049">7.التعاون وضوابطه ومجالاته</a>
+<a href="https://www.aboulahia.com/tafsir032.html#_Toc53775076">8.المحرمات من الأطعمة</a>
+<a href="https://www.aboulahia.com/tafsir032.html#_Toc53775121">9.الاستقسام بالأزلام والفسق</a>
+</div>
+</div>
+<div class="dropdown">
+<button class="dropbtn">📖 الفهرس</button>
+<div class="dropdown-content">
 <div class="toc-group">
-  <a onclick="toggleSub(this, '_Toc53774491')"><span class="toc-toggle">▶</span> 95. الإيمان والهجرة والجهاد والرجاء</a>
-  <div class="toc-sub">
+<a onclick="toggleSub(this, '_Toc53774491')"><span class="toc-toggle">▶</span> 95. الإيمان والهجرة والجهاد والرجاء</a>
+<div class="toc-sub">
 <a href="tafsir012.html#_Toc53774492">عروة:</a>
 <a href="tafsir012.html#_Toc53774493">مقاتل:</a>
 <a href="tafsir012.html#_Toc53774494">الماتريدي:</a>
@@ -171,10 +679,9 @@
 <a href="tafsir012.html#_Toc53774515">الشيرازي:</a>
 </div>
 </div>
-
 <div class="toc-group">
-  <a onclick="toggleSub(this, '_Toc53774516')"><span class="toc-toggle">▶</span> 96. الخمر والميسروالإنفاق والعفو</a>
-  <div class="toc-sub">
+<a onclick="toggleSub(this, '_Toc53774516')"><span class="toc-toggle">▶</span> 96. الخمر والميسروالإنفاق والعفو</a>
+<div class="toc-sub">
 <a href="tafsir012.html#_Toc53774517">عمر:</a>
 <a href="tafsir012.html#_Toc53774518">علي:</a>
 <a href="tafsir012.html#_Toc53774519">الخراساني:</a>
@@ -233,10 +740,9 @@
 <a href="tafsir012.html#_Toc53774572">الشيرازي:</a>
 </div>
 </div>
-
 <div class="toc-group">
-  <a onclick="toggleSub(this, '_Toc53774573')"><span class="toc-toggle">▶</span> 97. اليتامى والإصلاح والمخالطة</a>
-  <div class="toc-sub">
+<a onclick="toggleSub(this, '_Toc53774573')"><span class="toc-toggle">▶</span> 97. اليتامى والإصلاح والمخالطة</a>
+<div class="toc-sub">
 <a href="tafsir012.html#_Toc53774574">الخراساني:</a>
 <a href="tafsir012.html#_Toc53774575">ابن عباس:</a>
 <a href="tafsir012.html#_Toc53774576">ابن عمرو:</a>
@@ -278,10 +784,9 @@
 <a href="tafsir012.html#_Toc53774612">الشيرازي:</a>
 </div>
 </div>
-
 <div class="toc-group">
-  <a onclick="toggleSub(this, '_Toc53774613')"><span class="toc-toggle">▶</span> 98. الزواج بين المسلمين والمشركين ومعايير الكفاءة</a>
-  <div class="toc-sub">
+<a onclick="toggleSub(this, '_Toc53774613')"><span class="toc-toggle">▶</span> 98. الزواج بين المسلمين والمشركين ومعايير الكفاءة</a>
+<div class="toc-sub">
 <a href="tafsir012.html#_Toc53774614">علي:</a>
 <a href="tafsir012.html#_Toc53774615">ابن عباس:</a>
 <a href="tafsir012.html#_Toc53774616">ابن عمر:</a>
@@ -320,10 +825,9 @@
 <a href="tafsir012.html#_Toc53774649">الشيرازي:</a>
 </div>
 </div>
-
 <div class="toc-group">
-  <a onclick="toggleSub(this, '_Toc53774650')"><span class="toc-toggle">▶</span> 99. العشرة الزوجية والطهارة</a>
-  <div class="toc-sub">
+<a onclick="toggleSub(this, '_Toc53774650')"><span class="toc-toggle">▶</span> 99. العشرة الزوجية والطهارة</a>
+<div class="toc-sub">
 <a href="tafsir012.html#_Toc53774651">أبو الدرداء:</a>
 <a href="tafsir012.html#_Toc53774652">ابن مسعود:</a>
 <a href="tafsir012.html#_Toc53774653">الخراساني:</a>
@@ -375,10 +879,9 @@
 <a href="tafsir012.html#_Toc53774699">الشيرازي:</a>
 </div>
 </div>
-
 <div class="toc-group">
-  <a onclick="toggleSub(this, '_Toc53774700')"><span class="toc-toggle">▶</span> 100. الأيمان واللغو والإصلاح</a>
-  <div class="toc-sub">
+<a onclick="toggleSub(this, '_Toc53774700')"><span class="toc-toggle">▶</span> 100. الأيمان واللغو والإصلاح</a>
+<div class="toc-sub">
 <a href="tafsir012.html#_Toc53774701">علي:</a>
 <a href="tafsir012.html#_Toc53774702">عائشة:</a>
 <a href="tafsir012.html#_Toc53774703">الخراساني:</a>
@@ -428,10 +931,9 @@
 <a href="tafsir012.html#_Toc53774747">الشيرازي:</a>
 </div>
 </div>
-
 <div class="toc-group">
-  <a onclick="toggleSub(this, '_Toc53774748')"><span class="toc-toggle">▶</span> 101. الإيلاء والتربص والطلاق</a>
-  <div class="toc-sub">
+<a onclick="toggleSub(this, '_Toc53774748')"><span class="toc-toggle">▶</span> 101. الإيلاء والتربص والطلاق</a>
+<div class="toc-sub">
 <a href="tafsir012.html#_Toc53774749">ابن مسعود:</a>
 <a href="tafsir012.html#_Toc53774750">علي:</a>
 <a href="tafsir012.html#_Toc53774751">عائشة:</a>
@@ -485,10 +987,9 @@
 <a href="tafsir012.html#_Toc53774799">الشيرازي:</a>
 </div>
 </div>
-
 <div class="toc-group">
-  <a onclick="toggleSub(this, '_Toc53774800')"><span class="toc-toggle">▶</span> 102. الطلاق والعدة والرجعة والمعروف</a>
-  <div class="toc-sub">
+<a onclick="toggleSub(this, '_Toc53774800')"><span class="toc-toggle">▶</span> 102. الطلاق والعدة والرجعة والمعروف</a>
+<div class="toc-sub">
 <a href="tafsir012.html#_Toc53774801">ابن مسعود:</a>
 <a href="tafsir012.html#_Toc53774802">علي:</a>
 <a href="tafsir012.html#_Toc53774803">عائشة:</a>
@@ -545,8 +1046,8 @@
 </div>
 </div>
 </div>
-    </div>
-  </p>
+</div></div>
+</p>
 </div>
 <p class="aaa1" id="_Toc53774491"><span class="colored-number">95.</span> الإيمان والهجرة والجهاد والرجاء</p>
 <div class="wrapper-aaac">
@@ -8113,7 +8614,7 @@
 </div>
 <!-- شريط التنقل للأسفل/للأعلى -->
 <div style="position: fixed; bottom: 20px; right: 20px; display: flex; flex-direction: column; gap: 5px; z-index: 1005;">
-  <button onclick="window.scrollTo({top:0, behavior:'smooth'})" style="padding:6px 10px; border-radius:5px; border:1px solid darkgreen; background:#f0fff0; font-weight:bold; cursor:pointer;">⬆ الأعلى</button>
-  <button onclick="window.scrollTo({top:document.body.scrollHeight, behavior:'smooth'})" style="padding:6px 10px; border-radius:5px; border:1px solid darkgreen; background:#f0fff0; font-weight:bold; cursor:pointer;">⬇ الأسفل</button>
+<button onclick="window.scrollTo({top:0, behavior:'smooth'})" style="padding:6px 10px; border-radius:5px; border:1px solid darkgreen; background:#f0fff0; font-weight:bold; cursor:pointer;">⬆ الأعلى</button>
+<button onclick="window.scrollTo({top:document.body.scrollHeight, behavior:'smooth'})" style="padding:6px 10px; border-radius:5px; border:1px solid darkgreen; background:#f0fff0; font-weight:bold; cursor:pointer;">⬇ الأسفل</button>
 </div>
 </body></html>
