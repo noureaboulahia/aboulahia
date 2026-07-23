@@ -1,12 +1,13 @@
 <!DOCTYPE html>
-<html lang="ar" dir="rtl">
+
+<html dir="rtl" lang="ar">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="title" content="المفسّرون والتفسير التحليلي للقرآن">
-<meta name="author" content="نور الدين أبو لحية">
-<meta name="subject" content="عرض وتهذيب لما ورد في تفاسير المدارس الإسلامية حول المعاني القرآنية">
-<link rel="stylesheet" href="mystyle.css">
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1" name="viewport"/>
+<meta content="المفسّرون والتفسير التحليلي للقرآن" name="title"/>
+<meta content="نور الدين أبو لحية" name="author"/>
+<meta content="عرض وتهذيب لما ورد في تفاسير المدارس الإسلامية حول المعاني القرآنية" name="subject"/>
+<link href="mystyle.css" rel="stylesheet"/>
 <title>المفسّرون والتفسير التحليلي للقرآن</title>
 <script src="myscripts.js"></script>
 <style>
@@ -124,59 +125,192 @@ function toggleSub(el, targetId) {
     }
 }
 </script>
+
+<style>
+body { margin:0; font-family:'Traditional Arabic'; direction:rtl; }
+.topbar {
+  position: fixed; top:0; right:0; left:0;
+  background: linear-gradient(90deg,#455a64,#607d8b);
+  padding: 10px;
+  display:flex; justify-content:center; gap:15px;
+  z-index:9999;
+}
+.dropdown { position: relative; display: inline-block; }
+.dropbtn {
+  font-size: 15pt; font-weight:bold;
+  padding: 6px 14px;
+  border-radius: 8px;
+  border:2px solid #1b5e20;
+  background:#e8f5e9; color:#1b5e20;
+  cursor:pointer;
+}
+.dropdown-content {
+  display: none;
+  position: absolute;
+  top: 45px;
+  background:#fff;
+  min-width: 300px;
+  max-height: 400px;
+  overflow-y: auto;
+  border:1px solid #ccc;
+  border-radius:8px;
+  padding:10px;
+  box-shadow:0 4px 8px rgba(0,0,0,0.2);
+  z-index:10000;
+}
+.dropdown-content input {
+  width: 95%; padding:5px; margin-bottom:8px;
+  border:1px solid #aaa; border-radius:6px;
+  font-size:13pt;
+}
+.dropdown-content a {
+  display:block;
+  padding:6px;
+  color:#333;
+  text-decoration:none;
+  border-bottom:1px solid #eee;
+  font-size:13pt;
+}
+.dropdown-content a:hover { background:#f1f1f1; }
+.show { display:block; }
+</style>
+<script>
+function toggleDropdown(id) {
+  document.querySelectorAll(".dropdown-content").forEach(el => {
+    if (el.id === id) {
+      el.classList.toggle("show");
+    } else {
+      el.classList.remove("show");
+    }
+  });
+}
+window.onclick = function(e) {
+  if (!e.target.matches('.dropbtn')) {
+    document.querySelectorAll(".dropdown-content").forEach(el => el.classList.remove("show"));
+  }
+}
+function filterList(input, dropdownId) {
+  let filter = input.value.toLowerCase();
+  let div = document.getElementById(dropdownId);
+  let links = div.getElementsByTagName("a");
+  for (let i=0; i<links.length; i++) {
+    let txt = links[i].textContent || links[i].innerText;
+    links[i].style.display = txt.toLowerCase().indexOf(filter) > -1 ? "" : "none";
+  }
+}
+</script>
 </head>
 <body>
+<div class="topbar">
+<div class="dropdown">
+<button class="dropbtn" onclick="toggleDropdown('partsDropdown')">📘 الأجزاء</button>
+<div class="dropdown-content" id="partsDropdown">
+<input onkeyup="filterList(this,'partsDropdown')" placeholder="ابحث..." type="text"/>
+<a href="index.html">الجزء 1</a>
+<a href="tafsir000.html">الجزء 2</a>
+<a href="tafsir001.html">الجزء 3</a>
+<a href="tafsir002.html">الجزء 4</a>
+</div>
+</div>
+<div class="dropdown">
+<button class="dropbtn" onclick="toggleDropdown('subjectsDropdown')">📖 الفهرس الموضوعي</button>
+<div class="dropdown-content" id="subjectsDropdown">
+<input onkeyup="filterList(this,'subjectsDropdown')" placeholder="ابحث..." type="text"/>
+<a href="tafsir000.html#_Toc53774491">مقدمة السلسلة:</a>
+<a href="tafsir000.html#_Toc53774495">مقدمة الكتاب</a>
+<a href="tafsir001.html#_Toc53774491">مقدمة السلسلة:</a>
+<a href="tafsir001.html#_Toc53774495">مقدمة الكتاب</a>
+<a href="tafsir001.html#_Toc53774499">سورة الفاتحة</a>
+<a href="tafsir001.html#_Toc53774500">1.البسملة</a>
+<a href="tafsir001.html#_Toc53774528">2.الحمدلة</a>
+<a href="tafsir001.html#_Toc53774571">3.العبادة والاستعانة</a>
+<a href="tafsir001.html#_Toc53774600">4.الهداية والصراط المستقيم</a>
+<a href="tafsir001.html#_Toc53774632">سورة البقرة</a>
+<a href="tafsir001.html#_Toc53774633">1.ألم.. والحروف المقطعة</a>
+<a href="tafsir001.html#_Toc53774677">2.الكتاب وصفات المتقين</a>
+<a href="tafsir001.html#_Toc53774718">3.صفات الكافرين</a>
+<a href="tafsir001.html#_Toc53774756">4.صفات المنافقين</a>
+<a href="tafsir002.html#_Toc53774491">5.مثال المنافقين</a>
+<a href="tafsir002.html#_Toc53774539">6.العبادة والأنداد</a>
+<a href="tafsir002.html#_Toc53774573">7.القرآن والتحدي</a>
+<a href="tafsir002.html#_Toc53774611">8.الصالحون والجنة</a>
+<a href="tafsir002.html#_Toc53774649">9.الله وضرب الأمثال</a>
+<a href="tafsir002.html#_Toc53774688">10.قدرة الله والبعث والتدبير</a>
+<a href="tafsir002.html#_Toc53774721">11.آدم والخلافة</a>
+</div>
+</div>
+<div class="dropdown">
+<button class="dropbtn" onclick="toggleDropdown('versesDropdown')">📜 فهرس الآيات</button>
+<div class="dropdown-content" id="versesDropdown">
+<input onkeyup="filterList(this,'versesDropdown')" placeholder="ابحث..." type="text"/>
+<a href="tafsir001.html#_Toc53774500">﴿الْحَمْدُ لِلَّهِ رَبِّ الْعَالَمِينَ الرَّحْمَنِ الرَّحِيمِ مَالِكِ يَوْمِ الدِّينِ﴾</a>
+<a href="tafsir001.html#_Toc53774528">﴿الْحَمْدُ لِلَّهِ رَبِّ الْعَالَمِينَ الرَّحْمَنِ الرَّحِيمِ مَالِكِ يَوْمِ الدِّينِ﴾</a>
+<a href="tafsir001.html#_Toc53774571">﴿إِيَّاكَ نَعْبُدُ وَإِيَّاكَ نَسْتَعِينُ﴾</a>
+<a href="tafsir001.html#_Toc53774600">﴿اهْدِنَا الصِّرَاطَ الْمُسْتَقِيمَ صِرَاطَ الَّذِينَ أَنْعَمْتَ عَلَيْهِمْ غَيْرِ الْمَغْضُوبِ عَلَيْهِمْ وَلَا الضَّالِّينَ﴾</a>
+<a href="tafsir001.html#_Toc53774633">﴿أَلَمْ﴾</a>
+<a href="tafsir001.html#_Toc53774677">﴿ذَلِكَ الْكِتَابُ لَا رَيْبَ فِيهِ هُدًى لِلْمُتَّقِينَ الَّذِينَ يُؤْمِنُونَ بِالْغَيْبِ وَيُقِيمُونَ الصَّلَاةَ وَمِمَّا رَزَقْنَاهُمْ يُنْفِقُونَ وَالَّذِينَ يُؤْمِنُونَ بِمَا أُنْزِلَ إِلَيْكَ وَمَا أُنْزِلَ مِنْ قَبْلِكَ وَبِالْآخِرَةِ هُمْ يُوقِنُونَ أُولَئِكَ عَلَى هُدًى مِنْ رَبِّهِمْ وَأُولَئِكَ هُمُ الْمُفْلِحُونَ﴾</a>
+<a href="tafsir001.html#_Toc53774718">﴿إِنَّ الَّذِينَ كَفَرُوا سَوَاءٌ عَلَيْهِمْ أَأَنْذَرْتَهُمْ أَمْ لَمْ تُنْذِرْهُمْ لَا يُؤْمِنُونَ خَتَمَ اللَّهُ عَلَى قُلُوبِهِمْ وَعَلَى سَمْعِهِمْ وَعَلَى أَبْصَارِهِمْ غِشَاوَةٌ وَلَهُمْ عَذَابٌ عَظِيمٌ﴾</a>
+<a href="tafsir001.html#_Toc53774756">﴿وَمِنَ النَّاسِ مَنْ يَقُولُ آمَنَّا بِاللَّهِ وَبِالْيَوْمِ الْآخِرِ وَمَا هُمْ بِمُؤْمِنِينَ يُخَادِعُونَ اللَّهَ وَالَّذِينَ آمَنُوا وَمَا يَخْدَعُونَ إِلَّا أَنْفُسَهُمْ وَمَا يَشْعُرُونَ فِي قُلُوبِهِمْ مَرَضٌ فَزَادَهُمُ اللَّهُ مَرَضًا وَلَهُمْ عَذَابٌ أَلِيمٌ بِمَا كَانُوا يَكْذِبُونَ وَإِذَا قِيلَ لَهُمْ لَا تُفْسِدُوا فِي الْأَرْضِ قَالُوا إِنَّمَا نَحْنُ مُصْلِحُونَ أَلَا إِنَّهُمْ هُمُ الْمُفْسِدُونَ وَلَكِنْ لَا يَشْعُرُونَ وَإِذَا قِيلَ لَهُمْ آمِنُوا كَمَا آمَنَ النَّاسُ قَالُوا أَنُؤْمِنُ كَمَا آمَنَ السُّفَهَاءُ أَلَا إِنَّهُمْ هُمُ السُّفَهَاءُ وَلَكِنْ لَا يَعْلَمُونَ وَإِذَا لَقُوا الَّذِينَ آمَنُوا قَالُوا آمَنَّا وَإِذَا خَلَوْا إِلَى شَيَاطِينِهِمْ قَالُوا إِنَّا مَعَكُمْ إِنَّمَا نَحْنُ مُسْتَهْزِئُونَ اللَّهُ يَسْتَهْزِئُ بِهِمْ وَيَمُدُّهُمْ فِي طُغْيَانِهِمْ يَعْمَهُونَ أُولَئِكَ الَّذِينَ اشْتَرَوُا الضَّلَالَةَ بِالْهُدَى فَمَا رَبِحَتْ تِجَارَتُهُمْ وَمَا كَانُوا مُهْتَدِينَ﴾</a>
+<a href="tafsir002.html#_Toc53774491">﴿مَثَلُهُمْ كَمَثَلِ الَّذِي اسْتَوْقَدَ نَارًا فَلَمَّا أَضَاءَتْ مَا حَوْلَهُ ذَهَبَ اللَّهُ بِنُورِهِمْ وَتَرَكَهُمْ فِي ظُلُمَاتٍ لَا يُبْصِرُونَ صُمٌّ بُكْمٌ عُمْيٌ فَهُمْ لَا يَرْجِعُونَ أَوْ كَصَيِّبٍ مِنَ السَّمَاءِ فِيهِ ظُلُمَاتٌ وَرَعْدٌ وَبَرْقٌ يَجْعَلُونَ أَصَابِعَهُمْ فِي آذَانِهِمْ مِنَ الصَّوَاعِقِ حَذَرَ الْمَوْتِ وَاللَّهُ مُحِيطٌ بِالْكَافِرِينَ يَكَادُ الْبَرْقُ يَخْطَفُ أَبْصَارَهُمْ كُلَّمَا أَضَاءَ لَهُمْ مَشَوْا فِيهِ وَإِذَا أَظْلَمَ عَلَيْهِمْ قَامُوا وَلَوْ شَاءَ اللَّهُ لَذَهَبَ بِسَمْعِهِمْ وَأَبْصَارِهِمْ إِنَّ اللَّهَ عَلَى كُلِّ شَيْءٍ قَدِيرٌ﴾</a>
+<a href="tafsir002.html#_Toc53774539">﴿يَا أَيُّهَا النَّاسُ اعْبُدُوا رَبَّكُمُ الَّذِي خَلَقَكُمْ وَالَّذِينَ مِنْ قَبْلِكُمْ لَعَلَّكُمْ تَتَّقُونَ الَّذِي جَعَلَ لَكُمُ الْأَرْضَ فِرَاشًا وَالسَّمَاءَ بِنَاءً وَأَنْزَلَ مِنَ السَّمَاءِ مَاءً فَأَخْرَجَ بِهِ مِنَ الثَّمَرَاتِ رِزْقًا لَكُمْ فَلَا تَجْعَلُوا لِلَّهِ أَنْدَادًا وَأَنْتُمْ تَعْلَمُونَ﴾</a>
+<a href="tafsir002.html#_Toc53774573">﴿وَإِنْ كُنْتُمْ فِي رَيْبٍ مِمَّا نَزَّلْنَا عَلَى عَبْدِنَا فَأْتُوا بِسُورَةٍ مِنْ مِثْلِهِ وَادْعُوا شُهَدَاءَكُمْ مِنْ دُونِ اللَّهِ إِنْ كُنْتُمْ صَادِقِينَ فَإِنْ لَمْ تَفْعَلُوا وَلَنْ تَفْعَلُوا فَاتَّقُوا النَّارَ الَّتِي وَقُودُهَا النَّاسُ وَالْحِجَارَةُ أُعِدَّتْ لِلْكَافِرِينَ﴾</a>
+<a href="tafsir002.html#_Toc53774611">﴿وَبَشِّرِ الَّذِينَ آمَنُوا وَعَمِلُوا الصَّالِحَاتِ أَنَّ لَهُمْ جَنَّاتٍ تَجْرِي مِنْ تَحْتِهَا الْأَنْهَارُ كُلَّمَا رُزِقُوا مِنْهَا مِنْ ثَمَرَةٍ رِزْقًا قَالُوا هَذَا الَّذِي رُزِقْنَا مِنْ قَبْلُ وَأُتُوا بِهِ مُتَشَابِهًا وَلَهُمْ فِيهَا أَزْوَاجٌ مُطَهَّرَةٌ وَهُمْ فِيهَا خَالِدُونَ﴾</a>
+<a href="tafsir002.html#_Toc53774649">﴿إِنَّ اللَّهَ لَا يَسْتَحْيِي أَنْ يَضْرِبَ مَثَلًا مَا بَعُوضَةً فَمَا فَوْقَهَا فَأَمَّا الَّذِينَ آمَنُوا فَيَعْلَمُونَ أَنَّهُ الْحَقُّ مِنْ رَبِّهِمْ وَأَمَّا الَّذِينَ كَفَرُوا فَيَقُولُونَ مَاذَا أَرَادَ اللَّهُ بِهَذَا مَثَلًا يُضِلُّ بِهِ كَثِيرًا وَيَهْدِي بِهِ كَثِيرًا وَمَا يُضِلُّ بِهِ إِلَّا الْفَاسِقِينَ الَّذِينَ يَنْقُضُونَ عَهْدَ اللَّهِ مِنْ بَعْدِ مِيثَاقِهِ وَيَقْطَعُونَ مَا أَمَرَ اللَّهُ بِهِ أَنْ يُوصَلَ وَيُفْسِدُونَ فِي الْأَرْضِ أُولَئِكَ هُمُ الْخَاسِرُونَ﴾</a>
+<a href="tafsir002.html#_Toc53774688">﴿كَيْفَ تَكْفُرُونَ بِاللَّهِ وَكُنْتُمْ أَمْوَاتًا فَأَحْيَاكُمْ ثُمَّ يُمِيتُكُمْ ثُمَّ يُحْيِيكُمْ ثُمَّ إِلَيْهِ تُرْجَعُونَ هُوَ الَّذِي خَلَقَ لَكُمْ مَا فِي الْأَرْضِ جَمِيعًا ثُمَّ اسْتَوَى إِلَى السَّمَاءِ فَسَوَّاهُنَّ سَبْعَ سَمَاوَاتٍ وَهُوَ بِكُلِّ شَيْءٍ عَلِيمٌ﴾</a>
+<a href="tafsir002.html#_Toc53774721">﴿وَإِذْ قَالَ رَبُّكَ لِلْمَلَائِكَةِ إِنِّي جَاعِلٌ فِي الْأَرْضِ خَلِيفَةً قَالُوا أَتَجْعَلُ فِيهَا مَنْ يُفْسِدُ فِيهَا وَيَسْفِكُ الدِّمَاءَ وَنَحْنُ نُسَبِّحُ بِحَمْدِكَ وَنُقَدِّسُ لَكَ قَالَ إِنِّي أَعْلَمُ مَا لَا تَعْلَمُونَ﴾</a>
+</div>
+</div>
+</div>
+
 <div w3-include-html="head.html"></div>
 <script>
 includeHTML();
 </script>
-<div id="mySidebar" class="sidebar"></div>
+<div class="sidebar" id="mySidebar"></div>
 <!-- زر الفهرس -->
 <div class="top-menu">
-  <p>
+<p>
     اختر عنوانا من الكتاب:
     <div class="dropdown">
-      <button class="dropbtn">📖 الفهرس</button>
-      <div class="dropdown-content">
+<button class="dropbtn">📖 الفهرس</button>
+<div class="dropdown-content">
 <div class="toc-group">
-  <a onclick="toggleSub(this, '_Toc53774491')"><span class="toc-toggle">▶</span> مقدمة السلسلة:</a>
-  <div class="toc-sub">
+<a onclick="toggleSub(this, '_Toc53774491')"><span class="toc-toggle">▶</span> مقدمة السلسلة:</a>
+<div class="toc-sub">
 <a href="tafsir000.html#_Toc53774492">مزايا السلسلة:</a>
 <a href="tafsir000.html#_Toc53774493">كتب السلسلة:</a>
 <a href="tafsir000.html#_Toc53774494">شكر وعرفان:</a>
 </div>
 </div>
-
 <div class="toc-group">
-  <a onclick="toggleSub(this, '_Toc53774495')"><span class="toc-toggle">▶</span> مقدمة الكتاب</a>
-  <div class="toc-sub">
+<a onclick="toggleSub(this, '_Toc53774495')"><span class="toc-toggle">▶</span> مقدمة الكتاب</a>
+<div class="toc-sub">
 <a href="tafsir000.html#_Toc53774496">المنهجية المعتمدة:</a>
 <a href="tafsir000.html#_Toc53774497">التفاسير المعتمدة:</a>
 <a href="tafsir000.html#_Toc53774498">أسس الانتقاء:</a>
 </div>
 </div>
 </div>
-    </div>
-  </p>
 </div>
-
+</p>
+</div>
 <div style="direction:rtl; text-align:right; display:flex; margin:20px;">
-  <div style="display:flex; background:#fafafa; border:1px solid #ddd; border-radius:15px; box-shadow:0 4px 8px rgba(0,0,0,0.1); padding:15px; max-width:750px; margin-left:auto;">
-    <div style="flex:0 0 auto; margin-left:20px;">
-      <img src="c160.jpg" width="200" alt="غلاف الكتاب" style="border-radius:10px; border:1px solid #ccc;" />
-    </div>
-    <div style="flex:1; font-family:'Traditional Arabic'; line-height:1.8; font-size:16px;">
-      <p class="aaac"><span style="color:#d40000; font-weight:bold;">📖 الكتاب:</span> المفسّرون والتفسير التحليلي للقرآن</p>
-      <p class="aaac"><span style="color:#d40000; font-weight:bold;">📝 الوصف:</span> عرض وتهذيب لما ورد في تفاسير المدارس الإسلامية حول المعاني القرآنية</p>
-      <p class="aaac"><span style="color:#d40000; font-weight:bold;">📚 السلسلة:</span> المفسّرون والقرآن</p>
-      <p class="aaac"><span style="color:#d40000; font-weight:bold;">✍ المؤلف:</span> أ.د. نور الدين أبو لحية</p>
-      <p class="aaac"><span style="color:#d40000; font-weight:bold;">🏢 الناشر:</span> دار الأنوار للنشر والتوزيع</p>
-      <p class="aaac"><span style="color:#d40000; font-weight:bold;">📅 الطبعة:</span> الأولى</p>
-      <p class="aaac"><span style="color:#d40000; font-weight:bold;">📥 تحميل:</span> 
-        <a href="https://archive.org/compress/NOURETAFSIR1/formats=TEXT%20PDF&file=/NOURETAFSIR1.zip" style="color:#0066cc; text-decoration:none; font-weight:bold;">هنا</a>
-      </p>
-    </div>
-  </div>
+<div style="display:flex; background:#fafafa; border:1px solid #ddd; border-radius:15px; box-shadow:0 4px 8px rgba(0,0,0,0.1); padding:15px; max-width:750px; margin-left:auto;">
+<div style="flex:0 0 auto; margin-left:20px;">
+<img alt="غلاف الكتاب" src="c160.png" style="border-radius:10px; border:1px solid #ccc;" width="200"/>
+</div>
+<div style="flex:1; font-family:'Traditional Arabic'; line-height:1.8; font-size:16px;">
+<p class="aaac"><span style="color:#d40000; font-weight:bold;">📖 الكتاب:</span> المفسّرون والتفسير التحليلي للقرآن</p>
+<p class="aaac"><span style="color:#d40000; font-weight:bold;">📝 الوصف:</span> عرض وتهذيب لما ورد في تفاسير المدارس الإسلامية حول المعاني القرآنية</p>
+<p class="aaac"><span style="color:#d40000; font-weight:bold;">📚 السلسلة:</span> المفسّرون والقرآن</p>
+<p class="aaac"><span style="color:#d40000; font-weight:bold;">✍ المؤلف:</span> أ.د. نور الدين أبو لحية</p>
+<p class="aaac"><span style="color:#d40000; font-weight:bold;">🏢 الناشر:</span> دار الأنوار للنشر والتوزيع</p>
+<p class="aaac"><span style="color:#d40000; font-weight:bold;">📅 الطبعة:</span> الأولى</p>
+<p class="aaac"><span style="color:#d40000; font-weight:bold;">📥 تحميل:</span>
+<a href="https://archive.org/compress/NOURETAFSIR1/formats=TEXT%20PDF&amp;file=/NOURETAFSIR1.zip" style="color:#0066cc; text-decoration:none; font-weight:bold;">هنا</a>
+</p>
+</div>
+</div>
 </div>
 <p class="aaa1" id="_Toc53774491">مقدمة السلسلة:</p>
 <div class="wrapper-aaac">
@@ -333,9 +467,9 @@ includeHTML();
 <p class="aaac"><span class="colored-number">6.</span> الاهتمام بالجوانب الحركية، ومسؤوليات الأمة، وفهم القرآن الكريم من خلال الواقع، وكيفية تطبيقه، ومن هذا الباب اعتمدنا تفسير سيد قطب ومحمد حسين فضل الله، وغيرهما، ممن يهتم بالجوانب الحركية، وخصوصا المعاصرة منها.</p>
 <p class="aaac"><span class="colored-number">7.</span> الاهتمام بالجوانب البيانية واللغوية في القرآن الكريم، باعتبارها توضح مقصوده، وتبين أسرار إعجازه، ولكنا مع ذلك لم نذكر كل ما ورد في تفاصيل لغوية، وخاصة ما يتعلق بالإعراب منها، باعتبار أن الكثير منها نوع من الحشو والاستطراد، ولذلك اكتفينا بذكر ما يفي بالغرض.</p>
 </div>
-    <!-- شريط التنقل للأسفل/للأعلى -->
-    <div style="position: fixed; bottom: 20px; right: 20px; display: flex; flex-direction: column; gap: 5px; z-index: 1005;">
-    <button onclick="window.scrollTo({top:0, behavior:'smooth'})" style="padding:6px 10px; border-radius:5px; border:1px solid darkgreen; background:#f0fff0; font-weight:bold; cursor:pointer;">⬆ الأعلى</button>
-    <button onclick="window.scrollTo({top:document.body.scrollHeight, behavior:'smooth'})" style="padding:6px 10px; border-radius:5px; border:1px solid darkgreen; background:#f0fff0; font-weight:bold; cursor:pointer;">⬇ الأسفل</button>
-    </div>
-    </body></html>
+<!-- شريط التنقل للأسفل/للأعلى -->
+<div style="position: fixed; bottom: 20px; right: 20px; display: flex; flex-direction: column; gap: 5px; z-index: 1005;">
+<button onclick="window.scrollTo({top:0, behavior:'smooth'})" style="padding:6px 10px; border-radius:5px; border:1px solid darkgreen; background:#f0fff0; font-weight:bold; cursor:pointer;">⬆ الأعلى</button>
+<button onclick="window.scrollTo({top:document.body.scrollHeight, behavior:'smooth'})" style="padding:6px 10px; border-radius:5px; border:1px solid darkgreen; background:#f0fff0; font-weight:bold; cursor:pointer;">⬇ الأسفل</button>
+</div>
+</body></html>
