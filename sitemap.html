@@ -7,8 +7,6 @@
     body { font-family: "Traditional Arabic", serif; background: #f9f9f9; line-height: 1.8; padding: 20px; }
     h1 { text-align: center; color: #004d40; }
     .controls { text-align: center; margin-bottom: 20px; }
-    .search-box { width: min(520px, 90%); margin: 0 auto 12px; display: block; padding: 8px 12px; border: 1px solid #80cbc4; border-radius: 8px; font-size: 16px; text-align: right; }
-    .sitemap-note { max-width: 900px; margin: 0 auto 18px; padding: 10px 14px; background: #e0f2f1; border: 1px solid #80cbc4; border-radius: 8px; color: #004d40; }
     button { margin: 0 5px; padding: 6px 12px; font-size: 14px; cursor: pointer; border-radius: 5px; border: 1px solid #00796b; background: #b2dfdb; }
     details { margin: 6px 0; border: 1px solid #ddd; border-radius: 8px; padding: 6px 10px; background: #fff; }
     summary { font-size: 20px; font-weight: bold; cursor: pointer; color: #00695c; outline: none; }
@@ -24,14 +22,6 @@
   <script>
     function openAll() { document.querySelectorAll('details').forEach(d => d.open = true); }
     function closeAll() { document.querySelectorAll('details').forEach(d => d.open = false); }
-    function filterSitemap(query) {
-      const normalizedQuery = query.trim().toLowerCase();
-      document.querySelectorAll('details').forEach(item => {
-        const matches = !normalizedQuery || item.textContent.toLowerCase().includes(normalizedQuery);
-        item.hidden = !matches;
-        if (normalizedQuery && matches) item.open = true;
-      });
-    }
 
     // التحكم في سلوك الروابط/العناوين
     function toggleOrOpen(event, detailsId, url) {
@@ -47,8 +37,6 @@
 </head>
 <body>
   <h1>خريطة الموقع</h1>
-  <input class="search-box" type="search" placeholder="ابحث في الكتب والعناوين..." oninput="filterSitemap(this.value)">
-  <p class="sitemap-note">تضم هذه الخريطة روابط الكتب وفهارسها، مع قسم خاص للكتب التي أضيفت لاستكمال الروابط غير المدرجة سابقًا.</p>
   <div class="controls">
     <button onclick="openAll()">فتح الكل</button>
     <button onclick="closeAll()">إغلاق الكل</button>
@@ -16162,34 +16150,6 @@
     </ul>
   </details>
 </details>
-</details>
-<details id="missing_books" open>
-<summary>📚 كتب مستكملة في الخريطة</summary>
-  <ul>
-    <li class="level4"><a href="https://www.aboulahia.com/c30.html" target="_blank">شيخ الإسلام في قفص الاتهام</a></li>
-    <li class="level4"><a href="https://www.aboulahia.com/c55.html" target="_blank">موازين الهداية ومراتبها</a></li>
-    <li class="level4"><a href="https://www.aboulahia.com/c65.html" target="_blank">منابع الهداية الصافية</a></li>
-    <li class="level4"><a href="https://www.aboulahia.com/c68.html" target="_blank">الإمامة والامتداد الرسالي</a></li>
-    <li class="level4"><a href="https://www.aboulahia.com/c72.html" target="_blank">المواعظ والوصايا</a></li>
-    <li class="level4"><a href="https://www.aboulahia.com/c75.html" target="_blank">الجلال والجمال الإلهي</a></li>
-    <li class="level4"><a href="https://www.aboulahia.com/c81.html" target="_blank">الأنبياء والهدي المقدس</a></li>
-    <li class="level4"><a href="https://www.aboulahia.com/c82.html" target="_blank">المعاد.. والرحمة والعدالة</a></li>
-    <li class="level4"><a href="https://www.aboulahia.com/c83.html" target="_blank">دلائل النبوة الخاصة</a></li>
-    <li class="level4"><a href="https://www.aboulahia.com/c91.html" target="_blank">شمائل النبوة ومكارمها</a></li>
-    <li class="level4"><a href="https://www.aboulahia.com/c96.html" target="_blank">السلوك الروحي ومنازله</a></li>
-    <li class="level4"><a href="https://www.aboulahia.com/c97.html" target="_blank">مساوئ الأخلاق وعواقبها</a></li>
-    <li class="level4"><a href="https://www.aboulahia.com/c98.html" target="_blank">مكارم الأخلاق وفضائلها</a></li>
-    <li class="level4"><a href="https://www.aboulahia.com/c104.html" target="_blank">أحكام الحياة الشخصية</a></li>
-    <li class="level4"><a href="https://www.aboulahia.com/c105.html" target="_blank">أحكام العلاقات الاجتماعية</a></li>
-    <li class="level4"><a href="https://www.aboulahia.com/c106.html" target="_blank">أحكام الكسب والإنفاق</a></li>
-    <li class="level4"><a href="https://www.aboulahia.com/c107.html" target="_blank">أحكام الحكومة الإسلامية</a></li>
-    <li class="level4"><a href="https://www.aboulahia.com/c108.html" target="_blank">أحكام الصلاة وشروطها</a></li>
-    <li class="level4"><a href="https://www.aboulahia.com/c109.html" target="_blank">الصيام ونفحات الأزمنة</a></li>
-    <li class="level4"><a href="https://www.aboulahia.com/c110.html" target="_blank">الحج ونفحات الأمكنة</a></li>
-    <li class="level4"><a href="https://www.aboulahia.com/c111.html" target="_blank">معارج الذكر والدعاء</a></li>
-    <li class="level4"><a href="https://www.aboulahia.com/c148.html" target="_blank">المفسرون وسورة الفاتحة</a></li>
-    <li class="level4"><a href="https://www.aboulahia.com/c149.html" target="_blank">سورة الفاتحة والتنزيل والتأويل</a></li>
-  </ul>
 </details>
 
 </body>
