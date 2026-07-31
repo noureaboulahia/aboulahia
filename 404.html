@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>إعادة توجيه</title>
+  <script>
+    (function () {
+      if (location.hostname === 'aboulahia.com') {
+        location.replace('https://www.aboulahia.com' + location.pathname + location.search + location.hash);
+      }
+    }());
+  </script>
+  <style>
+    body { font-family: "Traditional Arabic", serif; line-height: 1.8; text-align: center; padding: 40px; background: #f9f9f9; color: #243b37; }
+    a { color: #1565c0; }
+  </style>
+</head>
+<body>
+  <h1>الصفحة غير موجودة</h1>
+  <p>إن كنت تستخدم الرابط بدون <strong>www</strong> فسيتم تحويلك تلقائيًا إلى النطاق الصحيح.</p>
+  <p><a href="https://www.aboulahia.com/">العودة إلى الموقع</a></p>
+</body>
+</html>
